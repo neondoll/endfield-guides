@@ -5,3 +5,5 @@ export interface Element {
   image: string;
   name: string;
 }
+
+export type ElementListItem = Element;

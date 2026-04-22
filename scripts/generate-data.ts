@@ -10,8 +10,8 @@ import { WeaponTypeIds } from "../src/enums/weapon-types";
 import type { Attribute, AttributeListItem } from "../src/types/attributes";
 import type { CharacterClass, CharacterClassListItem } from "../src/types/character-classes";
 import type { Character, CharacterListItem } from "../src/types/characters";
-import type { Element } from "../src/types/elements";
-import type { WeaponType } from "../src/types/weapon-types";
+import type { Element, ElementListItem } from "../src/types/elements";
+import type { WeaponType, WeaponTypeListItem } from "../src/types/weapon-types";
 
 type CategoryType = "attributes" | "character-classes" | "characters" | "elements" | "weapon-types";
 type DataItem<T extends CategoryType>
@@ -25,8 +25,8 @@ type DataListItem<T extends CategoryType>
   = T extends "attributes" ? AttributeListItem
     : T extends "character-classes" ? CharacterClassListItem
       : T extends "characters" ? CharacterListItem
-        : T extends "elements" ? Element
-          : T extends "weapon-types" ? WeaponType
+        : T extends "elements" ? ElementListItem
+          : T extends "weapon-types" ? WeaponTypeListItem
             : never;
 
 interface CategoryConfig<T extends CategoryType> {

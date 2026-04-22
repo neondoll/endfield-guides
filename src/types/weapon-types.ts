@@ -5,3 +5,5 @@ export interface WeaponType {
   image: string;
   name: string;
 }
+
+export type WeaponTypeListItem = WeaponType;

@@ -12,7 +12,7 @@ export interface Character {
   elementId: Element["id"];
   weaponId: WeaponType["id"];
   classId: CharacterClass["id"];
-  primaryAttributeId: Attribute["id"];
+  mainAttributeId: Attribute["id"];
   secondaryAttributeId: Attribute["id"];
   version: string;
 }

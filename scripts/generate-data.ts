@@ -43,71 +43,106 @@ const env = loadEnv("development", process.cwd(), "");
 const BASE_URL = env.VITE_BASE_URL || "/";
 const OUTPUT_DIR = path.resolve("public/data");
 
+const Attributes: Record<keyof typeof AttributeIds, Attribute> = {
+  Agility: {
+    id: AttributeIds.Agility,
+    image: BASE_URL + "images/attributes/agility.png",
+    name: "Ловкость",
+    description: "Влияет на физическую СОПР оперативника.",
+  },
+  Intellect: {
+    id: AttributeIds.Intellect,
+    image: BASE_URL + "images/attributes/intellect.png",
+    name: "Интеллект",
+    description: "Влияет на сопротивляемость искусствам оперативника.",
+  },
+  Strength: {
+    id: AttributeIds.Strength,
+    image: BASE_URL + "images/attributes/strength.png",
+    name: "Сила",
+    description: "Влияет на макс. ОЗ оперативника.",
+  },
+  Will: {
+    id: AttributeIds.Will,
+    image: BASE_URL + "images/attributes/will.png",
+    name: "Воля",
+    description: "Влияет на получаемое оперативником лечение.",
+  },
+};
+const EssenceCharacteristics = {
+  AttackBoost: "Увелич. атаки",
+  Detonate: "Детонация",
+  Infliction: "Поражение",
+  IntellectBoost: "Увелич. интеллекта",
+  StrengthBoost: "Увелич. силы",
+  TreatmentEfficiencyBoost: "Увелич. эффективности лечения",
+  Twilight: "Сумерки",
+};
 const WeaponSkillsMax = {
   AgilityBoost: {
-    L: { title: "Agility Boost (L)", text: "Agility +156" },
+    L: { title: "Agility Boost [бол.]", text: "Agility +156" },
     M: { title: "Agility Boost (M)", text: "Agility +124" },
     S: { title: "Agility Boost (S)", text: "Agility +93" },
   },
   ArtsBoost: {
-    L: { title: "Arts Boost (L)", text: "Arts DMG Dealt +43.3%" },
+    L: { title: "Arts Boost [бол.]", text: "Arts DMG Dealt +43.3%" },
     M: { title: "Arts Boost (M)", text: "Arts DMG Dealt +34.7%" },
     S: { title: "Arts Boost (S)", text: "Arts DMG Dealt +26.0%" },
   },
   ArtsIntensityBoost: {
-    L: { title: "Arts Intensity Boost (L)", text: "Arts Intensity +78" },
+    L: { title: "Arts Intensity Boost [бол.]", text: "Arts Intensity +78" },
     M: { title: "Arts Intensity Boost (M)", text: "Arts Intensity +62" },
   },
-  ATKBoost: {
-    L: { title: "Attack Boost (L)", text: "Attack +39.0%" },
+  AttackBoost: {
+    L: { title: `${EssenceCharacteristics.AttackBoost} [бол.]`, text: "Атака +39.0%" },
     M: { title: "ATK Boost (M)", text: "Attack +31.2%" },
     S: { title: "ATK Boost (S)", text: "Attack +23.4%" },
   },
-  CriticalRateBoost: { L: { title: "Critical Rate Boost (L)", text: "Critical Rate +19.5%" } },
+  CriticalRateBoost: { L: { title: "Critical Rate Boost [бол.]", text: "Critical Rate +19.5%" } },
   CryoDMGBoost: {
-    L: { title: "Cryo DMG Boost (L)", text: "Cryo DMG Dealt +43.3%" },
+    L: { title: "Cryo DMG Boost [бол.]", text: "Cryo DMG Dealt +43.3%" },
     M: { title: "Cryo DMG Boost (M)", text: "Cryo DMG Dealt +34.7%" },
   },
   ElectricDMGBoost: { M: { title: "Electric DMG Boost (M)", text: "Electric DMG Dealt +34.7%" } },
   HeatDMGBoost: {
-    L: { title: "Heat DMG Boost (L)", text: "Heat DMG Dealt +43.3%" },
+    L: { title: "Heat DMG Boost [бол.]", text: "Heat DMG Dealt +43.3%" },
     M: { title: "Heat DMG Boost (M)", text: "Heat DMG Dealt +34.7%" },
   },
   HPBoost: {
-    L: { title: "HP Boost (L)", text: "Max HP +78.0%" },
+    L: { title: "HP Boost [бол.]", text: "Max HP +78.0%" },
     M: { title: "HP Boost (M)", text: "Max HP +62.4%" },
     S: { title: "HP Boost (S)", text: "Max HP +46.8%" },
   },
   IntellectBoost: {
-    L: { title: "Intellect Boost (L)", text: "Intellect +156" },
+    L: { title: `${EssenceCharacteristics.IntellectBoost} [бол.]`, text: `${Attributes.Intellect.name} +156` },
     M: { title: "Intellect Boost (M)", text: "Intellect +124" },
     S: { title: "Intellect Boost (S)", text: "Intellect +93" },
   },
   MainAttributeBoost: {
-    L: { title: "Main Attribute Boost (L)", text: "Main Attribute +132" },
+    L: { title: "Main Attribute Boost [бол.]", text: "Main Attribute +132" },
     S: { title: "Main Attribute Boost (S)", text: "Main Attribute +79" },
   },
-  NatureDMGBoost: { L: { title: "Nature DMG Boost (L)", text: "Nature DMG Dealt+43.3%" } },
+  NatureDMGBoost: { L: { title: "Nature DMG Boost [бол.]", text: "Nature DMG Dealt+43.3%" } },
   PhysicalDMGBoost: {
-    L: { title: "Physical DMG Boost (L)", text: "Physical DMG Dealt +43.3%" },
+    L: { title: "Physical DMG Boost [бол.]", text: "Physical DMG Dealt +43.3%" },
     M: { title: "Physical DMG Boost (M)", text: "Physical DMG Dealt +34.7%" },
     S: { title: "Physical DMG Boost (S)", text: "Physical DMG Dealt +26.0%" },
   },
   StrengthBoost: {
-    L: { title: "Strength Boost (L)", text: "Strength +156" },
+    L: { title: `${EssenceCharacteristics.StrengthBoost} [бол.]`, text: `${Attributes.Strength.name} +156` },
     M: { title: "Strength Boost (M)", text: "Strength +124" },
     S: { title: "Strength Boost (S)", text: "Strength +93" },
   },
   TreatmentEfficiencyBoost: {
-    L: { title: "Treatment Efficiency Boost (L)", text: "Treatment Efficiency +46.4%" },
+    L: { title: `${EssenceCharacteristics.TreatmentEfficiencyBoost} [бол.]`, text: "Эффективность лечения +46.4%" },
     M: { title: "Treatment Efficiency Boost (M)", text: "Treatment Efficiency +37.1%" },
   },
   UltimateGainEfficiencyBoost: {
-    L: { title: "Ultimate Gain Efficiency Boost (L)", text: "Ultimate Gain Efficiency +46.4%" },
+    L: { title: "Ultimate Gain Efficiency Boost [бол.]", text: "Ultimate Gain Efficiency +46.4%" },
     M: { title: "Ultimate Gain Efficiency Boost (M)", text: "Ultimate Gain Efficiency +37.1%" },
   },
   WillBoost: {
-    L: { title: "Will Boost (L)", text: "Will +156" },
+    L: { title: "Will Boost [бол.]", text: "Will +156" },
     M: { title: "Will Boost (M)", text: "Will +124" },
     S: { title: "Will Boost (S)", text: "Will +93" },
   },
@@ -115,32 +150,7 @@ const WeaponSkillsMax = {
 
 const CATEGORIES = {
   "attributes": {
-    data: [
-      {
-        id: AttributeIds.Agility,
-        image: BASE_URL + "images/attributes/agility.png",
-        name: "Ловкость",
-        description: "Влияет на физическую СОПР оперативника.",
-      },
-      {
-        id: AttributeIds.Intellect,
-        image: BASE_URL + "images/attributes/intellect.png",
-        name: "Интеллект",
-        description: "Влияет на сопротивляемость искусствам оперативника.",
-      },
-      {
-        id: AttributeIds.Strength,
-        image: BASE_URL + "images/attributes/strength.png",
-        name: "Сила",
-        description: "Влияет на макс. ОЗ оперативника.",
-      },
-      {
-        id: AttributeIds.Will,
-        image: BASE_URL + "images/attributes/will.png",
-        name: "Воля",
-        description: "Влияет на получаемое оперативником лечение.",
-      },
-    ],
+    data: Object.values(Attributes),
     transformList: item => ({ id: item.id, image: item.image, name: item.name }),
   },
   "elements": {
@@ -603,7 +613,7 @@ const CATEGORIES = {
         baseATK90: 505,
         skillsMax: [
           WeaponSkillsMax.AgilityBoost.L,
-          WeaponSkillsMax.ATKBoost.L,
+          WeaponSkillsMax.AttackBoost.L,
           {
             title: "Detonate: Brigand's Bane",
             text: "Cryo DMG Dealt +44.8%.\n"
@@ -732,7 +742,7 @@ const CATEGORIES = {
       {
         id: WeaponIds.DreamsOfTheStarryBeach,
         image: BASE_URL + "images/weapons/dreams-of-the-starry-beach.png",
-        name: "Dreams of the Starry Beach",
+        name: "Мечта о звездном береге",
         typeId: WeaponTypeIds.ArtsUnit,
         rarity: 6,
         baseATK90: 495,
@@ -740,10 +750,10 @@ const CATEGORIES = {
           WeaponSkillsMax.IntellectBoost.L,
           WeaponSkillsMax.TreatmentEfficiencyBoost.L,
           {
-            title: "Infliction: Tidal Murmurs",
-            text: "Secondary Attribute +44.8%\n"
-              + "After the wielder consumes Corrosion, target enemy suffers Arts DMG Taken +28.0% for 25s.\n"
-              + "Effects of the same name cannot stack.",
+            title: `${EssenceCharacteristics.Infliction}: шепот прилива`,
+            text: "+44.8% к побочному показателю.\n"
+              + "Когда владелец поглощает коррозию, цель получает на 28.0% больше УРН от искусств в течение 25 сек.\n"
+              + "Одноименные эффекты не суммируются.",
           },
         ],
       },
@@ -774,7 +784,7 @@ const CATEGORIES = {
         baseATK90: 500,
         skillsMax: [
           WeaponSkillsMax.MainAttributeBoost.L,
-          WeaponSkillsMax.ATKBoost.L,
+          WeaponSkillsMax.AttackBoost.L,
           {
             title: "Suppression: Stacked Hew",
             text: "Physical DMG Dealt +28.0%\n"
@@ -845,7 +855,7 @@ const CATEGORIES = {
         baseATK90: 341,
         skillsMax: [
           WeaponSkillsMax.WillBoost.S,
-          WeaponSkillsMax.ATKBoost.S,
+          WeaponSkillsMax.AttackBoost.S,
           {
             title: "Suppression: Emergency Boost",
             text: "When the wielder's battle skill hits the enemy, ATK +33.6% for 20s.\n"
@@ -856,18 +866,18 @@ const CATEGORIES = {
       {
         id: WeaponIds.ForgebornScathe,
         image: BASE_URL + "images/weapons/forgeborn-scathe.png",
-        name: "Forgeborn Scathe",
+        name: "Гнев кузни",
         typeId: WeaponTypeIds.Sword,
         rarity: 6,
         baseATK90: 510,
         skillsMax: [
           WeaponSkillsMax.IntellectBoost.L,
-          WeaponSkillsMax.ATKBoost.L,
+          WeaponSkillsMax.AttackBoost.L,
           {
-            title: "Twilight: Blazing Wail",
-            text: "Heat DMG Dealt +44.8%\n"
-              + "When the wielder casts an ultimate, the wielder gains Basic Attack DMG Dealt +210.0% for 20s.\n"
-              + "Effects of the same name cannot stack.",
+            title: `${EssenceCharacteristics.Twilight}: пламенеющий вопль`,
+            text: "+44.8% к наносимому тепловому УРН.\n"
+              + "Когда владелец применяет супернавык, то получает +210.0% к наносимому УРН от базовой атаки на 20 сек.\n"
+              + "Одноименные эффекты не суммируются.",
           },
         ],
       },
@@ -946,7 +956,7 @@ const CATEGORIES = {
         baseATK90: 500,
         skillsMax: [
           WeaponSkillsMax.AgilityBoost.L,
-          WeaponSkillsMax.ATKBoost.L,
+          WeaponSkillsMax.AttackBoost.L,
           {
             title: "Infliction: Long Time Wish",
             text: "Arts Intensity +84\n"
@@ -983,7 +993,7 @@ const CATEGORIES = {
         baseATK90: 341,
         skillsMax: [
           WeaponSkillsMax.IntellectBoost.S,
-          WeaponSkillsMax.ATKBoost.S,
+          WeaponSkillsMax.AttackBoost.S,
           {
             title: "Suppression: Emergency Boost",
             text: "When the wielder's battle skill hits the enemy, ATK +33.6% for 20s.\n"
@@ -1013,7 +1023,7 @@ const CATEGORIES = {
         baseATK90: 341,
         skillsMax: [
           WeaponSkillsMax.StrengthBoost.S,
-          WeaponSkillsMax.ATKBoost.S,
+          WeaponSkillsMax.AttackBoost.S,
           {
             title: "Suppression: Emergency Boost",
             text: "When the wielder's battle skill hits the enemy, ATK +33.6% for 20s.\n"
@@ -1030,7 +1040,7 @@ const CATEGORIES = {
         baseATK90: 500,
         skillsMax: [
           WeaponSkillsMax.MainAttributeBoost.L,
-          WeaponSkillsMax.ATKBoost.L,
+          WeaponSkillsMax.AttackBoost.L,
           {
             title: "Suppression: Astrophysics",
             text: "Arts DMG Dealt +33.6%\n"
@@ -1051,17 +1061,20 @@ const CATEGORIES = {
       {
         id: WeaponIds.Khravengger,
         image: BASE_URL + "images/weapons/khravengger.png",
-        name: "Khravengger",
+        name: "Хравенгер",
         typeId: WeaponTypeIds.Greatsword,
         rarity: 6,
         baseATK90: 505,
         skillsMax: [
           WeaponSkillsMax.StrengthBoost.L,
-          WeaponSkillsMax.ATKBoost.L,
+          WeaponSkillsMax.AttackBoost.L,
           {
-            title: "Detonate: Bonechilling",
-            text: "Skill DMG Dealt +56.0% (for every skill).\n"
-              + "When the wielder's battle skill applies Cryo Infliction, the wielder gains Cryo DMG Dealt +28.0% for 15s. When the wielder deals combo skill DMG to an enemy with Cryo Infliction, the wielder gains Cryo DMG Dealt +56.0% for 15s.",
+            title: `${EssenceCharacteristics.Detonate}: пробирающий холод`,
+            text: "+56.0% к наносимому УРН от навыков (за каждый навык).\n"
+              + "Когда боевой навык накладывает криогенное поражение, владелец получает +28.0% к наносимому криогенному УРН на 15 сек. "
+              + "Когда владелец наносит УРН от комбонавыков врагу с криогенным поражением, то получает +56.0% к наносимому криогенному УРН на 15 сек. "
+              + "Эффекты накладываются независимо друг от друга. "
+              + "Накопить несколько зарядов нельзя.",
           },
         ],
       },
@@ -1074,7 +1087,7 @@ const CATEGORIES = {
         baseATK90: 510,
         skillsMax: [
           WeaponSkillsMax.WillBoost.L,
-          WeaponSkillsMax.ATKBoost.L,
+          WeaponSkillsMax.AttackBoost.L,
           {
             title: "Suppression: Streaming Blitz",
             text: "Electric DMG Dealt +44.8%.\n"
@@ -1176,7 +1189,7 @@ const CATEGORIES = {
         baseATK90: 500,
         skillsMax: [
           WeaponSkillsMax.WillBoost.L,
-          WeaponSkillsMax.ATKBoost.L,
+          WeaponSkillsMax.AttackBoost.L,
           {
             title: "Flow: Reincarnation",
             text: "Physical DMG Dealt +44.8%\n"
@@ -1212,7 +1225,7 @@ const CATEGORIES = {
         baseATK90: 411,
         skillsMax: [
           WeaponSkillsMax.AgilityBoost.M,
-          WeaponSkillsMax.ATKBoost.M,
+          WeaponSkillsMax.AttackBoost.M,
           {
             title: "Flow: Unbridled Edge",
             text: "Secondary Attribute +14.0%\n"
@@ -1347,7 +1360,7 @@ const CATEGORIES = {
         baseATK90: 341,
         skillsMax: [
           WeaponSkillsMax.AgilityBoost.S,
-          WeaponSkillsMax.ATKBoost.S,
+          WeaponSkillsMax.AttackBoost.S,
           { title: "Inspiring: Start of a Saga", text: "When the wielder's HP is above 80%, ATK +42.0%." },
         ],
       },
@@ -1456,7 +1469,7 @@ const CATEGORIES = {
         baseATK90: 411,
         skillsMax: [
           WeaponSkillsMax.IntellectBoost.M,
-          WeaponSkillsMax.ATKBoost.M,
+          WeaponSkillsMax.AttackBoost.M,
           {
             title: "Twilight: Lustrous Pyre",
             text: "Max HP +28.0%\n"
@@ -1519,7 +1532,7 @@ const CATEGORIES = {
         baseATK90: 490,
         skillsMax: [
           WeaponSkillsMax.WillBoost.L,
-          WeaponSkillsMax.ATKBoost.L,
+          WeaponSkillsMax.AttackBoost.L,
           {
             title: "Flow: Thermal Release",
             text: "ATK+28.0%\n"
@@ -1555,7 +1568,7 @@ const CATEGORIES = {
         baseATK90: 411,
         skillsMax: [
           WeaponSkillsMax.AgilityBoost.M,
-          WeaponSkillsMax.ATKBoost.M,
+          WeaponSkillsMax.AttackBoost.M,
           {
             title: "Infliction: Sincere Interrogation",
             text: "Secondary Attribute +14.0%%\n"
@@ -1608,7 +1621,7 @@ const CATEGORIES = {
         baseATK90: 341,
         skillsMax: [
           WeaponSkillsMax.IntellectBoost.S,
-          WeaponSkillsMax.ATKBoost.S,
+          WeaponSkillsMax.AttackBoost.S,
           {
             title: "Pursuit: Unending Cycle",
             text: "When the wielder casts a combo skill, the wielder gains ATK +33.6% for 20s.\n"

@@ -1,18 +1,18 @@
 import { type FC, useEffect, useState } from "react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import type { CharacterListItem } from "@/types/characters";
+import type { OperativeListItem } from "@/types/operatives";
 import { fetchJson } from "@/utils/api";
 
-const useCharacters = () => {
-  const [data, setData] = useState<CharacterListItem[]>([]);
+const useOperatives = () => {
+  const [data, setData] = useState<OperativeListItem[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchCharacters = async () => {
+  const fetchOperatives = async () => {
     setLoading(true);
 
     try {
-      const data = await fetchJson<CharacterListItem[]>(import.meta.env.BASE_URL + `data/characters/index.json`);
+      const data = await fetchJson<OperativeListItem[]>(import.meta.env.BASE_URL + `data/operatives/index.json`);
 
       setData(data.sort((a, b) => {
         if (a.rarity !== b.rarity) {
@@ -30,14 +30,14 @@ const useCharacters = () => {
     }
   };
 
-  return { data, fetchCharacters, loading };
+  return { data, fetchOperatives, loading };
 };
 
-const CharactersPage: FC = () => {
-  const { data, fetchCharacters, loading } = useCharacters();
+const OperativesPage: FC = () => {
+  const { data, fetchOperatives, loading } = useOperatives();
 
   useEffect(() => {
-    fetchCharacters();
+    fetchOperatives();
   }, []);
 
   if (loading) {
@@ -59,4 +59,4 @@ const CharactersPage: FC = () => {
     </div>
   );
 };
-export default CharactersPage;
+export default OperativesPage;

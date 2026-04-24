@@ -1,4 +1,4 @@
-export const CharacterIds = {
+export const OperativeIds = {
   /* Акэкури */
   Akekuri: "akekuri",
   /* Алеш */

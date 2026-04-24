@@ -3,32 +3,32 @@ import path from "path";
 import { loadEnv } from "vite";
 
 import { AttributeIds } from "../src/enums/attributes";
-import { CharacterClassIds } from "../src/enums/character-classes";
-import { CharacterIds } from "../src/enums/characters";
 import { ElementIds } from "../src/enums/elements";
+import { OperativeClassIds } from "../src/enums/operative-classes";
+import { OperativeIds } from "../src/enums/operatives";
 import { WeaponTypeIds } from "../src/enums/weapon-types";
 import { WeaponIds } from "../src/enums/weapons";
 import type { Attribute, AttributeListItem } from "../src/types/attributes";
-import type { CharacterClass, CharacterClassListItem } from "../src/types/character-classes";
-import type { Character, CharacterListItem } from "../src/types/characters";
 import type { Element, ElementListItem } from "../src/types/elements";
+import type { OperativeClass, OperativeClassListItem } from "../src/types/operative-classes";
+import type { Operative, OperativeListItem } from "../src/types/operatives";
 import type { WeaponType, WeaponTypeListItem } from "../src/types/weapon-types";
 import type { Weapon, WeaponListItem } from "../src/types/weapons";
 
-type CategoryType = "attributes" | "character-classes" | "characters" | "elements" | "weapon-types" | "weapons";
+type CategoryType = "attributes" | "elements" | "operative-classes" | "operatives" | "weapon-types" | "weapons";
 type DataItem<T extends CategoryType>
   = T extends "attributes" ? Attribute
-    : T extends "character-classes" ? CharacterClass
-      : T extends "characters" ? Character
-        : T extends "elements" ? Element
+    : T extends "elements" ? Element
+      : T extends "operative-classes" ? OperativeClass
+        : T extends "operatives" ? Operative
           : T extends "weapon-types" ? WeaponType
             : T extends "weapons" ? Weapon
               : never;
 type DataListItem<T extends CategoryType>
   = T extends "attributes" ? AttributeListItem
-    : T extends "character-classes" ? CharacterClassListItem
-      : T extends "characters" ? CharacterListItem
-        : T extends "elements" ? ElementListItem
+    : T extends "elements" ? ElementListItem
+      : T extends "operative-classes" ? OperativeClassListItem
+        : T extends "operatives" ? OperativeListItem
           : T extends "weapon-types" ? WeaponTypeListItem
             : T extends "weapons" ? WeaponListItem
               : never;
@@ -42,6 +42,76 @@ const env = loadEnv("development", process.cwd(), "");
 
 const BASE_URL = env.VITE_BASE_URL || "/";
 const OUTPUT_DIR = path.resolve("public/data");
+
+const WeaponSkillsMax = {
+  AgilityBoost: {
+    L: { title: "Agility Boost (L)", text: "Agility +156" },
+    M: { title: "Agility Boost (M)", text: "Agility +124" },
+    S: { title: "Agility Boost (S)", text: "Agility +93" },
+  },
+  ArtsBoost: {
+    L: { title: "Arts Boost (L)", text: "Arts DMG Dealt +43.3%" },
+    M: { title: "Arts Boost (M)", text: "Arts DMG Dealt +34.7%" },
+    S: { title: "Arts Boost (S)", text: "Arts DMG Dealt +26.0%" },
+  },
+  ArtsIntensityBoost: {
+    L: { title: "Arts Intensity Boost (L)", text: "Arts Intensity +78" },
+    M: { title: "Arts Intensity Boost (M)", text: "Arts Intensity +62" },
+  },
+  ATKBoost: {
+    L: { title: "Attack Boost (L)", text: "Attack +39.0%" },
+    M: { title: "ATK Boost (M)", text: "Attack +31.2%" },
+    S: { title: "ATK Boost (S)", text: "Attack +23.4%" },
+  },
+  CriticalRateBoost: { L: { title: "Critical Rate Boost (L)", text: "Critical Rate +19.5%" } },
+  CryoDMGBoost: {
+    L: { title: "Cryo DMG Boost (L)", text: "Cryo DMG Dealt +43.3%" },
+    M: { title: "Cryo DMG Boost (M)", text: "Cryo DMG Dealt +34.7%" },
+  },
+  ElectricDMGBoost: { M: { title: "Electric DMG Boost (M)", text: "Electric DMG Dealt +34.7%" } },
+  HeatDMGBoost: {
+    L: { title: "Heat DMG Boost (L)", text: "Heat DMG Dealt +43.3%" },
+    M: { title: "Heat DMG Boost (M)", text: "Heat DMG Dealt +34.7%" },
+  },
+  HPBoost: {
+    L: { title: "HP Boost (L)", text: "Max HP +78.0%" },
+    M: { title: "HP Boost (M)", text: "Max HP +62.4%" },
+    S: { title: "HP Boost (S)", text: "Max HP +46.8%" },
+  },
+  IntellectBoost: {
+    L: { title: "Intellect Boost (L)", text: "Intellect +156" },
+    M: { title: "Intellect Boost (M)", text: "Intellect +124" },
+    S: { title: "Intellect Boost (S)", text: "Intellect +93" },
+  },
+  MainAttributeBoost: {
+    L: { title: "Main Attribute Boost (L)", text: "Main Attribute +132" },
+    S: { title: "Main Attribute Boost (S)", text: "Main Attribute +79" },
+  },
+  NatureDMGBoost: { L: { title: "Nature DMG Boost (L)", text: "Nature DMG Dealt+43.3%" } },
+  PhysicalDMGBoost: {
+    L: { title: "Physical DMG Boost (L)", text: "Physical DMG Dealt +43.3%" },
+    M: { title: "Physical DMG Boost (M)", text: "Physical DMG Dealt +34.7%" },
+    S: { title: "Physical DMG Boost (S)", text: "Physical DMG Dealt +26.0%" },
+  },
+  StrengthBoost: {
+    L: { title: "Strength Boost (L)", text: "Strength +156" },
+    M: { title: "Strength Boost (M)", text: "Strength +124" },
+    S: { title: "Strength Boost (S)", text: "Strength +93" },
+  },
+  TreatmentEfficiencyBoost: {
+    L: { title: "Treatment Efficiency Boost (L)", text: "Treatment Efficiency +46.4%" },
+    M: { title: "Treatment Efficiency Boost (M)", text: "Treatment Efficiency +37.1%" },
+  },
+  UltimateGainEfficiencyBoost: {
+    L: { title: "Ultimate Gain Efficiency Boost (L)", text: "Ultimate Gain Efficiency +46.4%" },
+    M: { title: "Ultimate Gain Efficiency Boost (M)", text: "Ultimate Gain Efficiency +37.1%" },
+  },
+  WillBoost: {
+    L: { title: "Will Boost (L)", text: "Will +156" },
+    M: { title: "Will Boost (M)", text: "Will +124" },
+    S: { title: "Will Boost (S)", text: "Will +93" },
+  },
+};
 
 const CATEGORIES = {
   "attributes": {
@@ -73,364 +143,6 @@ const CATEGORIES = {
     ],
     transformList: item => ({ id: item.id, image: item.image, name: item.name }),
   },
-  "character-classes": {
-    data: [
-      {
-        id: CharacterClassIds.Caster,
-        image: BASE_URL + "images/character-classes/caster.png",
-        name: "Заклинатель",
-        description: "Заклинатели накладывают поражение искусствами и реакции искусств. Также они наносят мощный урон.",
-      },
-      {
-        id: CharacterClassIds.Defender,
-        image: BASE_URL + "images/character-classes/defender.png",
-        name: "Защитник",
-        description: "Защитники очень выносливы. Они надежно прикрывают и лечат товарищей, а также мастерски отвечают на атаки врагов.",
-      },
-      {
-        id: CharacterClassIds.Guard,
-        image: BASE_URL + "images/character-classes/guard.png",
-        name: "Страж",
-        description: "Стражи накладывают на врагов уязвимости и физические состояния. Также они наносят мощный урон.",
-      },
-      {
-        id: CharacterClassIds.Striker,
-        image: BASE_URL + "images/character-classes/striker.png",
-        name: "Штурмовик",
-        description: "Штурмовики наносят сокрушительный урон, используя физические эффекты и эффекты искусств, наложенные другими оперативниками.",
-      },
-      {
-        id: CharacterClassIds.Supporter,
-        image: BASE_URL + "images/character-classes/supporter.png",
-        name: "Поддержка",
-        description: "Оперативники поддержки контролируют и ослабляют врагов посредством различных эффектов. Также они оказывают поддержку товарищам и усиливают их.",
-      },
-      {
-        id: CharacterClassIds.Vanguard,
-        image: BASE_URL + "images/character-classes/vanguard.png",
-        name: "Авангард",
-        description: "Отлично восстанавливают очки навыков (ОН), чтобы команда могла чаще применять навыки.",
-      },
-    ],
-    transformList: item => ({ id: item.id, image: item.image, name: item.name }),
-  },
-  "characters": {
-    data: [
-      {
-        id: CharacterIds.Akekuri,
-        image: BASE_URL + "images/characters/akekuri.png",
-        name: "Акэкури",
-        rarity: 4,
-        elementId: ElementIds.Heat,
-        weaponId: WeaponTypeIds.Sword,
-        classId: CharacterClassIds.Vanguard,
-        mainAttributeId: AttributeIds.Agility,
-        secondaryAttributeId: AttributeIds.Intellect,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.Alesh,
-        image: BASE_URL + "images/characters/alesh.png",
-        name: "Алеш",
-        rarity: 5,
-        elementId: ElementIds.Cryo,
-        weaponId: WeaponTypeIds.Sword,
-        classId: CharacterClassIds.Vanguard,
-        mainAttributeId: AttributeIds.Strength,
-        secondaryAttributeId: AttributeIds.Intellect,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.Antal,
-        image: BASE_URL + "images/characters/antal.png",
-        name: "Антал",
-        rarity: 4,
-        elementId: ElementIds.Electric,
-        weaponId: WeaponTypeIds.ArtsUnit,
-        classId: CharacterClassIds.Supporter,
-        mainAttributeId: AttributeIds.Intellect,
-        secondaryAttributeId: AttributeIds.Strength,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.Arclight,
-        image: BASE_URL + "images/characters/arclight.png",
-        name: "Арклайт",
-        rarity: 5,
-        elementId: ElementIds.Electric,
-        weaponId: WeaponTypeIds.Sword,
-        classId: CharacterClassIds.Vanguard,
-        mainAttributeId: AttributeIds.Agility,
-        secondaryAttributeId: AttributeIds.Intellect,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.Ardelia,
-        image: BASE_URL + "images/characters/ardelia.png",
-        name: "Арделия",
-        rarity: 6,
-        elementId: ElementIds.Nature,
-        weaponId: WeaponTypeIds.ArtsUnit,
-        classId: CharacterClassIds.Supporter,
-        mainAttributeId: AttributeIds.Intellect,
-        secondaryAttributeId: AttributeIds.Will,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.Avywenna,
-        image: BASE_URL + "images/characters/avywenna.png",
-        name: "Авивенна",
-        rarity: 5,
-        elementId: ElementIds.Electric,
-        weaponId: WeaponTypeIds.Polearm,
-        classId: CharacterClassIds.Striker,
-        mainAttributeId: AttributeIds.Will,
-        secondaryAttributeId: AttributeIds.Agility,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.Catcher,
-        image: BASE_URL + "images/characters/catcher.png",
-        name: "Кэтчер",
-        rarity: 4,
-        elementId: ElementIds.Physical,
-        weaponId: WeaponTypeIds.Greatsword,
-        classId: CharacterClassIds.Defender,
-        mainAttributeId: AttributeIds.Strength,
-        secondaryAttributeId: AttributeIds.Will,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.ChenQianyu,
-        image: BASE_URL + "images/characters/chen-qianyu.png",
-        name: "Чэнь Цяньюй",
-        rarity: 5,
-        elementId: ElementIds.Physical,
-        weaponId: WeaponTypeIds.Sword,
-        classId: CharacterClassIds.Guard,
-        mainAttributeId: AttributeIds.Agility,
-        secondaryAttributeId: AttributeIds.Strength,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.DaPan,
-        image: BASE_URL + "images/characters/da-pan.png",
-        name: "Да Пан",
-        rarity: 5,
-        elementId: ElementIds.Physical,
-        weaponId: WeaponTypeIds.Greatsword,
-        classId: CharacterClassIds.Striker,
-        mainAttributeId: AttributeIds.Strength,
-        secondaryAttributeId: AttributeIds.Will,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.Ember,
-        image: BASE_URL + "images/characters/ember.png",
-        name: "Эмбер",
-        rarity: 6,
-        elementId: ElementIds.Heat,
-        weaponId: WeaponTypeIds.Greatsword,
-        classId: CharacterClassIds.Defender,
-        mainAttributeId: AttributeIds.Strength,
-        secondaryAttributeId: AttributeIds.Will,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.Endministrator,
-        image: BASE_URL + "images/characters/endministrator.png",
-        name: "Эндминистратор",
-        rarity: 6,
-        elementId: ElementIds.Physical,
-        weaponId: WeaponTypeIds.Sword,
-        classId: CharacterClassIds.Guard,
-        mainAttributeId: AttributeIds.Agility,
-        secondaryAttributeId: AttributeIds.Strength,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.Estella,
-        image: BASE_URL + "images/characters/estella.png",
-        name: "Эстелла",
-        rarity: 4,
-        elementId: ElementIds.Cryo,
-        weaponId: WeaponTypeIds.Polearm,
-        classId: CharacterClassIds.Guard,
-        mainAttributeId: AttributeIds.Will,
-        secondaryAttributeId: AttributeIds.Strength,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.Fluorite,
-        image: BASE_URL + "images/characters/fluorite.png",
-        name: "Флюорит",
-        rarity: 4,
-        elementId: ElementIds.Nature,
-        weaponId: WeaponTypeIds.Handcannon,
-        classId: CharacterClassIds.Caster,
-        mainAttributeId: AttributeIds.Agility,
-        secondaryAttributeId: AttributeIds.Intellect,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.Gilberta,
-        image: BASE_URL + "images/characters/gilberta.png",
-        name: "Гилберта",
-        rarity: 6,
-        elementId: ElementIds.Nature,
-        weaponId: WeaponTypeIds.ArtsUnit,
-        classId: CharacterClassIds.Supporter,
-        mainAttributeId: AttributeIds.Will,
-        secondaryAttributeId: AttributeIds.Intellect,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.Laevatain,
-        image: BASE_URL + "images/characters/laevatain.png",
-        name: "Лэватейн",
-        rarity: 6,
-        elementId: ElementIds.Heat,
-        weaponId: WeaponTypeIds.Sword,
-        classId: CharacterClassIds.Striker,
-        mainAttributeId: AttributeIds.Intellect,
-        secondaryAttributeId: AttributeIds.Strength,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.LastRite,
-        image: BASE_URL + "images/characters/last-rite.png",
-        name: "Панихида",
-        rarity: 6,
-        elementId: ElementIds.Cryo,
-        weaponId: WeaponTypeIds.Greatsword,
-        classId: CharacterClassIds.Striker,
-        mainAttributeId: AttributeIds.Strength,
-        secondaryAttributeId: AttributeIds.Will,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.Lifeng,
-        image: BASE_URL + "images/characters/lifeng.png",
-        name: "Лифэн",
-        rarity: 6,
-        elementId: ElementIds.Physical,
-        weaponId: WeaponTypeIds.Polearm,
-        classId: CharacterClassIds.Guard,
-        mainAttributeId: AttributeIds.Agility,
-        secondaryAttributeId: AttributeIds.Strength,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.Perlica,
-        image: BASE_URL + "images/characters/perlica.png",
-        name: "Перлика",
-        rarity: 5,
-        elementId: ElementIds.Electric,
-        weaponId: WeaponTypeIds.ArtsUnit,
-        classId: CharacterClassIds.Caster,
-        mainAttributeId: AttributeIds.Intellect,
-        secondaryAttributeId: AttributeIds.Will,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.Pogranichnik,
-        image: BASE_URL + "images/characters/pogranichnik.png",
-        name: "Пограничник",
-        rarity: 6,
-        elementId: ElementIds.Physical,
-        weaponId: WeaponTypeIds.Sword,
-        classId: CharacterClassIds.Vanguard,
-        mainAttributeId: AttributeIds.Will,
-        secondaryAttributeId: AttributeIds.Agility,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.Rossi,
-        image: BASE_URL + "images/characters/rossi.png",
-        name: "Росси",
-        rarity: 6,
-        elementId: ElementIds.Physical,
-        weaponId: WeaponTypeIds.Sword,
-        classId: CharacterClassIds.Guard,
-        mainAttributeId: AttributeIds.Agility,
-        secondaryAttributeId: AttributeIds.Intellect,
-        version: "1.1",
-      },
-      {
-        id: CharacterIds.Snowshine,
-        image: BASE_URL + "images/characters/snowshine.png",
-        name: "Светоснежка",
-        rarity: 5,
-        elementId: ElementIds.Cryo,
-        weaponId: WeaponTypeIds.Greatsword,
-        classId: CharacterClassIds.Defender,
-        mainAttributeId: AttributeIds.Strength,
-        secondaryAttributeId: AttributeIds.Will,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.Tangtang,
-        image: BASE_URL + "images/characters/tangtang.png",
-        name: "Тантан",
-        rarity: 6,
-        elementId: ElementIds.Cryo,
-        weaponId: WeaponTypeIds.Handcannon,
-        classId: CharacterClassIds.Caster,
-        mainAttributeId: AttributeIds.Agility,
-        secondaryAttributeId: AttributeIds.Strength,
-        version: "1.1",
-      },
-      {
-        id: CharacterIds.Wulfgard,
-        image: BASE_URL + "images/characters/wulfgard.png",
-        name: "Вулфгард",
-        rarity: 5,
-        elementId: ElementIds.Heat,
-        weaponId: WeaponTypeIds.Handcannon,
-        classId: CharacterClassIds.Caster,
-        mainAttributeId: AttributeIds.Strength,
-        secondaryAttributeId: AttributeIds.Agility,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.Xaihi,
-        image: BASE_URL + "images/characters/xaihi.png",
-        name: "Сайхи",
-        rarity: 5,
-        elementId: ElementIds.Cryo,
-        weaponId: WeaponTypeIds.ArtsUnit,
-        classId: CharacterClassIds.Supporter,
-        mainAttributeId: AttributeIds.Will,
-        secondaryAttributeId: AttributeIds.Intellect,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.Yvonne,
-        image: BASE_URL + "images/characters/yvonne.png",
-        name: "Ивонна",
-        rarity: 6,
-        elementId: ElementIds.Cryo,
-        weaponId: WeaponTypeIds.Handcannon,
-        classId: CharacterClassIds.Striker,
-        mainAttributeId: AttributeIds.Intellect,
-        secondaryAttributeId: AttributeIds.Agility,
-        version: "1.0",
-      },
-      {
-        id: CharacterIds.ZhuangFangyi,
-        image: BASE_URL + "images/characters/zhuang-fangyi.png",
-        name: "Чжуан Фанъи",
-        rarity: 6,
-        elementId: ElementIds.Electric,
-        weaponId: WeaponTypeIds.ArtsUnit,
-        classId: CharacterClassIds.Striker,
-        mainAttributeId: AttributeIds.Will,
-        secondaryAttributeId: AttributeIds.Intellect,
-        version: "1.2",
-      },
-    ],
-    transformList: item => ({ id: item.id, image: item.image, name: item.name, rarity: item.rarity }),
-  },
   "elements": {
     data: [
       { id: ElementIds.Cryo, image: BASE_URL + "images/elements/cryo.png", name: "Крио" },
@@ -440,6 +152,364 @@ const CATEGORIES = {
       { id: ElementIds.Physical, image: BASE_URL + "images/elements/physical.png", name: "Физика" },
     ],
     transformList: item => item,
+  },
+  "operative-classes": {
+    data: [
+      {
+        id: OperativeClassIds.Caster,
+        image: BASE_URL + "images/operative-classes/caster.png",
+        name: "Заклинатель",
+        description: "Заклинатели накладывают поражение искусствами и реакции искусств. Также они наносят мощный урон.",
+      },
+      {
+        id: OperativeClassIds.Defender,
+        image: BASE_URL + "images/operative-classes/defender.png",
+        name: "Защитник",
+        description: "Защитники очень выносливы. Они надежно прикрывают и лечат товарищей, а также мастерски отвечают на атаки врагов.",
+      },
+      {
+        id: OperativeClassIds.Guard,
+        image: BASE_URL + "images/operative-classes/guard.png",
+        name: "Страж",
+        description: "Стражи накладывают на врагов уязвимости и физические состояния. Также они наносят мощный урон.",
+      },
+      {
+        id: OperativeClassIds.Striker,
+        image: BASE_URL + "images/operative-classes/striker.png",
+        name: "Штурмовик",
+        description: "Штурмовики наносят сокрушительный урон, используя физические эффекты и эффекты искусств, наложенные другими оперативниками.",
+      },
+      {
+        id: OperativeClassIds.Supporter,
+        image: BASE_URL + "images/operative-classes/supporter.png",
+        name: "Поддержка",
+        description: "Оперативники поддержки контролируют и ослабляют врагов посредством различных эффектов. Также они оказывают поддержку товарищам и усиливают их.",
+      },
+      {
+        id: OperativeClassIds.Vanguard,
+        image: BASE_URL + "images/operative-classes/vanguard.png",
+        name: "Авангард",
+        description: "Отлично восстанавливают очки навыков (ОН), чтобы команда могла чаще применять навыки.",
+      },
+    ],
+    transformList: item => ({ id: item.id, image: item.image, name: item.name }),
+  },
+  "operatives": {
+    data: [
+      {
+        id: OperativeIds.Akekuri,
+        image: BASE_URL + "images/operatives/akekuri.png",
+        name: "Акэкури",
+        rarity: 4,
+        elementId: ElementIds.Heat,
+        weaponId: WeaponTypeIds.Sword,
+        classId: OperativeClassIds.Vanguard,
+        mainAttributeId: AttributeIds.Agility,
+        secondaryAttributeId: AttributeIds.Intellect,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.Alesh,
+        image: BASE_URL + "images/operatives/alesh.png",
+        name: "Алеш",
+        rarity: 5,
+        elementId: ElementIds.Cryo,
+        weaponId: WeaponTypeIds.Sword,
+        classId: OperativeClassIds.Vanguard,
+        mainAttributeId: AttributeIds.Strength,
+        secondaryAttributeId: AttributeIds.Intellect,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.Antal,
+        image: BASE_URL + "images/operatives/antal.png",
+        name: "Антал",
+        rarity: 4,
+        elementId: ElementIds.Electric,
+        weaponId: WeaponTypeIds.ArtsUnit,
+        classId: OperativeClassIds.Supporter,
+        mainAttributeId: AttributeIds.Intellect,
+        secondaryAttributeId: AttributeIds.Strength,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.Arclight,
+        image: BASE_URL + "images/operatives/arclight.png",
+        name: "Арклайт",
+        rarity: 5,
+        elementId: ElementIds.Electric,
+        weaponId: WeaponTypeIds.Sword,
+        classId: OperativeClassIds.Vanguard,
+        mainAttributeId: AttributeIds.Agility,
+        secondaryAttributeId: AttributeIds.Intellect,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.Ardelia,
+        image: BASE_URL + "images/operatives/ardelia.png",
+        name: "Арделия",
+        rarity: 6,
+        elementId: ElementIds.Nature,
+        weaponId: WeaponTypeIds.ArtsUnit,
+        classId: OperativeClassIds.Supporter,
+        mainAttributeId: AttributeIds.Intellect,
+        secondaryAttributeId: AttributeIds.Will,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.Avywenna,
+        image: BASE_URL + "images/operatives/avywenna.png",
+        name: "Авивенна",
+        rarity: 5,
+        elementId: ElementIds.Electric,
+        weaponId: WeaponTypeIds.Polearm,
+        classId: OperativeClassIds.Striker,
+        mainAttributeId: AttributeIds.Will,
+        secondaryAttributeId: AttributeIds.Agility,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.Catcher,
+        image: BASE_URL + "images/operatives/catcher.png",
+        name: "Кэтчер",
+        rarity: 4,
+        elementId: ElementIds.Physical,
+        weaponId: WeaponTypeIds.Greatsword,
+        classId: OperativeClassIds.Defender,
+        mainAttributeId: AttributeIds.Strength,
+        secondaryAttributeId: AttributeIds.Will,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.ChenQianyu,
+        image: BASE_URL + "images/operatives/chen-qianyu.png",
+        name: "Чэнь Цяньюй",
+        rarity: 5,
+        elementId: ElementIds.Physical,
+        weaponId: WeaponTypeIds.Sword,
+        classId: OperativeClassIds.Guard,
+        mainAttributeId: AttributeIds.Agility,
+        secondaryAttributeId: AttributeIds.Strength,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.DaPan,
+        image: BASE_URL + "images/operatives/da-pan.png",
+        name: "Да Пан",
+        rarity: 5,
+        elementId: ElementIds.Physical,
+        weaponId: WeaponTypeIds.Greatsword,
+        classId: OperativeClassIds.Striker,
+        mainAttributeId: AttributeIds.Strength,
+        secondaryAttributeId: AttributeIds.Will,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.Ember,
+        image: BASE_URL + "images/operatives/ember.png",
+        name: "Эмбер",
+        rarity: 6,
+        elementId: ElementIds.Heat,
+        weaponId: WeaponTypeIds.Greatsword,
+        classId: OperativeClassIds.Defender,
+        mainAttributeId: AttributeIds.Strength,
+        secondaryAttributeId: AttributeIds.Will,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.Endministrator,
+        image: BASE_URL + "images/operatives/endministrator.png",
+        name: "Эндминистратор",
+        rarity: 6,
+        elementId: ElementIds.Physical,
+        weaponId: WeaponTypeIds.Sword,
+        classId: OperativeClassIds.Guard,
+        mainAttributeId: AttributeIds.Agility,
+        secondaryAttributeId: AttributeIds.Strength,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.Estella,
+        image: BASE_URL + "images/operatives/estella.png",
+        name: "Эстелла",
+        rarity: 4,
+        elementId: ElementIds.Cryo,
+        weaponId: WeaponTypeIds.Polearm,
+        classId: OperativeClassIds.Guard,
+        mainAttributeId: AttributeIds.Will,
+        secondaryAttributeId: AttributeIds.Strength,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.Fluorite,
+        image: BASE_URL + "images/operatives/fluorite.png",
+        name: "Флюорит",
+        rarity: 4,
+        elementId: ElementIds.Nature,
+        weaponId: WeaponTypeIds.Handcannon,
+        classId: OperativeClassIds.Caster,
+        mainAttributeId: AttributeIds.Agility,
+        secondaryAttributeId: AttributeIds.Intellect,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.Gilberta,
+        image: BASE_URL + "images/operatives/gilberta.png",
+        name: "Гилберта",
+        rarity: 6,
+        elementId: ElementIds.Nature,
+        weaponId: WeaponTypeIds.ArtsUnit,
+        classId: OperativeClassIds.Supporter,
+        mainAttributeId: AttributeIds.Will,
+        secondaryAttributeId: AttributeIds.Intellect,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.Laevatain,
+        image: BASE_URL + "images/operatives/laevatain.png",
+        name: "Лэватейн",
+        rarity: 6,
+        elementId: ElementIds.Heat,
+        weaponId: WeaponTypeIds.Sword,
+        classId: OperativeClassIds.Striker,
+        mainAttributeId: AttributeIds.Intellect,
+        secondaryAttributeId: AttributeIds.Strength,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.LastRite,
+        image: BASE_URL + "images/operatives/last-rite.png",
+        name: "Панихида",
+        rarity: 6,
+        elementId: ElementIds.Cryo,
+        weaponId: WeaponTypeIds.Greatsword,
+        classId: OperativeClassIds.Striker,
+        mainAttributeId: AttributeIds.Strength,
+        secondaryAttributeId: AttributeIds.Will,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.Lifeng,
+        image: BASE_URL + "images/operatives/lifeng.png",
+        name: "Лифэн",
+        rarity: 6,
+        elementId: ElementIds.Physical,
+        weaponId: WeaponTypeIds.Polearm,
+        classId: OperativeClassIds.Guard,
+        mainAttributeId: AttributeIds.Agility,
+        secondaryAttributeId: AttributeIds.Strength,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.Perlica,
+        image: BASE_URL + "images/operatives/perlica.png",
+        name: "Перлика",
+        rarity: 5,
+        elementId: ElementIds.Electric,
+        weaponId: WeaponTypeIds.ArtsUnit,
+        classId: OperativeClassIds.Caster,
+        mainAttributeId: AttributeIds.Intellect,
+        secondaryAttributeId: AttributeIds.Will,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.Pogranichnik,
+        image: BASE_URL + "images/operatives/pogranichnik.png",
+        name: "Пограничник",
+        rarity: 6,
+        elementId: ElementIds.Physical,
+        weaponId: WeaponTypeIds.Sword,
+        classId: OperativeClassIds.Vanguard,
+        mainAttributeId: AttributeIds.Will,
+        secondaryAttributeId: AttributeIds.Agility,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.Rossi,
+        image: BASE_URL + "images/operatives/rossi.png",
+        name: "Росси",
+        rarity: 6,
+        elementId: ElementIds.Physical,
+        weaponId: WeaponTypeIds.Sword,
+        classId: OperativeClassIds.Guard,
+        mainAttributeId: AttributeIds.Agility,
+        secondaryAttributeId: AttributeIds.Intellect,
+        version: "1.1",
+      },
+      {
+        id: OperativeIds.Snowshine,
+        image: BASE_URL + "images/operatives/snowshine.png",
+        name: "Светоснежка",
+        rarity: 5,
+        elementId: ElementIds.Cryo,
+        weaponId: WeaponTypeIds.Greatsword,
+        classId: OperativeClassIds.Defender,
+        mainAttributeId: AttributeIds.Strength,
+        secondaryAttributeId: AttributeIds.Will,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.Tangtang,
+        image: BASE_URL + "images/operatives/tangtang.png",
+        name: "Тантан",
+        rarity: 6,
+        elementId: ElementIds.Cryo,
+        weaponId: WeaponTypeIds.Handcannon,
+        classId: OperativeClassIds.Caster,
+        mainAttributeId: AttributeIds.Agility,
+        secondaryAttributeId: AttributeIds.Strength,
+        version: "1.1",
+      },
+      {
+        id: OperativeIds.Wulfgard,
+        image: BASE_URL + "images/operatives/wulfgard.png",
+        name: "Вулфгард",
+        rarity: 5,
+        elementId: ElementIds.Heat,
+        weaponId: WeaponTypeIds.Handcannon,
+        classId: OperativeClassIds.Caster,
+        mainAttributeId: AttributeIds.Strength,
+        secondaryAttributeId: AttributeIds.Agility,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.Xaihi,
+        image: BASE_URL + "images/operatives/xaihi.png",
+        name: "Сайхи",
+        rarity: 5,
+        elementId: ElementIds.Cryo,
+        weaponId: WeaponTypeIds.ArtsUnit,
+        classId: OperativeClassIds.Supporter,
+        mainAttributeId: AttributeIds.Will,
+        secondaryAttributeId: AttributeIds.Intellect,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.Yvonne,
+        image: BASE_URL + "images/operatives/yvonne.png",
+        name: "Ивонна",
+        rarity: 6,
+        elementId: ElementIds.Cryo,
+        weaponId: WeaponTypeIds.Handcannon,
+        classId: OperativeClassIds.Striker,
+        mainAttributeId: AttributeIds.Intellect,
+        secondaryAttributeId: AttributeIds.Agility,
+        version: "1.0",
+      },
+      {
+        id: OperativeIds.ZhuangFangyi,
+        image: BASE_URL + "images/operatives/zhuang-fangyi.png",
+        name: "Чжуан Фанъи",
+        rarity: 6,
+        elementId: ElementIds.Electric,
+        weaponId: WeaponTypeIds.ArtsUnit,
+        classId: OperativeClassIds.Striker,
+        mainAttributeId: AttributeIds.Will,
+        secondaryAttributeId: AttributeIds.Intellect,
+        version: "1.2",
+      },
+    ],
+    transformList: item => ({ id: item.id, image: item.image, name: item.name, rarity: item.rarity }),
   },
   "weapon-types": {
     data: [
@@ -460,12 +530,15 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Polearm,
         rarity: 4,
         baseATK90: 341,
-        skillsMax: {
-          "Will Boost (S)": "Will +93",
-          "Arts Boost (S)": "Arts DMG Dealt +26.0%",
-          "Suppression: Emergency Boost": "When the wielder's battle skill hits the enemy, ATK +33.6% for 20s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.WillBoost.S,
+          WeaponSkillsMax.ArtsBoost.S,
+          {
+            title: "Suppression: Emergency Boost",
+            text: "When the wielder's battle skill hits the enemy, ATK +33.6% for 20s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.AncientCanal,
@@ -474,13 +547,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Greatsword,
         rarity: 5,
         baseATK90: 411,
-        skillsMax: {
-          "Strength Boost (M)": "Strength +124",
-          "Arts Intensity Boost (M)": "Arts Intensity +62",
-          "Brutality: Lands of Yore": "Arts Intensity +28\n"
-            + "After the wielder consumes Vulnerable stack(s), the wielder gains Physical DMG Dealt +(14.0% x Stacks Consumed) for 20s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.StrengthBoost.M,
+          WeaponSkillsMax.ArtsIntensityBoost.M,
+          {
+            title: "Brutality: Lands of Yore",
+            text: "Arts Intensity +28\n"
+              + "After the wielder consumes Vulnerable stack(s), the wielder gains Physical DMG Dealt +(14.0% x Stacks Consumed) for 20s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.ArtzyTyrannical,
@@ -489,13 +565,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Handcannon,
         rarity: 6,
         baseATK90: 505,
-        skillsMax: {
-          "Intellect Boost (L)": "Intellect +156",
-          "Critical Rate Boost (L)": "Critical Rate +19.5%",
-          "Fracture: Artzy Exaggeration": "Cryo DMG Dealt +44.8%\n"
-            + "After the wielder scores a critical hit with a battle skill or combo skill, the wielder gains Cryo DMG Dealt +39.2% for 30s.\n"
-            + "Max stacks of the same name: 3. Duration of each stack is counted separately. Effect only triggers once every 0.1s.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.IntellectBoost.L,
+          WeaponSkillsMax.CriticalRateBoost.L,
+          {
+            title: "Fracture: Artzy Exaggeration",
+            text: "Cryo DMG Dealt +44.8%\n"
+              + "After the wielder scores a critical hit with a battle skill or combo skill, the wielder gains Cryo DMG Dealt +39.2% for 30s.\n"
+              + "Max stacks of the same name: 3. Duration of each stack is counted separately. Effect only triggers once every 0.1s.",
+          },
+        ],
       },
       {
         id: WeaponIds.Aspirant,
@@ -504,13 +583,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Sword,
         rarity: 5,
         baseATK90: 411,
-        skillsMax: {
-          "Agility Boost (M)": "Agility +124",
-          "Physical DMG Boost (M)": "Physical DMG Dealt +34.7%",
-          "Twilight: Imposing Peak": "Ultimate DMG Dealt 44.8%\n"
-            + "After the wielder applies Lifted, during the next ultimate cast within 30s, the wielder gains Physical DMG Dealt +33.6%.\n"
-            + "Max stacks for effects of the same name: 3. Duration of each stack is counted separately. Effect only triggers once every 0.5s.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.AgilityBoost.M,
+          WeaponSkillsMax.PhysicalDMGBoost.M,
+          {
+            title: "Twilight: Imposing Peak",
+            text: "Ultimate DMG Dealt 44.8%\n"
+              + "After the wielder applies Lifted, during the next ultimate cast within 30s, the wielder gains Physical DMG Dealt +33.6%.\n"
+              + "Max stacks for effects of the same name: 3. Duration of each stack is counted separately. Effect only triggers once every 0.5s.",
+          },
+        ],
       },
       {
         id: WeaponIds.BrigandsCalling,
@@ -519,13 +601,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Handcannon,
         rarity: 6,
         baseATK90: 505,
-        skillsMax: {
-          "Agility Boost (L)": "Agility +156",
-          "Attack Boost (L)": "Attack +39.0%",
-          "Detonate: Brigand's Bane": "Cryo DMG Dealt +44.8%.\n"
-            + "When the wielder applies skill or ultimate applies Cryo Infliction via battle skills or ultimates, the wielder gains Cryo DMG Dealt +56.0% for 20s. When the wielder's battle skill or ultimate applies Arts Susceptibility, the target enemy suffers Arts DMG Taken +16.8% for 20s.\n"
-            + "The two effects apply separately and do not stack with themselves.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.AgilityBoost.L,
+          WeaponSkillsMax.ATKBoost.L,
+          {
+            title: "Detonate: Brigand's Bane",
+            text: "Cryo DMG Dealt +44.8%.\n"
+              + "When the wielder applies skill or ultimate applies Cryo Infliction via battle skills or ultimates, the wielder gains Cryo DMG Dealt +56.0% for 20s. When the wielder's battle skill or ultimate applies Arts Susceptibility, the target enemy suffers Arts DMG Taken +16.8% for 20s.\n"
+              + "The two effects apply separately and do not stack with themselves.",
+          },
+        ],
       },
       {
         id: WeaponIds.ChimericJustice,
@@ -534,13 +619,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Polearm,
         rarity: 5,
         baseATK90: 411,
-        skillsMax: {
-          "Strength Boost (M)": "Strength +124",
-          "Ultimate Gain Efficiency Boost (M)": "Ultimate Gain Efficiency +37.1%",
-          "Brutality: Cemented Fury": "Critical Rate +8.4%\n"
-            + "When the wielder applies Vulnerable to an enemy with no Vulnerable stacks, ATK +42.0% for 15s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.StrengthBoost.M,
+          WeaponSkillsMax.UltimateGainEfficiencyBoost.M,
+          {
+            title: "Brutality: Cemented Fury",
+            text: "Critical Rate +8.4%\n"
+              + "When the wielder applies Vulnerable to an enemy with no Vulnerable stacks, ATK +42.0% for 15s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.ChivalricVirtues,
@@ -549,13 +637,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.ArtsUnit,
         rarity: 6,
         baseATK90: 485,
-        skillsMax: {
-          "Will Boost (L)": "Will +156",
-          "HP Boost (L)": "Max HP +78.0%",
-          "Medicant: Blight Fervor": "Treatment Efficiency +28.0%\n"
-            + "After the wielder gives HP treatment with their own skill, the entire team gains ATK +25.2% for 15s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.WillBoost.L,
+          WeaponSkillsMax.HPBoost.L,
+          {
+            title: "Medicant: Blight Fervor",
+            text: "Treatment Efficiency +28.0%\n"
+              + "After the wielder gives HP treatment with their own skill, the entire team gains ATK +25.2% for 15s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.Clannibal,
@@ -564,13 +655,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Handcannon,
         rarity: 6,
         baseATK90: 490,
-        skillsMax: {
-          "Main Attribute Boost (L)": "Main Attribute +132",
-          "Arts Boost (L)": "Arts DMG Dealt +43.3%",
-          "Infliction: Vicious Purge": "Arts DMG +33.6%\n"
-            + "After the wielder consumes an Arts Reaction, target enemy suffers Arts DMG Taken +28.0% (for the specified element) for 15s.\n"
-            + "Effect only triggers once every 25s.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.MainAttributeBoost.L,
+          WeaponSkillsMax.ArtsBoost.L,
+          {
+            title: "Infliction: Vicious Purge",
+            text: "Arts DMG +33.6%\n"
+              + "After the wielder consumes an Arts Reaction, target enemy suffers Arts DMG Taken +28.0% (for the specified element) for 15s.\n"
+              + "Effect only triggers once every 25s.",
+          },
+        ],
       },
       {
         id: WeaponIds.CohesiveTraction,
@@ -579,13 +673,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Polearm,
         rarity: 5,
         baseATK90: 411,
-        skillsMax: {
-          "Will Boost (M)": "Will +124",
-          "Electric DMG Boost (M)": "Electric DMG Dealt +34.7%",
-          "Suppression: Concentric Circles": "Combo Skill DMG Dealt +28.0%\n"
-            + "When the wielder casts a combo skill, during the next battle skill cast within 30s, the wielder gains Electric DMG Dealt +28.0%.\n"
-            + "Max stacks of the same name: 3. Duration of each stack is counted separately.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.WillBoost.M,
+          WeaponSkillsMax.ElectricDMGBoost.M,
+          {
+            title: "Suppression: Concentric Circles",
+            text: "Combo Skill DMG Dealt +28.0%\n"
+              + "When the wielder casts a combo skill, during the next battle skill cast within 30s, the wielder gains Electric DMG Dealt +28.0%.\n"
+              + "Max stacks of the same name: 3. Duration of each stack is counted separately.",
+          },
+        ],
       },
       {
         id: WeaponIds.Darhoff7,
@@ -594,10 +691,7 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Greatsword,
         rarity: 3,
         baseATK90: 283,
-        skillsMax: {
-          "Main Attribute Boost (S)": "Main Attribute +79",
-          "Assault: Armament Prep": "ATK +34",
-        },
+        skillsMax: [WeaponSkillsMax.MainAttributeBoost.S, { title: "Assault: Armament Prep", text: "ATK +34" }],
       },
       {
         id: WeaponIds.DeliveryGuaranteed,
@@ -606,13 +700,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.ArtsUnit,
         rarity: 6,
         baseATK90: 500,
-        skillsMax: {
-          "Will Boost (L)": "Will +156",
-          "Ultimate Gain Efficiency Boost (L)": "Ultimate Gain Efficiency +46.4%",
-          "Pursuit: Duty Fulfilled": "Nature DMG Dealt +44.8%\n"
-            + "After the wielder's combo skill applies Lifted, the team gains Arts DMG Dealt +28.0% for 15s. For every enemy Lifted, the team gains bonus Arts DMG Dealt +5.6%, up to a max of 22.4%.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.WillBoost.L,
+          WeaponSkillsMax.UltimateGainEfficiencyBoost.L,
+          {
+            title: "Pursuit: Duty Fulfilled",
+            text: "Nature DMG Dealt +44.8%\n"
+              + "After the wielder's combo skill applies Lifted, the team gains Arts DMG Dealt +28.0% for 15s. For every enemy Lifted, the team gains bonus Arts DMG Dealt +5.6%, up to a max of 22.4%.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.DetonationUnit,
@@ -621,13 +718,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.ArtsUnit,
         rarity: 6,
         baseATK90: 490,
-        skillsMax: {
-          "Main Attribute Boost (L)": "Main Attribute +132",
-          "Arts Intensity Boost (L)": "Arts Intensity +78",
-          "Detonate: Imposing Champion": "Secondary Attribute +28.0%\n"
-            + "When the wielder applies an Arts Burst, target enemy suffers Arts DMG Taken +25.2% for 15s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.MainAttributeBoost.L,
+          WeaponSkillsMax.ArtsIntensityBoost.L,
+          {
+            title: "Detonate: Imposing Champion",
+            text: "Secondary Attribute +28.0%\n"
+              + "When the wielder applies an Arts Burst, target enemy suffers Arts DMG Taken +25.2% for 15s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.DreamsOfTheStarryBeach,
@@ -636,13 +736,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.ArtsUnit,
         rarity: 6,
         baseATK90: 495,
-        skillsMax: {
-          "Intellect Boost (L)": "Intellect +156",
-          "Treatment Efficiency Boost (L)": "Treatment Efficiency +46.4%",
-          "Infliction: Tidal Murmurs": "Secondary Attribute +44.8%\n"
-            + "After the wielder consumes Corrosion, target enemy suffers Arts DMG Taken +28.0% for 25s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.IntellectBoost.L,
+          WeaponSkillsMax.TreatmentEfficiencyBoost.L,
+          {
+            title: "Infliction: Tidal Murmurs",
+            text: "Secondary Attribute +44.8%\n"
+              + "After the wielder consumes Corrosion, target enemy suffers Arts DMG Taken +28.0% for 25s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.EminentRepute,
@@ -651,13 +754,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Sword,
         rarity: 6,
         baseATK90: 490,
-        skillsMax: {
-          "Main Attribute Boost (L)": "Main Attribute +132",
-          "Physical DMG Boost (L)": "Physical DMG Dealt +43.3%",
-          "Brutality: Disciplinarian": "ATK +28.0%\n"
-            + "After the wielder consumes Vulnerable stack(s), ATK +(14.0% + 7.0% x Stacks Consumed) while other operators in the team gain half of this buff for 20s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.MainAttributeBoost.L,
+          WeaponSkillsMax.PhysicalDMGBoost.L,
+          {
+            title: "Brutality: Disciplinarian",
+            text: "ATK +28.0%\n"
+              + "After the wielder consumes Vulnerable stack(s), ATK +(14.0% + 7.0% x Stacks Consumed) while other operators in the team gain half of this buff for 20s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.Exemplar,
@@ -666,13 +772,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Greatsword,
         rarity: 6,
         baseATK90: 500,
-        skillsMax: {
-          "Main Attribute Boost (L)": "Main Attribute +132",
-          "Attack Boost (L)": "Attack +39.0%",
-          "Suppression: Stacked Hew": "Physical DMG Dealt +28.0%\n"
-            + "When the wielder's battle skill hits an enemy, the wielder gains Physical DMG Dealt +28.0% for 30s.\n"
-            + "Max stacks for the same name: 3. Duration of each stack is counted separately. Effect only triggers once every 0.1s.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.MainAttributeBoost.L,
+          WeaponSkillsMax.ATKBoost.L,
+          {
+            title: "Suppression: Stacked Hew",
+            text: "Physical DMG Dealt +28.0%\n"
+              + "When the wielder's battle skill hits an enemy, the wielder gains Physical DMG Dealt +28.0% for 30s.\n"
+              + "Max stacks for the same name: 3. Duration of each stack is counted separately. Effect only triggers once every 0.1s.",
+          },
+        ],
       },
       {
         id: WeaponIds.Finchaser30,
@@ -681,13 +790,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Sword,
         rarity: 5,
         baseATK90: 411,
-        skillsMax: {
-          "Strength Boost (M)": "Strength +124",
-          "Cryo DMG Boost (M)": "Cryo DMG Dealt +34.7%",
-          "Suppression: Fin Chaser's Intent": "ATK +14.0%\n"
-            + "When the wielder's battle skill applies Solidification, target enemy suffers Cryo DMG Taken +19.6% for 15s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.StrengthBoost.M,
+          WeaponSkillsMax.CryoDMGBoost.M,
+          {
+            title: "Suppression: Fin Chaser's Intent",
+            text: "ATK +14.0%\n"
+              + "When the wielder's battle skill applies Solidification, target enemy suffers Cryo DMG Taken +19.6% for 15s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.FinishingCall,
@@ -696,12 +808,15 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Greatsword,
         rarity: 5,
         baseATK90: 411,
-        skillsMax: {
-          "Strength Boost (M)": "Strength +124",
-          "HP Boost (M)": "Max HP +62.4%",
-          "Medicant: Glory of Knighthood": "Secondary Attribute +14.0%\n"
-            + "Combo skill HP treatment effect +56.0%",
-        },
+        skillsMax: [
+          WeaponSkillsMax.StrengthBoost.M,
+          WeaponSkillsMax.HPBoost.M,
+          {
+            title: "Medicant: Glory of Knighthood",
+            text: "Secondary Attribute +14.0%\n"
+              + "Combo skill HP treatment effect +56.0%",
+          },
+        ],
       },
       {
         id: WeaponIds.FlickersInTheMist,
@@ -710,13 +825,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.ArtsUnit,
         rarity: 6,
         baseATK90: 490,
-        skillsMax: {
-          "Will Boost (L)": "Will +156",
-          "Electric DMG Boost (M)": "Electric DMG Dealt +34.7%",
-          "Efficacy: Overlapping Borders": "ATK +19.6%.\n"
-            + "When the wielder gains Electric Amp, the wielder also gains Electric DMG Dealt +15.4% for 30s.\n"
-            + "Max stacks for effects of the same name: 3. Duration of each stack is counted separately. This effect only triggers once every 0.1s.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.WillBoost.L,
+          WeaponSkillsMax.ElectricDMGBoost.M,
+          {
+            title: "Efficacy: Overlapping Borders",
+            text: "ATK +19.6%.\n"
+              + "When the wielder gains Electric Amp, the wielder also gains Electric DMG Dealt +15.4% for 30s.\n"
+              + "Max stacks for effects of the same name: 3. Duration of each stack is counted separately. This effect only triggers once every 0.1s.",
+          },
+        ],
       },
       {
         id: WeaponIds.FluorescentRoc,
@@ -725,12 +843,15 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.ArtsUnit,
         rarity: 4,
         baseATK90: 341,
-        skillsMax: {
-          "Will Boost (S)": "Will +93",
-          "ATK Boost (S)": "Attack +23.4%",
-          "Suppression: Emergency Boost": "When the wielder's battle skill hits the enemy, ATK +33.6% for 20s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.WillBoost.S,
+          WeaponSkillsMax.ATKBoost.S,
+          {
+            title: "Suppression: Emergency Boost",
+            text: "When the wielder's battle skill hits the enemy, ATK +33.6% for 20s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.ForgebornScathe,
@@ -739,13 +860,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Sword,
         rarity: 6,
         baseATK90: 510,
-        skillsMax: {
-          "Intellect Boost (L)": "Intellect +156",
-          "Attack Boost (L)": "Attack +39.0%",
-          "Twilight: Blazing Wail": "Heat DMG Dealt +44.8%\n"
-            + "When the wielder casts an ultimate, the wielder gains Basic Attack DMG Dealt +210.0% for 20s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.IntellectBoost.L,
+          WeaponSkillsMax.ATKBoost.L,
+          {
+            title: "Twilight: Blazing Wail",
+            text: "Heat DMG Dealt +44.8%\n"
+              + "When the wielder casts an ultimate, the wielder gains Basic Attack DMG Dealt +210.0% for 20s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.FormerFinery,
@@ -754,13 +878,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Greatsword,
         rarity: 6,
         baseATK90: 495,
-        skillsMax: {
-          "Will Boost (L)": "Will +156",
-          "HP Boost (L)": "Max HP +78.0%",
-          "Efficacy: Mincing Therapy": "Treatment Efficiency +28.0%\n"
-            + "After a Protected operator takes DMG, the wielder restores the said operator's HP by (235 + Will x 1.96)\n"
-            + "Effect only triggers once every 15s.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.WillBoost.L,
+          WeaponSkillsMax.HPBoost.L,
+          {
+            title: "Efficacy: Mincing Therapy",
+            text: "Treatment Efficiency +28.0%\n"
+              + "After a Protected operator takes DMG, the wielder restores the said operator's HP by (235 + Will x 1.96)\n"
+              + "Effect only triggers once every 15s.",
+          },
+        ],
       },
       {
         id: WeaponIds.Fortmaker,
@@ -769,11 +896,11 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Sword,
         rarity: 5,
         baseATK90: 411,
-        skillsMax: {
-          "Intellect Boost (M)": "Intellect +124",
-          "Ultimate Gain Efficiency Boost (M)": "Ultimate Gain Efficiency +37.1%",
-          "Inspiring: Back to the Broken City": "ATK +14.0%\nArts Intensity +70",
-        },
+        skillsMax: [
+          WeaponSkillsMax.IntellectBoost.M,
+          WeaponSkillsMax.UltimateGainEfficiencyBoost.M,
+          { title: "Inspiring: Back to the Broken City", text: "ATK +14.0%\nArts Intensity +70" },
+        ],
       },
       {
         id: WeaponIds.FreedomToProselytize,
@@ -782,13 +909,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.ArtsUnit,
         rarity: 5,
         baseATK90: 411,
-        skillsMax: {
-          "Will Boost (M)": "Will +124",
-          "Treatment Efficiency Boost (M)": "Treatment Efficiency +37.1%",
-          "Medicant: Redemption of Faith": "Main Attribute +14.0%\n"
-            + "When the wielder's battle skill provides HP treatment, the controlled operator is restored for another (168 + Will x 1.40) HP.\n"
-            + "Effect only triggers once every 15s.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.WillBoost.M,
+          WeaponSkillsMax.TreatmentEfficiencyBoost.M,
+          {
+            title: "Medicant: Redemption of Faith",
+            text: "Main Attribute +14.0%\n"
+              + "When the wielder's battle skill provides HP treatment, the controlled operator is restored for another (168 + Will x 1.40) HP.\n"
+              + "Effect only triggers once every 15s.",
+          },
+        ],
       },
       {
         id: WeaponIds.GloriousMemory,
@@ -797,12 +927,15 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Sword,
         rarity: 6,
         baseATK90: 490,
-        skillsMax: {
-          "Agility Boost (L)": "Agility +156",
-          "Critical Rate Boost (L)": "Critical Rate +19.5%",
-          "Twilight: Lingering Glow": "When the wielder's skill applies Vulnerability, during the next ultimate cast within 30s, the wielder gains DMG Dealt +33.6%.\n"
-            + "Max stacks for effects of the same name: 3. Duration of each stack is counted separately. Effect is only triggered every 0.5s.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.AgilityBoost.L,
+          WeaponSkillsMax.CriticalRateBoost.L,
+          {
+            title: "Twilight: Lingering Glow",
+            text: "When the wielder's skill applies Vulnerability, during the next ultimate cast within 30s, the wielder gains DMG Dealt +33.6%.\n"
+              + "Max stacks for effects of the same name: 3. Duration of each stack is counted separately. Effect is only triggered every 0.5s.",
+          },
+        ],
       },
       {
         id: WeaponIds.GrandVision,
@@ -811,13 +944,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Sword,
         rarity: 6,
         baseATK90: 500,
-        skillsMax: {
-          "Agility Boost (L)": "Agility +156",
-          "Attack Boost (L)": "Attack +39.0%",
-          "Infliction: Long Time Wish": "Arts Intensity +84\n"
-            + "When the wielder applies Originium Crystals or Solidification, during the next battle skill or ultimate cast within 20s, the wielder gains Physical DMG Dealt +100.8%.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.AgilityBoost.L,
+          WeaponSkillsMax.ATKBoost.L,
+          {
+            title: "Infliction: Long Time Wish",
+            text: "Arts Intensity +84\n"
+              + "When the wielder applies Originium Crystals or Solidification, during the next battle skill or ultimate cast within 20s, the wielder gains Physical DMG Dealt +100.8%.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.HomeLonging,
@@ -827,13 +963,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Handcannon,
         rarity: 6,
         baseATK90: 490,
-        skillsMax: {
-          "Agility Boost (L)": "Agility +156",
-          "Cryo DMG Boost (L)": "Cryo DMG Dealt +43.3%",
-          "Suppression: Olden Moon": "ATK +19.6%.\n"
-            + "For 20s after the wielder casts a combo skill, the wielder's next battle skill gains Cryo and Nature DMG Dealt +22.4%.\n"
-            + "Max stacks for effects of the same name: 2. Duration of each stack is counted separately.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.AgilityBoost.L,
+          WeaponSkillsMax.CryoDMGBoost.L,
+          {
+            title: "Suppression: Olden Moon",
+            text: "ATK +19.6%.\n"
+              + "For 20s after the wielder casts a combo skill, the wielder's next battle skill gains Cryo and Nature DMG Dealt +22.4%.\n"
+              + "Max stacks for effects of the same name: 2. Duration of each stack is counted separately.",
+          },
+        ],
       },
       {
         id: WeaponIds.HowlingGuard,
@@ -842,12 +981,15 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Handcannon,
         rarity: 4,
         baseATK90: 341,
-        skillsMax: {
-          "Intellect Boost (S)": "Intellect +93",
-          "ATK Boost (S)": "Attack +23.4%",
-          "Suppression: Emergency Boost": "When the wielder's battle skill hits the enemy, ATK +33.6% for 20s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.IntellectBoost.S,
+          WeaponSkillsMax.ATKBoost.S,
+          {
+            title: "Suppression: Emergency Boost",
+            text: "When the wielder's battle skill hits the enemy, ATK +33.6% for 20s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.HypernovaAuto,
@@ -856,11 +998,11 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.ArtsUnit,
         rarity: 4,
         baseATK90: 341,
-        skillsMax: {
-          "Intellect Boost (S)": "Intellect +93",
-          "Arts Boost (S)": "Arts DMG Dealt +26.0%",
-          "Inspiring: Start of a Saga": "When the wielder's HP is above 80%, ATK +42.0%.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.IntellectBoost.S,
+          WeaponSkillsMax.ArtsBoost.S,
+          { title: "Inspiring: Start of a Saga", text: "When the wielder's HP is above 80%, ATK +42.0%." },
+        ],
       },
       {
         id: WeaponIds.Industry01,
@@ -869,12 +1011,15 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Greatsword,
         rarity: 4,
         baseATK90: 341,
-        skillsMax: {
-          "Strength Boost (S)": "Strength +93",
-          "ATK Boost (S)": "Attack +23.4%",
-          "Suppression: Emergency Boost": "When the wielder's battle skill hits the enemy, ATK +33.6% for 20s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.StrengthBoost.S,
+          WeaponSkillsMax.ATKBoost.S,
+          {
+            title: "Suppression: Emergency Boost",
+            text: "When the wielder's battle skill hits the enemy, ATK +33.6% for 20s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.JET,
@@ -883,13 +1028,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Polearm,
         rarity: 6,
         baseATK90: 500,
-        skillsMax: {
-          "Main Attribute Boost (L)": "Main Attribute +132",
-          "Attack Boost (L)": "Attack +39.0%",
-          "Suppression: Astrophysics": "Arts DMG Dealt +33.6%\n"
-            + "When the wielder casts a battle skill, the wielder gains Arts DMG Dealt +33.6% for 15s. When the wielder casts a combo skill, Arts DMG Dealt +33.6% for 15s.\n"
-            + "The two effects apply separately and do not stack with themselves.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.MainAttributeBoost.L,
+          WeaponSkillsMax.ATKBoost.L,
+          {
+            title: "Suppression: Astrophysics",
+            text: "Arts DMG Dealt +33.6%\n"
+              + "When the wielder casts a battle skill, the wielder gains Arts DMG Dealt +33.6% for 15s. When the wielder casts a combo skill, Arts DMG Dealt +33.6% for 15s.\n"
+              + "The two effects apply separately and do not stack with themselves.",
+          },
+        ],
       },
       {
         id: WeaponIds.Jiminy12,
@@ -898,10 +1046,7 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.ArtsUnit,
         rarity: 3,
         baseATK90: 283,
-        skillsMax: {
-          "Main Attribute Boost (S)": "Main Attribute +79",
-          "Assault: Armament Prep": "ATK +34",
-        },
+        skillsMax: [WeaponSkillsMax.MainAttributeBoost.S, { title: "Assault: Armament Prep", text: "ATK +34" }],
       },
       {
         id: WeaponIds.Khravengger,
@@ -910,12 +1055,15 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Greatsword,
         rarity: 6,
         baseATK90: 505,
-        skillsMax: {
-          "Strength Boost (L)": "Strength +156",
-          "Attack Boost (L)": "Attack +39.0%",
-          "Detonate: Bonechilling": "Skill DMG Dealt +56.0% (for every skill).\n"
-            + "When the wielder's battle skill applies Cryo Infliction, the wielder gains Cryo DMG Dealt +28.0% for 15s. When the wielder deals combo skill DMG to an enemy with Cryo Infliction, the wielder gains Cryo DMG Dealt +56.0% for 15s.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.StrengthBoost.L,
+          WeaponSkillsMax.ATKBoost.L,
+          {
+            title: "Detonate: Bonechilling",
+            text: "Skill DMG Dealt +56.0% (for every skill).\n"
+              + "When the wielder's battle skill applies Cryo Infliction, the wielder gains Cryo DMG Dealt +28.0% for 15s. When the wielder deals combo skill DMG to an enemy with Cryo Infliction, the wielder gains Cryo DMG Dealt +56.0% for 15s.",
+          },
+        ],
       },
       {
         id: WeaponIds.LoneBarge,
@@ -924,12 +1072,15 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.ArtsUnit,
         rarity: 6,
         baseATK90: 510,
-        skillsMax: {
-          "Will Boost (L)": "Will +156",
-          "Attack Boost (L)": "Attack +39.0%",
-          "Suppression: Streaming Blitz": "Electric DMG Dealt +44.8%.\n"
-            + "When the wielder's battle skill consumes Arts Reactions, the wielder gains Battle Skill Electric DMG Dealt +56.0% for 20s. This effect can reach a max of 2 stacks and can only trigger once every 0.1s. Duration of each stack is counted separately. After the wielder casts an ultimate, the wielder gains Battle Skill Electric DMG Dealt +112.0% for 25s. This effect cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.WillBoost.L,
+          WeaponSkillsMax.ATKBoost.L,
+          {
+            title: "Suppression: Streaming Blitz",
+            text: "Electric DMG Dealt +44.8%.\n"
+              + "When the wielder's battle skill consumes Arts Reactions, the wielder gains Battle Skill Electric DMG Dealt +56.0% for 20s. This effect can reach a max of 2 stacks and can only trigger once every 0.1s. Duration of each stack is counted separately. After the wielder casts an ultimate, the wielder gains Battle Skill Electric DMG Dealt +112.0% for 25s. This effect cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.LongRoad,
@@ -938,12 +1089,15 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Handcannon,
         rarity: 4,
         baseATK90: 341,
-        skillsMax: {
-          "Strength Boost (S)": "Strength +93",
-          "Arts Boost (S)": "Arts DMG Dealt +26.0%",
-          "Pursuit: Unending Cycle": "When the wielder casts a combo skill, the wielder gains ATK +33.6% for 20s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.StrengthBoost.S,
+          WeaponSkillsMax.ArtsBoost.S,
+          {
+            title: "Pursuit: Unending Cycle",
+            text: "When the wielder casts a combo skill, the wielder gains ATK +33.6% for 20s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.LupineScarlet,
@@ -952,12 +1106,15 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Sword,
         rarity: 6,
         baseATK90: 505,
-        skillsMax: {
-          "Agility Boost (L)": "Agility +156",
-          "Critical Rate Boost (L)": "Critical Rate +19.5%",
-          "Fracture: Gnashing Wolves": "ATK +44.8%.\n"
-            + "After the wielder's skill deals Critical DMG, the wielder gains 1 stack of Wolven Blood that grants Physical and Heat DMG Dealth +2.8%. Wolven Blood can reach 16 stacks. After reaching 16 stacks, the wielder gains another Physical and Heat DMG Dealt +67.2% for 20s. After the duration ends, all Wolven Blood stacks are removed.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.AgilityBoost.L,
+          WeaponSkillsMax.CriticalRateBoost.L,
+          {
+            title: "Fracture: Gnashing Wolves",
+            text: "ATK +44.8%.\n"
+              + "After the wielder's skill deals Critical DMG, the wielder gains 1 stack of Wolven Blood that grants Physical and Heat DMG Dealth +2.8%. Wolven Blood can reach 16 stacks. After reaching 16 stacks, the wielder gains another Physical and Heat DMG Dealt +67.2% for 20s. After the duration ends, all Wolven Blood stacks are removed.",
+          },
+        ],
       },
       {
         id: WeaponIds.Monaihe,
@@ -967,11 +1124,11 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.ArtsUnit,
         rarity: 5,
         baseATK90: 411,
-        skillsMax: {
-          "Will Boost (M)": "Will +124",
-          "Ultimate Gain Efficiency Boost (M)": "Ultimate Gain Efficiency +37.1%",
-          "Inspiring: Mortise-and-Tenon Analysis": "Main Attribute +14.0%\nArts Intensity +70",
-        },
+        skillsMax: [
+          WeaponSkillsMax.WillBoost.M,
+          WeaponSkillsMax.UltimateGainEfficiencyBoost.M,
+          { title: "Inspiring: Mortise-and-Tenon Analysis", text: "Main Attribute +14.0%\nArts Intensity +70" },
+        ],
       },
       {
         id: WeaponIds.MountainBearer,
@@ -981,13 +1138,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Polearm,
         rarity: 6,
         baseATK90: 500,
-        skillsMax: {
-          "Agility Boost (L)": "Agility +156",
-          "Physical DMG Boost (L)": "Physical DMG Dealt +43.3%",
-          "Efficacy: Weight of Mountain": "Against Vulnerable enemies, the wielder gains DMG Dealt +56.0%\n"
-            + "When the wielder's battle skill applies Vulnerability, the wielder gains all attributes +22.4% for 15s. When the wielder's battle skill applies Physical Susceptibility, the wielder gains all attributes +22.4% for 15s.\n"
-            + "Max stacks of the same name: 2. Duration of each stack is counted separately. Effect only triggers once every 0.1s.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.AgilityBoost.L,
+          WeaponSkillsMax.PhysicalDMGBoost.L,
+          {
+            title: "Efficacy: Weight of Mountain",
+            text: "Against Vulnerable enemies, the wielder gains DMG Dealt +56.0%\n"
+              + "When the wielder's battle skill applies Vulnerability, the wielder gains all attributes +22.4% for 15s. When the wielder's battle skill applies Physical Susceptibility, the wielder gains all attributes +22.4% for 15s.\n"
+              + "Max stacks of the same name: 2. Duration of each stack is counted separately. Effect only triggers once every 0.1s.",
+          },
+        ],
       },
       {
         id: WeaponIds.Navigator,
@@ -996,13 +1156,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Handcannon,
         rarity: 6,
         baseATK90: 490,
-        skillsMax: {
-          "Intellect Boost (L)": "Intellect +156",
-          "Cryo DMG Boost (L)": "Cryo DMG Dealt +43.3%",
-          "Infliction: Lone and Distant Sail": "Critical Rate +9.8%\n"
-            + "When Solidification or Corrosion is applied to enemies, the wielder gains Cryo DMG Dealt and Nature DMG Dealt +9.8%, and Critical Rate +5.6% for 15s. If this effect is triggered by the wielder, double the increase gained.\n"
-            + "Effects of the same name cannot stack. Effect only triggers once every 20s.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.IntellectBoost.L,
+          WeaponSkillsMax.CryoDMGBoost.L,
+          {
+            title: "Infliction: Lone and Distant Sail",
+            text: "Critical Rate +9.8%\n"
+              + "When Solidification or Corrosion is applied to enemies, the wielder gains Cryo DMG Dealt and Nature DMG Dealt +9.8%, and Critical Rate +5.6% for 15s. If this effect is triggered by the wielder, double the increase gained.\n"
+              + "Effects of the same name cannot stack. Effect only triggers once every 20s.",
+          },
+        ],
       },
       {
         id: WeaponIds.NeverRest,
@@ -1011,13 +1174,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Sword,
         rarity: 6,
         baseATK90: 500,
-        skillsMax: {
-          "Will Boost (L)": "Will +156",
-          "Attack Boost (L)": "Attack +39.0%",
-          "Flow: Reincarnation": "Physical DMG Dealt +44.8%\n"
-            + "After the wielder's skill recovers SP, the wielder gains Physical DMG Dealt +14.0% while the other operators in the team gain Physical DMG Dealt +7.0% for 30s.\n"
-            + "Max stacks for effects of the same name: 5. Duration of each stack is counted separately. Effect only triggers once every 0.1s.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.WillBoost.L,
+          WeaponSkillsMax.ATKBoost.L,
+          {
+            title: "Flow: Reincarnation",
+            text: "Physical DMG Dealt +44.8%\n"
+              + "After the wielder's skill recovers SP, the wielder gains Physical DMG Dealt +14.0% while the other operators in the team gain Physical DMG Dealt +7.0% for 30s.\n"
+              + "Max stacks for effects of the same name: 5. Duration of each stack is counted separately. Effect only triggers once every 0.1s.",
+          },
+        ],
       },
       {
         id: WeaponIds.OBJArtsIdentifier,
@@ -1026,13 +1192,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.ArtsUnit,
         rarity: 5,
         baseATK90: 411,
-        skillsMax: {
-          "Intellect Boost (M)": "Intellect +124",
-          "Arts Intensity Boost (M)": "Arts Intensity +62",
-          "Pursuit: Transcendent Arts": "Max HP +28.0%\n"
-            + "When the wielder's combo skill applies Arts Burst or Physical Status, the entire team gains Heat DMG Dealt and Electric DMG Dealt +22.4% for 15s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.IntellectBoost.M,
+          WeaponSkillsMax.ArtsIntensityBoost.M,
+          {
+            title: "Pursuit: Transcendent Arts",
+            text: "Max HP +28.0%\n"
+              + "When the wielder's combo skill applies Arts Burst or Physical Status, the entire team gains Heat DMG Dealt and Electric DMG Dealt +22.4% for 15s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.OBJEdgeOfLightness,
@@ -1041,13 +1210,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Sword,
         rarity: 5,
         baseATK90: 411,
-        skillsMax: {
-          "Agility Boost (M)": "Agility +124",
-          "ATK Boost (M)": "Attack +31.2%",
-          "Flow: Unbridled Edge": "Secondary Attribute +14.0%\n"
-            + "After the wielder recovers SP by their own skill, the entire team gains Heat DMG Dealt and Electric DMG Dealt +8.4% for 20s.\n"
-            + "Max stacks for effects of the same name: 3. Duration of each stack is counted separately.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.AgilityBoost.M,
+          WeaponSkillsMax.ATKBoost.M,
+          {
+            title: "Flow: Unbridled Edge",
+            text: "Secondary Attribute +14.0%\n"
+              + "After the wielder recovers SP by their own skill, the entire team gains Heat DMG Dealt and Electric DMG Dealt +8.4% for 20s.\n"
+              + "Max stacks for effects of the same name: 3. Duration of each stack is counted separately.",
+          },
+        ],
       },
       {
         id: WeaponIds.OBJHeavyBurden,
@@ -1056,13 +1228,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Greatsword,
         rarity: 5,
         baseATK90: 411,
-        skillsMax: {
-          "Strength Boost (M)": "Strength +124",
-          "HP Boost (M)": "Max HP +62.4%",
-          "Efficacy: Tenacious Will": "Secondary Attribute +14.0%\n"
-            + "When the wielder applies Knocked Down or Weakened, DEF +50.4% for 15s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.StrengthBoost.M,
+          WeaponSkillsMax.HPBoost.M,
+          {
+            title: "Efficacy: Tenacious Will",
+            text: "Secondary Attribute +14.0%\n"
+              + "When the wielder applies Knocked Down or Weakened, DEF +50.4% for 15s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.OBJRazorhorn,
@@ -1071,12 +1246,15 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Polearm,
         rarity: 5,
         baseATK90: 411,
-        skillsMax: {
-          "Will Boost (M)": "Will +124",
-          "Physical DMG Boost (M)": "Physical DMG Dealt +34.7%",
-          "Infliction: Conquest of Icy Peaks": "To enemies with Cryo Infliction or Solidification, the wielder gains DMG Dealt +22.4%. After consuming Solidification, ATK +33.6% for 15s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.WillBoost.M,
+          WeaponSkillsMax.PhysicalDMGBoost.M,
+          {
+            title: "Infliction: Conquest of Icy Peaks",
+            text: "To enemies with Cryo Infliction or Solidification, the wielder gains DMG Dealt +22.4%. After consuming Solidification, ATK +33.6% for 15s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.OBJVelocitous,
@@ -1085,13 +1263,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Handcannon,
         rarity: 5,
         baseATK90: 411,
-        skillsMax: {
-          "Agility Boost (M)": "Agility +124",
-          "Ultimate Gain Efficiency Boost (M)": "Ultimate Gain Efficiency +37.1%",
-          "Detonate: Rapid Strike": "ATK +14.0%\n"
-            + "After the wielder consumes an Arts Infliction, the wielder gains Nature DMG Dealt +(14.0% x Stacks Consumed) for 20s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.AgilityBoost.M,
+          WeaponSkillsMax.UltimateGainEfficiencyBoost.M,
+          {
+            title: "Detonate: Rapid Strike",
+            text: "ATK +14.0%\n"
+              + "After the wielder consumes an Arts Infliction, the wielder gains Nature DMG Dealt +(14.0% x Stacks Consumed) for 20s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.Oblivion,
@@ -1100,13 +1281,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.ArtsUnit,
         rarity: 6,
         baseATK90: 495,
-        skillsMax: {
-          "Intellect Boost (L)": "Intellect +156",
-          "Arts Boost (L)": "Arts DMG Dealt +43.3%",
-          "Twilight: Humiliation": "Critical Rate +14.0%\n"
-            + "When the wielder casts an ultimate, the wielder gains Arts DMG Dealt +67.2% for 15s. When the wielder casts a combo skill, the wielder gains Arts DMG Dealt +33.6% for 15s.\n"
-            + "The two effects apply separately and do not stack with themselves.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.IntellectBoost.L,
+          WeaponSkillsMax.ArtsBoost.L,
+          {
+            title: "Twilight: Humiliation",
+            text: "Critical Rate +14.0%\n"
+              + "When the wielder casts an ultimate, the wielder gains Arts DMG Dealt +67.2% for 15s. When the wielder casts a combo skill, the wielder gains Arts DMG Dealt +33.6% for 15s.\n"
+              + "The two effects apply separately and do not stack with themselves.",
+          },
+        ],
       },
       {
         id: WeaponIds.Opero77,
@@ -1115,10 +1299,7 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Polearm,
         rarity: 3,
         baseATK90: 283,
-        skillsMax: {
-          "Main Attribute Boost (S)": "Main Attribute +79",
-          "Assault: Armament Prep": "ATK +34",
-        },
+        skillsMax: [WeaponSkillsMax.MainAttributeBoost.S, { title: "Assault: Armament Prep", text: "ATK +34" }],
       },
       {
         id: WeaponIds.OpusEtchFigure,
@@ -1128,13 +1309,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.ArtsUnit,
         rarity: 6,
         baseATK90: 485,
-        skillsMax: {
-          "Will Boost (L)": "Will +156",
-          "Nature DMG Boost (L)": "Nature DMG Dealt+43.3%",
-          "Suppression: Tillite Etchings": "ATK +19.6%\n"
-            + "When the wielder's battle skill applies Nature Infliction, other operators in the team gain Arts DMG Dealt +14.0% for 15s. For every enemy suffering from Nature Infliction applied by the said battle skill, the team gains Arts DMG Dealt +5.6%, up to a max of 16.8%.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.WillBoost.L,
+          WeaponSkillsMax.NatureDMGBoost.L,
+          {
+            title: "Suppression: Tillite Etchings",
+            text: "ATK +19.6%\n"
+              + "When the wielder's battle skill applies Nature Infliction, other operators in the team gain Arts DMG Dealt +14.0% for 15s. For every enemy suffering from Nature Infliction applied by the said battle skill, the team gains Arts DMG Dealt +5.6%, up to a max of 16.8%.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.OpusTheLiving,
@@ -1143,13 +1327,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Handcannon,
         rarity: 5,
         baseATK90: 411,
-        skillsMax: {
-          "Agility Boost (M)": "Agility +124",
-          "Arts Boost (M)": "Arts DMG Dealt +34.7%",
-          "Infliction: Road Home for All Life": "Critical Rate +8.4%\n"
-            + "When the wielder applies an Arts Reaction, the wielder gains ATK +21.0% for 20s.\n"
-            + "Max stacks of the same name: 2. Duration of each stack is counted separately. Effect only triggers once every 0.1s.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.AgilityBoost.M,
+          WeaponSkillsMax.ArtsBoost.M,
+          {
+            title: "Infliction: Road Home for All Life",
+            text: "Critical Rate +8.4%\n"
+              + "When the wielder applies an Arts Reaction, the wielder gains ATK +21.0% for 20s.\n"
+              + "Max stacks of the same name: 2. Duration of each stack is counted separately. Effect only triggers once every 0.1s.",
+          },
+        ],
       },
       {
         id: WeaponIds.PathfindersBeacon,
@@ -1158,11 +1345,11 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Polearm,
         rarity: 4,
         baseATK90: 341,
-        skillsMax: {
-          "Agility Boost (S)": "Agility +93",
-          "ATK Boost (S)": "Attack +23.4%",
-          "Inspiring: Start of a Saga": "When the wielder's HP is above 80%, ATK +42.0%.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.AgilityBoost.S,
+          WeaponSkillsMax.ATKBoost.S,
+          { title: "Inspiring: Start of a Saga", text: "When the wielder's HP is above 80%, ATK +42.0%." },
+        ],
       },
       {
         id: WeaponIds.Peco5,
@@ -1171,10 +1358,7 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Handcannon,
         rarity: 3,
         baseATK90: 283,
-        skillsMax: {
-          "Main Attribute Boost (S)": "Main Attribute +79",
-          "Assault: Armament Prep": "ATK +34",
-        },
+        skillsMax: [WeaponSkillsMax.MainAttributeBoost.S, { title: "Assault: Armament Prep", text: "ATK +34" }],
       },
       {
         id: WeaponIds.ProminentEdge,
@@ -1183,12 +1367,15 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Sword,
         rarity: 4,
         baseATK90: 341,
-        skillsMax: {
-          "Agility Boost (S)": "Agility +93",
-          "Physical DMG Boost (S)": "Physical DMG Dealt +26.0%",
-          "Suppression: Emergency Boost": "When the wielder's battle skill hits the enemy, ATK +33.6% for 20s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.AgilityBoost.S,
+          WeaponSkillsMax.PhysicalDMGBoost.S,
+          {
+            title: "Suppression: Emergency Boost",
+            text: "When the wielder's battle skill hits the enemy, ATK +33.6% for 20s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.Quencher,
@@ -1197,12 +1384,15 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Greatsword,
         rarity: 4,
         baseATK90: 341,
-        skillsMax: {
-          "Will Boost (S)": "Will +93",
-          "HP Boost (S)": "Max HP +46.8%",
-          "Crusher: Honed into Legion": "When the wielder performs a Final Strike on the enemy, ATK +33.6% for 10s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.WillBoost.S,
+          WeaponSkillsMax.HPBoost.S,
+          {
+            title: "Crusher: Honed into Legion",
+            text: "When the wielder performs a Final Strike on the enemy, ATK +33.6% for 10s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.RapidAscent,
@@ -1211,12 +1401,15 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Sword,
         rarity: 6,
         baseATK90: 495,
-        skillsMax: {
-          "Main Attribute Boost (L)": "Main Attribute +132",
-          "Critical Rate Boost (L)": "Critical Rate +19.5%",
-          "Twilight: Azure Clouds": "Battle skills and ultimates gain Physical DMG Dealt +42.0%\n"
-            + "Against Staggered enemies, battle skills and ultimates also gain DMG Dealt +98.0%.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.MainAttributeBoost.L,
+          WeaponSkillsMax.CriticalRateBoost.L,
+          {
+            title: "Twilight: Azure Clouds",
+            text: "Battle skills and ultimates gain Physical DMG Dealt +42.0%\n"
+              + "Against Staggered enemies, battle skills and ultimates also gain DMG Dealt +98.0%.",
+          },
+        ],
       },
       {
         id: WeaponIds.RationalFarewell,
@@ -1225,13 +1418,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Handcannon,
         rarity: 5,
         baseATK90: 411,
-        skillsMax: {
-          "Strength Boost (M)": "Strength +124",
-          "Heat DMG Boost (M)": "Heat DMG Dealt +34.7%",
-          "Pursuit: Aid from the Past": "Battle Skill DMG Dealt +28.0%\n"
-            + "When the wielder's combo skill applies Arts Burst or Combusted, ATK +44.8% for 15s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.StrengthBoost.M,
+          WeaponSkillsMax.HeatDMGBoost.M,
+          {
+            title: "Pursuit: Aid from the Past",
+            text: "Battle Skill DMG Dealt +28.0%\n"
+              + "When the wielder's combo skill applies Arts Burst or Combusted, ATK +44.8% for 15s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.SeekerOfDarkLung,
@@ -1240,13 +1436,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Greatsword,
         rarity: 5,
         baseATK90: 411,
-        skillsMax: {
-          "Strength Boost (M)": "Strength +124",
-          "Ultimate Gain Efficiency Boost (M)": "Ultimate Gain Efficiency +37.1%",
-          "Detonate: Seeker of the Esoteric": "Main Attribute +14.0%\n"
-            + "When the wielder applies an Arts Burst, ATK +16.8% for 30s.\n"
-            + "Max stacks for the same name: 3. Duration of each stack is counted separately. Effect only triggers once every 0.1s.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.StrengthBoost.M,
+          WeaponSkillsMax.UltimateGainEfficiencyBoost.M,
+          {
+            title: "Detonate: Seeker of the Esoteric",
+            text: "Main Attribute +14.0%\n"
+              + "When the wielder applies an Arts Burst, ATK +16.8% for 30s.\n"
+              + "Max stacks for the same name: 3. Duration of each stack is counted separately. Effect only triggers once every 0.1s.",
+          },
+        ],
       },
       {
         id: WeaponIds.StanzaOfMemorials,
@@ -1255,13 +1454,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.ArtsUnit,
         rarity: 5,
         baseATK90: 411,
-        skillsMax: {
-          "Intellect Boost (M)": "Intellect +124",
-          "ATK Boost (M)": "Attack +31.2%",
-          "Twilight: Lustrous Pyre": "Max HP +28.0%\n"
-            + "When the wielder casts an ultimate, operators whose elements differ from the wielder gain ATK +22.4% for 20s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.IntellectBoost.M,
+          WeaponSkillsMax.ATKBoost.M,
+          {
+            title: "Twilight: Lustrous Pyre",
+            text: "Max HP +28.0%\n"
+              + "When the wielder casts an ultimate, operators whose elements differ from the wielder gain ATK +22.4% for 20s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.SunderedPrince,
@@ -1270,13 +1472,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Greatsword,
         rarity: 6,
         baseATK90: 490,
-        skillsMax: {
-          "Strength Boost (L)": "Strength +156",
-          "Critical Rate Boost (L)": "Critical Rate +19.5%",
-          "Crusher: Princely Deterrence": "When the wielder performs a Final Strike on the enemy, ATK +28.0% for 8s.\n"
-            + "If the wielder is also the controlled operator, Final Strike deals Stagger +33.6% to the enemy.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.StrengthBoost.L,
+          WeaponSkillsMax.CriticalRateBoost.L,
+          {
+            title: "Crusher: Princely Deterrence",
+            text: "When the wielder performs a Final Strike on the enemy, ATK +28.0% for 8s.\n"
+              + "If the wielder is also the controlled operator, Final Strike deals Stagger +33.6% to the enemy.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.SunderingSteel,
@@ -1285,13 +1490,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Sword,
         rarity: 5,
         baseATK90: 411,
-        skillsMax: {
-          "Agility Boost (M)": "Agility +124",
-          "Physical DMG Boost (M)": "Physical DMG Dealt +34.7%",
-          "Combative: Anthem of Cinder": "ATK +14.0%\n"
-            + "When the wielder deals a Physical Status, ATK +21.0% for 20s.\n"
-            + "Max stacks of the same name: 2. Duration of each stack is counted separately. Effect only triggers once every 0.1s.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.AgilityBoost.M,
+          WeaponSkillsMax.PhysicalDMGBoost.M,
+          {
+            title: "Combative: Anthem of Cinder",
+            text: "ATK +14.0%\n"
+              + "When the wielder deals a Physical Status, ATK +21.0% for 20s.\n"
+              + "Max stacks of the same name: 2. Duration of each stack is counted separately. Effect only triggers once every 0.1s.",
+          },
+        ],
       },
       {
         id: WeaponIds.Tarr11,
@@ -1300,10 +1508,7 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Sword,
         rarity: 3,
         baseATK90: 283,
-        skillsMax: {
-          "Main Attribute Boost (S)": "Main Attribute +79",
-          "Assault: Armament Prep": "ATK +34",
-        },
+        skillsMax: [WeaponSkillsMax.MainAttributeBoost.S, { title: "Assault: Armament Prep", text: "ATK +34" }],
       },
       {
         id: WeaponIds.ThermiteCutter,
@@ -1312,13 +1517,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Sword,
         rarity: 6,
         baseATK90: 490,
-        skillsMax: {
-          "Will Boost (L)": "Will +156",
-          "Attack Boost (L)": "Attack +39.0%",
-          "Flow: Thermal Release": "ATK+28.0%\n"
-            + "After the wielder's skill recovers SP or grants a Link state, the entire team gains ATK +14.0% for 20s.\n"
-            + "Max stacks for effects of the same name: 2. Duration of each stack is counted separately.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.WillBoost.L,
+          WeaponSkillsMax.ATKBoost.L,
+          {
+            title: "Flow: Thermal Release",
+            text: "ATK+28.0%\n"
+              + "After the wielder's skill recovers SP or grants a Link state, the entire team gains ATK +14.0% for 20s.\n"
+              + "Max stacks for effects of the same name: 2. Duration of each stack is counted separately.",
+          },
+        ],
       },
       {
         id: WeaponIds.Thunderberge,
@@ -1327,13 +1535,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Greatsword,
         rarity: 6,
         baseATK90: 495,
-        skillsMax: {
-          "Strength Boost (L)": "Strength +156",
-          "HP Boost (L)": "Max HP +78.0%",
-          "Medicant: Eye of Talos": "Shield applied +67.2%\n"
-            + "After the wielder's combo skill provides HP treatment, the controlled operator gains an additional (19.6% x Wielder's Max HP) Shield for 15s.\n"
-            + "Effect only triggers once every 15s.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.StrengthBoost.L,
+          WeaponSkillsMax.HPBoost.L,
+          {
+            title: "Medicant: Eye of Talos",
+            text: "Shield applied +67.2%\n"
+              + "After the wielder's combo skill provides HP treatment, the controlled operator gains an additional (19.6% x Wielder's Max HP) Shield for 15s.\n"
+              + "Effect only triggers once every 15s.",
+          },
+        ],
       },
       {
         id: WeaponIds.TwelveQuestions,
@@ -1342,13 +1553,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Sword,
         rarity: 5,
         baseATK90: 411,
-        skillsMax: {
-          "Agility Boost (M)": "Agility +124",
-          "ATK Boost (M)": "Attack +31.2%",
-          "Infliction: Sincere Interrogation": "Secondary Attribute +14.0%%\n"
-            + "After the wielder consumes an Arts Reaction, ATK +21.0% for 20s.\n"
-            + "Max stacks for effects of the same name: 2. Duration of each stack is counted separately.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.AgilityBoost.M,
+          WeaponSkillsMax.ATKBoost.M,
+          {
+            title: "Infliction: Sincere Interrogation",
+            text: "Secondary Attribute +14.0%%\n"
+              + "After the wielder consumes an Arts Reaction, ATK +21.0% for 20s.\n"
+              + "Max stacks for effects of the same name: 2. Duration of each stack is counted separately.",
+          },
+        ],
       },
       {
         id: WeaponIds.UmbralTorch,
@@ -1357,13 +1571,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Sword,
         rarity: 6,
         baseATK90: 490,
-        skillsMax: {
-          "Intellect Boost (L)": "Intellect +156",
-          "Heat DMG Boost (L)": "Heat DMG Dealt +43.3%",
-          "Infliction: Covetous Buildup": "ATK +19.6%\n"
-            + "Whenever Combustion or Corrosion is applied to an enemy, the wielder gains Heat DMG Dealt and Nature DMG Dealt +22.4%\n"
-            + "Max stacks for effects with the same name: 3.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.IntellectBoost.L,
+          WeaponSkillsMax.HeatDMGBoost.L,
+          {
+            title: "Infliction: Covetous Buildup",
+            text: "ATK +19.6%\n"
+              + "Whenever Combustion or Corrosion is applied to an enemy, the wielder gains Heat DMG Dealt and Nature DMG Dealt +22.4%\n"
+              + "Max stacks for effects with the same name: 3.",
+          },
+        ],
       },
       {
         id: WeaponIds.Valiant,
@@ -1372,12 +1589,15 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Polearm,
         rarity: 6,
         baseATK90: 495,
-        skillsMax: {
-          "Agility Boost (L)": "Agility +156",
-          "Physical DMG Boost (L)": "Physical DMG Dealt +43.3%",
-          "Combative: Virtuous Gain": "ATK +28.0%\n"
-            + "After the wielder applies a Physical Statuses, the wielder also deals another hit of Physical DMG equal to 336.0% of the wielder's ATK.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.AgilityBoost.L,
+          WeaponSkillsMax.PhysicalDMGBoost.L,
+          {
+            title: "Combative: Virtuous Gain",
+            text: "ATK +28.0%\n"
+              + "After the wielder applies a Physical Statuses, the wielder also deals another hit of Physical DMG equal to 336.0% of the wielder's ATK.",
+          },
+        ],
       },
       {
         id: WeaponIds.WaveTide,
@@ -1386,12 +1606,15 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Sword,
         rarity: 4,
         baseATK90: 341,
-        skillsMax: {
-          "Intellect Boost (S)": "Intellect +93",
-          "ATK Boost (S)": "Attack +23.4%",
-          "Pursuit: Unending Cycle": "When the wielder casts a combo skill, the wielder gains ATK +33.6% for 20s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.IntellectBoost.S,
+          WeaponSkillsMax.ATKBoost.S,
+          {
+            title: "Pursuit: Unending Cycle",
+            text: "When the wielder casts a combo skill, the wielder gains ATK +33.6% for 20s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.Wedge,
@@ -1400,13 +1623,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Handcannon,
         rarity: 6,
         baseATK90: 500,
-        skillsMax: {
-          "Main Attribute Boost (L)": "Main Attribute +132",
-          "Critical Rate Boost (L)": "Critical Rate +19.5%",
-          "Infliction: Wedge of Civilization": "Arts DMG Dealt +33.6%\n"
-            + "When the wielder casts a battle skill, the wielder gains Arts DMG Dealt +22.4% for 15s. When the wielder's battle skill applies an Arts Reaction, the wielder gains Arts DMG Dealt +44.8% for 15s.\n"
-            + "The two effects apply separately and do not stack with themselves.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.MainAttributeBoost.L,
+          WeaponSkillsMax.CriticalRateBoost.L,
+          {
+            title: "Infliction: Wedge of Civilization",
+            text: "Arts DMG Dealt +33.6%\n"
+              + "When the wielder casts a battle skill, the wielder gains Arts DMG Dealt +22.4% for 15s. When the wielder's battle skill applies an Arts Reaction, the wielder gains Arts DMG Dealt +44.8% for 15s.\n"
+              + "The two effects apply separately and do not stack with themselves.",
+          },
+        ],
       },
       {
         id: WeaponIds.WhiteNightNova,
@@ -1415,13 +1641,16 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.Sword,
         rarity: 6,
         baseATK90: 505,
-        skillsMax: {
-          "Main Attribute Boost (L)": "Main Attribute +132",
-          "Arts Intensity Boost (L)": "Arts Intensity +78",
-          "Infliction: White Night Nova": "Arts DMG Dealt +33.6%\n"
-            + "After the wielder applies Combustion or Electrification, the wielder gains Arts DMG Dealt +33.6% and Arts Intensity +70 for 15s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.MainAttributeBoost.L,
+          WeaponSkillsMax.ArtsIntensityBoost.L,
+          {
+            title: "Infliction: White Night Nova",
+            text: "Arts DMG Dealt +33.6%\n"
+              + "After the wielder applies Combustion or Electrification, the wielder gains Arts DMG Dealt +33.6% and Arts Intensity +70 for 15s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
       {
         id: WeaponIds.WildWanderer,
@@ -1430,22 +1659,25 @@ const CATEGORIES = {
         typeId: WeaponTypeIds.ArtsUnit,
         rarity: 5,
         baseATK90: 411,
-        skillsMax: {
-          "Intellect Boost (M)": "Intellect +124",
-          "Electric DMG Boost (M)": "Electric DMG Dealt +34.7%",
-          "Infliction: Wilderness Cluster": "Arts Intensity +28\n"
-            + "When the wielder applies Electrification, the team gains Physical DMG Dealt and Electric DMG Dealt +22.4% for 15s.\n"
-            + "Effects of the same name cannot stack.",
-        },
+        skillsMax: [
+          WeaponSkillsMax.IntellectBoost.M,
+          WeaponSkillsMax.ElectricDMGBoost.M,
+          {
+            title: "Infliction: Wilderness Cluster",
+            text: "Arts Intensity +28\n"
+              + "When the wielder applies Electrification, the team gains Physical DMG Dealt and Electric DMG Dealt +22.4% for 15s.\n"
+              + "Effects of the same name cannot stack.",
+          },
+        ],
       },
     ],
     transformList: item => ({ id: item.id, image: item.image, name: item.name }),
   },
 } satisfies {
   "attributes": CategoryConfig<"attributes">;
-  "character-classes": CategoryConfig<"character-classes">;
-  "characters": CategoryConfig<"characters">;
   "elements": CategoryConfig<"elements">;
+  "operative-classes": CategoryConfig<"operative-classes">;
+  "operatives": CategoryConfig<"operatives">;
   "weapon-types": CategoryConfig<"weapon-types">;
   "weapons": CategoryConfig<"weapons">;
 };
@@ -1488,9 +1720,9 @@ async function main() {
     await ensureDir(OUTPUT_DIR);
 
     await generateCategory("attributes", CATEGORIES["attributes"]);
-    await generateCategory("character-classes", CATEGORIES["character-classes"]);
-    await generateCategory("characters", CATEGORIES["characters"]);
     await generateCategory("elements", CATEGORIES["elements"]);
+    await generateCategory("operative-classes", CATEGORIES["operative-classes"]);
+    await generateCategory("operatives", CATEGORIES["operatives"]);
     await generateCategory("weapon-types", CATEGORIES["weapon-types"]);
     await generateCategory("weapons", CATEGORIES["weapons"]);
 

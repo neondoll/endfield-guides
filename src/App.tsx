@@ -17,7 +17,7 @@ function App() {
         <div className="p-4 mx-auto container md:px-6 md:py-10">
           <Suspense>
             <Routes>
-              <Route index path="/" Component={lazy(() => import("@/pages/characters-page"))} />
+              <Route index path="/" Component={lazy(() => import("@/pages/operatives-page.tsx"))} />
             </Routes>
           </Suspense>
         </div>

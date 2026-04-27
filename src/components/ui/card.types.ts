@@ -3,6 +3,7 @@ import type { ComponentProps } from "react";
 export interface CardProps extends ComponentProps<"div"> {
   size?: "default" | "sm";
 }
+
 export type CardActionProps = ComponentProps<"div">;
 export type CardContentProps = ComponentProps<"div">;
 export type CardDescriptionProps = ComponentProps<"div">;

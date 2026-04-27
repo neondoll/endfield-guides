@@ -11,4 +11,4 @@ export interface Weapon {
   skillsMax: Array<{ title: string; text: string }>;
 }
 
-export type WeaponListItem = Pick<Weapon, "id" | "image" | "name">;
+export type WeaponListItem = Weapon;

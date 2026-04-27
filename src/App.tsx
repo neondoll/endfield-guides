@@ -1,7 +1,8 @@
 import { lazy, Suspense } from "react";
-import { Route, Routes } from "react-router";
+import { Link, Route, Routes } from "react-router";
 
 import { Button } from "@/components/ui/button";
+import PATHS from "@/paths";
 
 function App() {
   return (
@@ -9,7 +10,9 @@ function App() {
       <header className="sticky top-0 z-50 w-full bg-background">
         <div className="px-4 mx-auto container md:px-6">
           <div className="flex items-center h-14">
-            <Button variant="ghost">Arknights: Endfield Guides</Button>
+            <Button asChild variant="ghost">
+              <Link to={PATHS.Home}>Arknights: Endfield Guides</Link>
+            </Button>
           </div>
         </div>
       </header>
@@ -17,7 +20,9 @@ function App() {
         <div className="p-4 mx-auto container md:px-6 md:py-10">
           <Suspense>
             <Routes>
-              <Route index path="/" Component={lazy(() => import("@/pages/operatives-page.tsx"))} />
+              <Route index path={PATHS.Home} Component={lazy(() => import("@/pages/home-page"))} />
+              <Route path={PATHS.Operators} Component={lazy(() => import("@/pages/operators-page"))} />
+              <Route path={PATHS.Weapons} Component={lazy(() => import("@/pages/weapons/page"))} />
             </Routes>
           </Suspense>
         </div>

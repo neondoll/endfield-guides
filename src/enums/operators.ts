@@ -1,4 +1,4 @@
-export const OperativeIds = {
+export const OperatorIds = {
   /* Акэкури */
   Akekuri: "akekuri",
   /* Алеш */

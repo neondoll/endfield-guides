@@ -1,4 +1,4 @@
-export const OperativeClassIds = {
+export const OperatorRoleIds = {
   /* Заклинатель */
   Caster: "caster",
   /* Защитник */

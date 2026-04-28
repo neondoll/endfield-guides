@@ -4,34 +4,47 @@ import { loadEnv } from "vite";
 
 import { AttributeIds } from "../src/enums/attributes";
 import { ElementIds } from "../src/enums/elements";
+import { GearSetIds } from "../src/enums/gear-sets";
+import { GearTypeIds } from "../src/enums/gear-types";
+import { GearIds } from "../src/enums/gears";
 import { OperatorRoleIds } from "../src/enums/operator-roles";
 import { OperatorIds } from "../src/enums/operators";
 import { WeaponTypeIds } from "../src/enums/weapon-types";
 import { WeaponIds } from "../src/enums/weapons";
 import type { Attribute, AttributeListItem } from "../src/types/attributes";
 import type { Element, ElementListItem } from "../src/types/elements";
+import type { GearSet, GearSetListItem } from "../src/types/gear-sets";
+import type { GearType, GearTypeListItem } from "../src/types/gear-types";
+import type { Gear, GearListItem } from "../src/types/gears";
 import type { OperatorRole, OperatorRoleListItem } from "../src/types/operator-roles";
 import type { Operator, OperatorListItem } from "../src/types/operators";
 import type { WeaponType, WeaponTypeListItem } from "../src/types/weapon-types";
 import type { Weapon, WeaponListItem } from "../src/types/weapons";
 
-type CategoryType = "attributes" | "elements" | "operator-roles" | "operators" | "weapon-types" | "weapons";
+type CategoryType = "attributes" | "elements" | "gear-sets" | "gear-types" | "gears" | "operator-roles" | "operators"
+  | "weapon-types" | "weapons";
 type DataItem<T extends CategoryType>
   = T extends "attributes" ? Attribute
     : T extends "elements" ? Element
-      : T extends "operator-roles" ? OperatorRole
-        : T extends "operators" ? Operator
-          : T extends "weapon-types" ? WeaponType
-            : T extends "weapons" ? Weapon
-              : never;
+      : T extends "gear-sets" ? GearSet
+        : T extends "gear-types" ? GearType
+          : T extends "gears" ? Gear
+            : T extends "operator-roles" ? OperatorRole
+              : T extends "operators" ? Operator
+                : T extends "weapon-types" ? WeaponType
+                  : T extends "weapons" ? Weapon
+                    : never;
 type DataListItem<T extends CategoryType>
   = T extends "attributes" ? AttributeListItem
     : T extends "elements" ? ElementListItem
-      : T extends "operator-roles" ? OperatorRoleListItem
-        : T extends "operators" ? OperatorListItem
-          : T extends "weapon-types" ? WeaponTypeListItem
-            : T extends "weapons" ? WeaponListItem
-              : never;
+      : T extends "gear-sets" ? GearSetListItem
+        : T extends "gear-types" ? GearTypeListItem
+          : T extends "gears" ? GearListItem
+            : T extends "operator-roles" ? OperatorRoleListItem
+              : T extends "operators" ? OperatorListItem
+                : T extends "weapon-types" ? WeaponTypeListItem
+                  : T extends "weapons" ? WeaponListItem
+                    : never;
 
 interface CategoryConfig<T extends CategoryType> {
   data: DataItem<T>[];
@@ -160,6 +173,612 @@ const CATEGORIES = {
       { id: ElementIds.Heat, image: BASE_URL + "images/elements/heat.png", name: "Жар" },
       { id: ElementIds.Nature, image: BASE_URL + "images/elements/nature.png", name: "Природа" },
       { id: ElementIds.Physical, image: BASE_URL + "images/elements/physical.png", name: "Физика" },
+    ],
+    transformList: item => item,
+  },
+  "gear-sets": {
+    data: [
+      {
+        id: GearSetIds.AICHeavy,
+        name: "AIC Heavy",
+        bonusStat: "Wearer's HP +500",
+        effect: "When the wearer defeats an enemy, restore 100 HP. Effect trigger cooldown: 5s.",
+      },
+      {
+        id: GearSetIds.AICLight,
+        name: "AIC Light",
+        bonusStat: "Wearer's HP +500",
+        effect: "When the wearer defeats an enemy, ATK +20 for 5s.",
+      },
+      {
+        id: GearSetIds.ArmoredMSGR,
+        name: "Armored MSGR",
+        bonusStat: "Wearer's Strength +50",
+        effect: "When the wearer's HP is below 50%, the wearer gains 30% DMG Reduction against all types of DMG.",
+      },
+      { id: GearSetIds.BasicGearPack, name: "Basic Gear Pack" },
+      { id: GearSetIds.MinerAGearPack, name: "Miner α Gear Pack" },
+      { id: GearSetIds.MinerBGearPack, name: "Miner β Gear Pack" },
+      {
+        id: GearSetIds.MordvoltInsulation,
+        name: "Mordvolt Insulation",
+        bonusStat: "Wearer's Intellect +50",
+        effect: "When the wearer's HP is above 80%, Arts DMG +20%.",
+      },
+      {
+        id: GearSetIds.MordvoltResistant,
+        name: "Mordvolt Resistant",
+        bonusStat: "Wearer's Will +50",
+        effect: "When the wearer's HP is below 50%, Treatment Effect +30%.",
+      },
+      {
+        id: GearSetIds.RovingMSGR,
+        name: "Roving MSGR",
+        bonusStat: "Wearer's Agility +50",
+        effect: "When the wearer's HP is above 80%, Physical DMG +20%",
+      },
+    ],
+    transformList: item => item,
+  },
+  "gear-types": {
+    data: [
+      { id: GearTypeIds.Armor, name: "Armor" },
+      { id: GearTypeIds.Gloves, name: "Gloves" },
+      { id: GearTypeIds.Kit, name: "Kit" },
+    ],
+    transformList: item => item,
+  },
+  "gears": {
+    data: [
+      {
+        id: GearIds.AICAlloyPlate,
+        image: BASE_URL + "images/gears/aic-alloy-plate.png",
+        name: "AIC Alloy Plate",
+        typeId: GearTypeIds.Kit,
+        level: 28,
+        rarity: "green",
+        defense: 8,
+        substats: [{ text: "Agility", value: 16 }, { text: "Final DMG Reduction", value: "7.5%" }],
+        setId: GearSetIds.AICHeavy,
+      },
+      {
+        id: GearIds.AICCeramicPlate,
+        image: BASE_URL + "images/gears/aic-ceramic-plate.png",
+        name: "AIC Ceramic Plate",
+        typeId: GearTypeIds.Kit,
+        level: 28,
+        rarity: "green",
+        defense: 8,
+        substats: [{ text: "Will", value: 16 }, { text: "Battle Skill DMG Bonus", value: "16.20%" }],
+        setId: GearSetIds.AICLight,
+      },
+      {
+        id: GearIds.AICGauntlets,
+        image: BASE_URL + "images/gears/aic-gauntlets.png",
+        name: "AIC Gauntlets",
+        typeId: GearTypeIds.Gloves,
+        level: 28,
+        rarity: "green",
+        defense: 16,
+        substats: [
+          { text: "Strength", value: 23 },
+          { text: "Will", value: 23 },
+          { text: "Final DMG Reduction", value: "6.30%" },
+        ],
+        setId: GearSetIds.AICHeavy,
+      },
+      {
+        id: GearIds.AICHeavyArmor,
+        image: BASE_URL + "images/gears/aic-heavy-armor.png",
+        name: "AIC Heavy Armor",
+        typeId: GearTypeIds.Armor,
+        level: 28,
+        rarity: "green",
+        defense: 22,
+        substats: [
+          { text: "Strength", value: 30 },
+          { text: "Agility", value: 30 },
+          { text: "Final DMG Reduction", value: "3.90%" },
+        ],
+        setId: GearSetIds.AICHeavy,
+      },
+      {
+        id: GearIds.AICHeavyPlate,
+        image: BASE_URL + "images/gears/aic-heavy-plate.png",
+        name: "AIC Heavy Plate",
+        typeId: GearTypeIds.Kit,
+        level: 28,
+        rarity: "green",
+        defense: 8,
+        substats: [{ text: "Strength", value: 16 }, { text: "Final DMG Reduction", value: "7.5%" }],
+        setId: GearSetIds.AICHeavy,
+      },
+      {
+        id: GearIds.AICLightArmor,
+        image: BASE_URL + "images/gears/aic-light-armor.png",
+        name: "AIC Light Armor",
+        typeId: GearTypeIds.Armor,
+        level: 28,
+        rarity: "green",
+        defense: 22,
+        substats: [
+          { text: "Intellect", value: 30 },
+          { text: "Will", value: 30 },
+          { text: "Battle Skill DMG Bonus", value: "8.10%" },
+        ],
+        setId: GearSetIds.AICLight,
+      },
+      {
+        id: GearIds.AICLightPlate,
+        image: BASE_URL + "images/gears/aic-light-plate.png",
+        name: "AIC Light Plate",
+        typeId: GearTypeIds.Kit,
+        level: 28,
+        rarity: "green",
+        defense: 8,
+        substats: [{ text: "Intellect", value: 16 }, { text: "Combo Skill DMG Bonus", value: "16.20%" }],
+        setId: GearSetIds.AICLight,
+      },
+      {
+        id: GearIds.AICTacticalGloves,
+        image: BASE_URL + "images/gears/aic-tactical-gloves.png",
+        name: "AIC Tactical Gloves",
+        typeId: GearTypeIds.Gloves,
+        level: 28,
+        rarity: "green",
+        defense: 16,
+        substats: [
+          { text: "Agility", value: 23 },
+          { text: "Intellect", value: 23 },
+          { text: "Combo Skill DMG Bonus", value: "13.50%" },
+        ],
+        setId: GearSetIds.AICLight,
+      },
+      {
+        id: GearIds.ArmoredMSGRFlashlight,
+        image: BASE_URL + "images/gears/armored-msgr-flashlight.png",
+        name: "Armored MSGR Flashlight",
+        typeId: GearTypeIds.Kit,
+        level: 36,
+        rarity: "blue",
+        defense: 10,
+        substats: [{ text: "Strength", value: 21 }, { text: "HP", value: "21.0%" }],
+        setId: GearSetIds.ArmoredMSGR,
+      },
+      {
+        id: GearIds.ArmoredMSGRGloves,
+        image: BASE_URL + "images/gears/armored-msgr-gloves.png",
+        name: "Armored MSGR Gloves",
+        typeId: GearTypeIds.Gloves,
+        level: 36,
+        rarity: "blue",
+        defense: 21,
+        substats: [
+          { text: "Strength", value: 33 },
+          { text: "Will", value: 22 },
+          { text: "Final DMG Reduction", value: "8.0%" },
+        ],
+        setId: GearSetIds.ArmoredMSGR,
+      },
+      {
+        id: GearIds.ArmoredMSGRGyro,
+        image: BASE_URL + "images/gears/armored-msgr-gyro.png",
+        name: "Armored MSGR Gyro",
+        typeId: GearTypeIds.Kit,
+        level: 36,
+        rarity: "blue",
+        defense: 10,
+        substats: [{ text: "Strength", value: 21 }, { text: "Attack", value: "10.5%" }],
+        setId: GearSetIds.ArmoredMSGR,
+      },
+      {
+        id: GearIds.ArmoredMSGRJacket,
+        image: BASE_URL + "images/gears/armored-msgr-jacket.png",
+        name: "Armored MSGR Jacket",
+        typeId: GearTypeIds.Armor,
+        level: 36,
+        rarity: "blue",
+        defense: 28,
+        substats: [{ text: "Strength", value: 44 }, { text: "Agility", value: 29 }, { text: "HP", value: "10.5%" }],
+        setId: GearSetIds.ArmoredMSGR,
+      },
+      {
+        id: GearIds.BasicArmor,
+        image: BASE_URL + "images/gears/basic-armor.png",
+        name: "Basic Armor",
+        typeId: GearTypeIds.Armor,
+        level: 10,
+        rarity: "white",
+        defense: 8,
+        substats: [{ text: "Strength", value: 15 }, { text: "Agility", value: 10 }, { text: "HP", value: 46 }],
+        setId: GearSetIds.BasicGearPack,
+      },
+      {
+        id: GearIds.BasicGauntlets,
+        image: BASE_URL + "images/gears/basic-gauntlets.png",
+        name: "Basic Gauntlets",
+        typeId: GearTypeIds.Gloves,
+        level: 10,
+        rarity: "white",
+        defense: 6,
+        substats: [{ text: "Strength", value: 11 }, { text: "Agility", value: 7 }, { text: "HP", value: 77 }],
+        setId: GearSetIds.BasicGearPack,
+      },
+      {
+        id: GearIds.BasicGloves,
+        image: BASE_URL + "images/gears/basic-gloves.png",
+        name: "Basic Gloves",
+        typeId: GearTypeIds.Gloves,
+        level: 10,
+        rarity: "white",
+        defense: 6,
+        substats: [{ text: "Intellect", value: 11 }, { text: "Will", value: 7 }, { text: "HP", value: 77 }],
+        setId: GearSetIds.BasicGearPack,
+      },
+      {
+        id: GearIds.BasicPPE,
+        image: BASE_URL + "images/gears/basic-ppe.png",
+        name: "Basic PPE",
+        typeId: GearTypeIds.Armor,
+        level: 10,
+        rarity: "white",
+        defense: 8,
+        substats: [{ text: "Intellect", value: 15 }, { text: "Will", value: 10 }, { text: "HP", value: 46 }],
+        setId: GearSetIds.BasicGearPack,
+      },
+      {
+        id: GearIds.EmergencyComm,
+        image: BASE_URL + "images/gears/emergency-comm.png",
+        name: "Emergency Comm",
+        typeId: GearTypeIds.Kit,
+        level: 20,
+        rarity: "green",
+        defense: 6,
+        substats: [{ text: "Critical Rate", value: "6.6%" }],
+        setId: GearSetIds.MinerAGearPack,
+      },
+      {
+        id: GearIds.EmergencyCompressionCore,
+        image: BASE_URL + "images/gears/emergency-compression-core.png",
+        name: "Emergency Compression Core",
+        typeId: GearTypeIds.Kit,
+        level: 20,
+        rarity: "green",
+        defense: 6,
+        substats: [{ text: "Attack", value: "13.2%" }],
+        setId: GearSetIds.MinerAGearPack,
+      },
+      {
+        id: GearIds.MinerArmor,
+        image: BASE_URL + "images/gears/miner-armor.png",
+        name: "Miner Armor",
+        typeId: GearTypeIds.Armor,
+        level: 20,
+        rarity: "green",
+        defense: 16,
+        substats: [{ text: "Strength", value: 27 }, { text: "Intellect", value: 18 }, { text: "HP", value: 125 }],
+        setId: GearSetIds.MinerAGearPack,
+      },
+      {
+        id: GearIds.MinerCleansuit,
+        image: BASE_URL + "images/gears/miner-cleansuit.png",
+        name: "Miner Cleansuit",
+        typeId: GearTypeIds.Armor,
+        level: 28,
+        rarity: "green",
+        defense: 22,
+        substats: [{ text: "Agility", value: 25 }, { text: "Will", value: 37 }, { text: "HP", value: "9.0%" }],
+        setId: GearSetIds.MinerAGearPack,
+      },
+      {
+        id: GearIds.MinerComm,
+        image: BASE_URL + "images/gears/miner-comm.png",
+        name: "Miner Comm",
+        typeId: GearTypeIds.Kit,
+        level: 36,
+        rarity: "blue",
+        defense: 10,
+        substats: [{ text: "Will", value: 22 }, { text: "HP", value: "22.8%" }],
+        setId: GearSetIds.MinerBGearPack,
+      },
+      {
+        id: GearIds.MinerCompressionCore,
+        image: BASE_URL + "images/gears/miner-compression-core.png",
+        name: "Miner Compression Core",
+        typeId: GearTypeIds.Kit,
+        level: 36,
+        rarity: "blue",
+        defense: 10,
+        substats: [{ text: "Intellect", value: 22 }, { text: "Critical Rate", value: "5.7%" }],
+        setId: GearSetIds.MinerBGearPack,
+      },
+      {
+        id: GearIds.MinerDriverWheel,
+        image: BASE_URL + "images/gears/miner-driver-wheel.png",
+        name: "Miner Driver Wheel",
+        typeId: GearTypeIds.Kit,
+        level: 36,
+        rarity: "blue",
+        defense: 10,
+        substats: [{ text: "Agility", value: 22 }, { text: "Critical Rate", value: "5.7%" }],
+        setId: GearSetIds.MinerBGearPack,
+      },
+      {
+        id: GearIds.MinerFists,
+        image: BASE_URL + "images/gears/miner-fists.png",
+        name: "Miner Fists",
+        typeId: GearTypeIds.Gloves,
+        level: 28,
+        rarity: "green",
+        defense: 16,
+        substats: [{ text: "Agility", value: 18 }, { text: "Will", value: 28 }, { text: "HP", value: "15%" }],
+        setId: GearSetIds.MinerAGearPack,
+      },
+      {
+        id: GearIds.MinerGauntlets,
+        image: BASE_URL + "images/gears/miner-gauntlets.png",
+        name: "Miner Gauntlets",
+        typeId: GearTypeIds.Gloves,
+        level: 20,
+        rarity: "green",
+        defense: 12,
+        substats: [{ text: "Strength", value: 20 }, { text: "Agility", value: 13 }, { text: "HP", value: "11%" }],
+        setId: GearSetIds.MinerAGearPack,
+      },
+      {
+        id: GearIds.MinerGauntletsT1,
+        image: BASE_URL + "images/gears/miner-gauntlets-t1.png",
+        name: "Miner Gauntlets T1",
+        typeId: GearTypeIds.Gloves,
+        level: 36,
+        rarity: "blue",
+        defense: 21,
+        substats: [{ text: "Strength", value: 36 }, { text: "Will", value: 24 }, { text: "Attack", value: "9.5%" }],
+        setId: GearSetIds.MinerBGearPack,
+      },
+      {
+        id: GearIds.MinerGloves,
+        image: BASE_URL + "images/gears/miner-gloves.png",
+        name: "Miner Gloves",
+        typeId: GearTypeIds.Gloves,
+        level: 20,
+        rarity: "green",
+        defense: 12,
+        substats: [{ text: "Intellect", value: 20 }, { text: "Will", value: 13 }, { text: "HP", value: "11%" }],
+        setId: GearSetIds.MinerAGearPack,
+      },
+      {
+        id: GearIds.MinerGlovesT1,
+        image: BASE_URL + "images/gears/miner-gloves-t1.png",
+        name: "Miner Gloves T1",
+        typeId: GearTypeIds.Gloves,
+        level: 36,
+        rarity: "blue",
+        defense: 21,
+        substats: [{ text: "Agility", value: 24 }, { text: "Intellect", value: 36 }, { text: "HP", value: "19.0%" }],
+        setId: GearSetIds.MinerBGearPack,
+      },
+      {
+        id: GearIds.MinerOveralls,
+        image: BASE_URL + "images/gears/miner-overalls.png",
+        name: "Miner Overalls",
+        typeId: GearTypeIds.Armor,
+        level: 20,
+        rarity: "green",
+        defense: 16,
+        substats: [{ text: "Intellect", value: 27 }, { text: "Will", value: 18 }, { text: "HP", value: 125 }],
+        setId: GearSetIds.MinerAGearPack,
+      },
+      {
+        id: GearIds.MinerTurbine,
+        image: BASE_URL + "images/gears/miner-turbine.png",
+        name: "Miner Turbine",
+        typeId: GearTypeIds.Kit,
+        level: 36,
+        rarity: "blue",
+        defense: 10,
+        substats: [{ text: "Strength", value: 22 }, { text: "Combo Skill DMG", value: "22.8%" }],
+        setId: GearSetIds.MinerBGearPack,
+      },
+      {
+        id: GearIds.MinerVest,
+        image: BASE_URL + "images/gears/miner-vest.png",
+        name: "Miner Vest",
+        typeId: GearTypeIds.Armor,
+        level: 28,
+        rarity: "green",
+        defense: 22,
+        substats: [{ text: "Agility", value: 37 }, { text: "Intellect", value: 25 }, { text: "HP", value: "9.0%" }],
+        setId: GearSetIds.MinerAGearPack,
+      },
+      {
+        id: GearIds.MinerWrists,
+        image: BASE_URL + "images/gears/miner-wrists.png",
+        name: "Miner Wrists",
+        typeId: GearTypeIds.Gloves,
+        level: 28,
+        rarity: "green",
+        defense: 16,
+        substats: [{ text: "Strength", value: 18 }, { text: "Agility", value: 28 }, { text: "HP", value: "15%" }],
+        setId: GearSetIds.MinerAGearPack,
+      },
+      {
+        id: GearIds.MordvoltInsulationBattery,
+        image: BASE_URL + "images/gears/mordvolt-insulation-battery.png",
+        name: "Mordvolt Insulation Battery",
+        typeId: GearTypeIds.Kit,
+        level: 36,
+        rarity: "blue",
+        defense: 10,
+        substats: [{ text: "Intellect", value: 21 }, { text: "Critical Rate", value: "5.3%" }],
+        setId: GearSetIds.MordvoltInsulation,
+      },
+      {
+        id: GearIds.MordvoltInsulationGloves,
+        image: BASE_URL + "images/gears/mordvolt-insulation-gloves.png",
+        name: "Mordvolt Insulation Gloves",
+        typeId: GearTypeIds.Gloves,
+        level: 36,
+        rarity: "blue",
+        defense: 21,
+        substats: [
+          { text: "Intellect", value: 33 },
+          { text: "Will", value: 22 },
+          { text: "Arts DMG Dealt Bonus", value: "9.2%" },
+        ],
+        setId: GearSetIds.MordvoltInsulation,
+      },
+      {
+        id: GearIds.MordvoltInsulationVest,
+        image: BASE_URL + "images/gears/mordvolt-insulation-vest.png",
+        name: "Mordvolt Insulation Vest",
+        typeId: GearTypeIds.Armor,
+        level: 36,
+        rarity: "blue",
+        defense: 28,
+        substats: [{ text: "Strength", value: 29 }, { text: "Intellect", value: 44 }, { text: "Attack", value: 16 }],
+        setId: GearSetIds.MordvoltInsulation,
+      },
+      {
+        id: GearIds.MordvoltInsulationWrench,
+        image: BASE_URL + "images/gears/mordvolt-insulation-wrench.png",
+        name: "Mordvolt Insulation Wrench",
+        typeId: GearTypeIds.Kit,
+        level: 36,
+        rarity: "blue",
+        defense: 10,
+        substats: [{ text: "Intellect", value: 21 }, { text: "Attack", value: "10.50%" }],
+        setId: GearSetIds.MordvoltInsulation,
+      },
+      {
+        id: GearIds.MordvoltInsulationWrenchT1,
+        image: BASE_URL + "images/gears/mordvolt-insulation-wrench-t1.png",
+        name: "Mordvolt Insulation Wrench T1",
+        typeId: GearTypeIds.Kit,
+        level: 36,
+        rarity: "blue",
+        defense: 10,
+        substats: [{ text: "Intellect", value: 21 }, { text: "Cryo and Electric DMG Dealt Bonus", value: "11.7%" }],
+        setId: GearSetIds.MordvoltInsulation,
+      },
+      {
+        id: GearIds.MordvoltResistantBattery,
+        image: BASE_URL + "images/gears/mordvolt-resistant-battery.png",
+        name: "Mordvolt Resistant Battery",
+        typeId: GearTypeIds.Kit,
+        level: 36,
+        rarity: "blue",
+        defense: 10,
+        substats: [{ text: "Will", value: 21 }, { text: "Treatment Bonus", value: "10.50%" }],
+        setId: GearSetIds.MordvoltResistant,
+      },
+      {
+        id: GearIds.MordvoltResistantGloves,
+        image: BASE_URL + "images/gears/mordvolt-resistant-gloves.png",
+        name: "Mordvolt Resistant Gloves",
+        typeId: GearTypeIds.Gloves,
+        level: 36,
+        rarity: "blue",
+        defense: 21,
+        substats: [
+          { text: "Intellect", value: 22 },
+          { text: "Will", value: 33 },
+          { text: "Treatment Bonus", value: "8.8%" },
+        ],
+        setId: GearSetIds.MordvoltResistant,
+      },
+      {
+        id: GearIds.MordvoltResistantVest,
+        image: BASE_URL + "images/gears/mordvolt-resistant-vest.png",
+        name: "Mordvolt Resistant Vest",
+        typeId: GearTypeIds.Armor,
+        level: 36,
+        rarity: "blue",
+        defense: 28,
+        substats: [{ text: "Agility", value: 29 }, { text: "Will", value: 44 }, { text: "HP", value: "10.5%" }],
+        setId: GearSetIds.MordvoltResistant,
+      },
+      {
+        id: GearIds.MordvoltResistantWrench,
+        image: BASE_URL + "images/gears/mordvolt-resistant-wrench.png",
+        name: "Mordvolt Resistant Wrench",
+        typeId: GearTypeIds.Kit,
+        level: 36,
+        rarity: "blue",
+        defense: 10,
+        substats: [{ text: "Will", value: 21 }, { text: "Attack", value: "10.5%" }],
+        setId: GearSetIds.MordvoltResistant,
+      },
+      {
+        id: GearIds.PrototypeHeavyArmor,
+        image: BASE_URL + "images/gears/prototype-heavy-armor.png",
+        name: "Prototype Heavy Armor",
+        typeId: GearTypeIds.Armor,
+        level: 28,
+        rarity: "green",
+        defense: 22,
+        substats: [{ text: "Strength", value: 37 }, { text: "Intellect", value: 25 }, { text: "Attack", value: 11 }],
+        setId: GearSetIds.MinerAGearPack,
+      },
+      {
+        id: GearIds.PrototypeHeavyArmorT1,
+        image: BASE_URL + "images/gears/prototype-heavy-armor-t1.png",
+        name: "Prototype Heavy Armor T1",
+        typeId: GearTypeIds.Armor,
+        level: 28,
+        rarity: "green",
+        defense: 22,
+        substats: [{ text: "Agility", value: 37 }, { text: "Will", value: 25 }, { text: "Attack", value: 11 }],
+        setId: GearSetIds.MinerAGearPack,
+      },
+      {
+        id: GearIds.RovingMSGRFists,
+        image: BASE_URL + "images/gears/roving-msgr-fists.png",
+        name: "Roving MSGR Fists",
+        typeId: GearTypeIds.Gloves,
+        level: 36,
+        rarity: "blue",
+        defense: 21,
+        substats: [
+          { text: "Strength", value: 22 },
+          { text: "Agility", value: 33 },
+          { text: "Physical DMG Bonus", value: "9.7%" },
+        ],
+        setId: GearSetIds.RovingMSGR,
+      },
+      {
+        id: GearIds.RovingMSGRFlashlight,
+        image: BASE_URL + "images/gears/roving-msgr-flashlight.png",
+        name: "Roving MSGR Flashlight",
+        typeId: GearTypeIds.Kit,
+        level: 36,
+        rarity: "blue",
+        defense: 10,
+        substats: [{ text: "Agility", value: 21 }, { text: "Combo Skill DMG", value: "21.0%" }],
+        setId: GearSetIds.RovingMSGR,
+      },
+      {
+        id: GearIds.RovingMSGRGyro,
+        image: BASE_URL + "images/gears/roving-msgr-gyro.png",
+        name: "Roving MSGR Gyro",
+        typeId: GearTypeIds.Kit,
+        level: 36,
+        rarity: "blue",
+        defense: 10,
+        substats: [{ text: "Agility", value: 21 }, { text: "Attack", value: "10.5%" }],
+        setId: GearSetIds.RovingMSGR,
+      },
+      {
+        id: GearIds.RovingMSGRJacket,
+        image: BASE_URL + "images/gears/roving-msgr-jacket.png",
+        name: "Roving MSGR Jacket",
+        typeId: GearTypeIds.Armor,
+        level: 36,
+        rarity: "blue",
+        defense: 28,
+        substats: [{ text: "Agility", value: 44 }, { text: "Intellect", value: 29 }, { text: "Attack", value: 16 }],
+        setId: GearSetIds.RovingMSGR,
+      },
     ],
     transformList: item => item,
   },
@@ -1689,6 +2308,9 @@ const CATEGORIES = {
 } satisfies {
   "attributes": CategoryConfig<"attributes">;
   "elements": CategoryConfig<"elements">;
+  "gear-sets": CategoryConfig<"gear-sets">;
+  "gear-types": CategoryConfig<"gear-types">;
+  "gears": CategoryConfig<"gears">;
   "operator-roles": CategoryConfig<"operator-roles">;
   "operators": CategoryConfig<"operators">;
   "weapon-types": CategoryConfig<"weapon-types">;
@@ -1734,6 +2356,9 @@ async function main() {
 
     await generateCategory("attributes", CATEGORIES["attributes"]);
     await generateCategory("elements", CATEGORIES["elements"]);
+    await generateCategory("gear-sets", CATEGORIES["gear-sets"]);
+    await generateCategory("gear-types", CATEGORIES["gear-types"]);
+    await generateCategory("gears", CATEGORIES["gears"]);
     await generateCategory("operator-roles", CATEGORIES["operator-roles"]);
     await generateCategory("operators", CATEGORIES["operators"]);
     await generateCategory("weapon-types", CATEGORIES["weapon-types"]);

@@ -21,7 +21,7 @@ export const columns: ColumnDef<WeaponData>[] = [
       const name = row.original.name;
 
       return (
-        <div className="flex flex-col gap-y-1 items-center text-center">
+        <div className="flex flex-col gap-y-1 items-center text-center whitespace-normal">
           <img alt={name} className="size-13.75" src={image} />
           <p>{name}</p>
         </div>
@@ -54,7 +54,7 @@ export const columns: ColumnDef<WeaponData>[] = [
       const typeName = row.original.type.name;
 
       return (
-        <div className="flex flex-col gap-y-1 items-center text-center">
+        <div className="flex flex-col gap-y-1 items-center text-center whitespace-normal">
           <img alt={typeName} className="size-7.5" src={typeImage} />
           <p>{typeName}</p>
         </div>

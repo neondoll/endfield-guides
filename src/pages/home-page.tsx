@@ -16,7 +16,12 @@ interface Section {
 const SECTIONS: Array<Section> = [
   { icon: UsersRoundIcon, title: "Операторы", description: "Список всех персонажей", to: PATHS.Operators },
   { icon: SwordsIcon, title: "Оружие", description: "Список всего оружия", to: PATHS.Weapons },
-  { icon: PuzzleIcon, title: "Снаряжение", description: "Список всего снаряжения и эффектов комплектов", to: "#" },
+  {
+    icon: PuzzleIcon,
+    title: "Снаряжение",
+    description: "Список всего снаряжения и эффектов комплектов",
+    to: PATHS.Gears,
+  },
 ];
 
 const HomePage: FC = () => {

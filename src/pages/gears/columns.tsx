@@ -73,16 +73,12 @@ export const columns: ColumnDef<GearData>[] = [
         <div className="flex flex-col gap-y-1 whitespace-pre-line">
           <p className="pb-1 border-b border-dashed">
             <span className="font-bold">Defense</span>
-            :
-            {" "}
-            {defense}
+            {`: ${defense}`}
           </p>
           {substats.map(substat => (
-            <p>
+            <p key={substat.text}>
               <span className="font-bold">{substat.text}</span>
-              :
-              {" "}
-              {substat.value}
+              {`: ${substat.value}`}
             </p>
           ))}
         </div>
@@ -114,15 +110,11 @@ export const columns: ColumnDef<GearData>[] = [
                 <>
                   <p>
                     <span className="font-bold">Bonus Stat</span>
-                    :
-                    {" "}
-                    {bonusStat}
+                    {`: ${bonusStat}`}
                   </p>
                   <p>
                     <span className="font-bold">Set Effect</span>
-                    :
-                    {" "}
-                    {setEffect}
+                    {`: ${setEffect}`}
                   </p>
                 </>
               )

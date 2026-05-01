@@ -1777,7 +1777,6 @@ const CATEGORIES = {
       },
       {
         id: WeaponIds.HomeLonging,
-        // TODO: Картинки нет
         image: BASE_URL + "images/weapons/home-longing.png",
         name: "Home Longing",
         typeId: WeaponTypeIds.Handcannon,
@@ -1941,7 +1940,6 @@ const CATEGORIES = {
       },
       {
         id: WeaponIds.Monaihe,
-        // TODO: Картинки нет
         image: BASE_URL + "images/weapons/monaihe.png",
         name: "Monaihe",
         typeId: WeaponTypeIds.ArtsUnit,
@@ -1955,7 +1953,6 @@ const CATEGORIES = {
       },
       {
         id: WeaponIds.MountainBearer,
-        // TODO: Картинки нет
         image: BASE_URL + "images/weapons/mountain-bearer.png",
         name: "Mountain Bearer",
         typeId: WeaponTypeIds.Polearm,
@@ -2126,7 +2123,6 @@ const CATEGORIES = {
       },
       {
         id: WeaponIds.OpusEtchFigure,
-        // TODO: Картинки нет
         image: BASE_URL + "images/weapons/opus-etch-figure.png",
         name: "Opus: Etch Figure",
         typeId: WeaponTypeIds.ArtsUnit,

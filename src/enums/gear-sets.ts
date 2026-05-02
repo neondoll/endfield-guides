@@ -7,6 +7,7 @@ export const GearSetIds = {
   Catastrophe: "catastrophe",
   MinerAGearPack: "miner-α-gear-pack",
   MinerBGearPack: "miner-β-gear-pack",
+  MinerYGearPack: "miner-γ-gear-pack",
   MordvoltInsulation: "mordvolt-insulation",
   MordvoltResistant: "mordvolt-resistant",
   RovingMSGR: "roving-msgr",

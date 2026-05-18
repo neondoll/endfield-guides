@@ -6,6 +6,7 @@ import { DataTableColumnHeader } from "./data-table";
 import type { GearSetListItem } from "@/types/gear-sets";
 import type { GearTypeListItem } from "@/types/gear-types";
 import type { GearListItem } from "@/types/gears";
+import { cn } from "@/lib/utils.ts";
 
 export interface GearData extends GearListItem {
   set: GearSetListItem;
@@ -60,7 +61,21 @@ export const columns: ColumnDef<GearData>[] = [
     cell: ({ row }) => {
       const rarity = row.original.rarity;
 
-      return <p className="text-center whitespace-normal">{rarity}</p>;
+      return (
+        <div className="flex flex-col gap-y-1 items-center text-center">
+          <div
+            className={cn([
+              "size-7.5 rounded-sm",
+              rarity === "white" && "bg-gray-500",
+              rarity === "green" && "bg-green-500",
+              rarity === "blue" && "bg-blue-500",
+              rarity === "purple" && "bg-purple-500",
+              rarity === "gold" && "bg-yellow-500",
+            ])}
+          />
+          <p className="sr-only whitespace-normal">{rarity}</p>
+        </div>
+      );
     },
   },
   {
@@ -107,20 +122,20 @@ export const columns: ColumnDef<GearData>[] = [
         <div className="flex flex-col gap-y-1 whitespace-pre-line">
           {(bonusStat || setEffect)
             ? (
-                <>
-                  <p>
-                    <span className="font-bold">Bonus Stat</span>
-                    {`: ${bonusStat}`}
-                  </p>
-                  <p>
-                    <span className="font-bold">Set Effect</span>
-                    {`: ${setEffect}`}
-                  </p>
-                </>
-              )
+              <>
+                <p>
+                  <span className="font-bold">Bonus Stat</span>
+                  {`: ${bonusStat}`}
+                </p>
+                <p>
+                  <span className="font-bold">Set Effect</span>
+                  {`: ${setEffect}`}
+                </p>
+              </>
+            )
             : (
-                <p className="text-destructive">No 3-pc Set Effect</p>
-              )}
+              <p className="text-destructive">No 3-pc Set Effect</p>
+            )}
         </div>
       );
     },

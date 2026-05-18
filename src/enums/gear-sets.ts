@@ -5,10 +5,12 @@ export const GearSetIds = {
   ArmoredMSGR: "armored-msgr",
   BasicGearPack: "basic-gear-pack",
   Catastrophe: "catastrophe",
+  LYNX: "lynx",
   MinerAGearPack: "miner-α-gear-pack",
   MinerBGearPack: "miner-β-gear-pack",
   MinerYGearPack: "miner-γ-gear-pack",
   MordvoltInsulation: "mordvolt-insulation",
   MordvoltResistant: "mordvolt-resistant",
   RovingMSGR: "roving-msgr",
+  Swordmancer: "swordmancer",
 } as const;

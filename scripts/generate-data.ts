@@ -25,26 +25,26 @@ type CategoryType = "attributes" | "elements" | "gear-sets" | "gear-types" | "ge
   | "weapon-types" | "weapons";
 type DataItem<T extends CategoryType>
   = T extends "attributes" ? Attribute
-    : T extends "elements" ? Element
-      : T extends "gear-sets" ? GearSet
-        : T extends "gear-types" ? GearType
-          : T extends "gears" ? Gear
-            : T extends "operator-roles" ? OperatorRole
-              : T extends "operators" ? Operator
-                : T extends "weapon-types" ? WeaponType
-                  : T extends "weapons" ? Weapon
-                    : never;
+  : T extends "elements" ? Element
+    : T extends "gear-sets" ? GearSet
+      : T extends "gear-types" ? GearType
+        : T extends "gears" ? Gear
+          : T extends "operator-roles" ? OperatorRole
+            : T extends "operators" ? Operator
+              : T extends "weapon-types" ? WeaponType
+                : T extends "weapons" ? Weapon
+                  : never;
 type DataListItem<T extends CategoryType>
   = T extends "attributes" ? AttributeListItem
-    : T extends "elements" ? ElementListItem
-      : T extends "gear-sets" ? GearSetListItem
-        : T extends "gear-types" ? GearTypeListItem
-          : T extends "gears" ? GearListItem
-            : T extends "operator-roles" ? OperatorRoleListItem
-              : T extends "operators" ? OperatorListItem
-                : T extends "weapon-types" ? WeaponTypeListItem
-                  : T extends "weapons" ? WeaponListItem
-                    : never;
+  : T extends "elements" ? ElementListItem
+    : T extends "gear-sets" ? GearSetListItem
+      : T extends "gear-types" ? GearTypeListItem
+        : T extends "gears" ? GearListItem
+          : T extends "operator-roles" ? OperatorRoleListItem
+            : T extends "operators" ? OperatorListItem
+              : T extends "weapon-types" ? WeaponTypeListItem
+                : T extends "weapons" ? WeaponListItem
+                  : never;
 
 interface CategoryConfig<T extends CategoryType> {
   data: DataItem<T>[];
@@ -209,6 +209,12 @@ const CATEGORIES = {
         bonusStat: "Wearer's Ultimate Gain Efficiency +20%.",
         effect: "At the start of battle, the wearer immediately recovers 50 SP.",
       },
+      {
+        id: GearSetIds.LYNX,
+        name: "LYNX",
+        bonusStat: "Wearer's HP Treatment Efficiency +20%",
+        effect: "After the wearer gives HP treatment to an allied target, that target also gains 15% DMG Reduction against all types of DMG for 10s. If the said treatment exceeds the target's Max HP, the target gains 30% DMG Reduction against all types of DMG. The aforementioned effects cannot stack.",
+      },
       { id: GearSetIds.MinerAGearPack, name: "Miner α Gear Pack" },
       { id: GearSetIds.MinerBGearPack, name: "Miner β Gear Pack" },
       { id: GearSetIds.MinerYGearPack, name: "Miner γ Gear Pack" },
@@ -229,6 +235,12 @@ const CATEGORIES = {
         name: "Roving MSGR",
         bonusStat: "Wearer's Agility +50",
         effect: "When the wearer's HP is above 80%, Physical DMG +20%",
+      },
+      {
+        id: GearSetIds.Swordmancer,
+        name: "Swordmancer",
+        bonusStat: "Wearer's Stagger Efficiency Bonus +20%",
+        effect: "After the wearer applies a Physical Status, the wearer also performs 1 hit that deals 250% ATK of Physical DMG and [10 Stagger]. Effect trigger cooldown: 15s.",
       },
     ],
     transformList: item => item,
@@ -270,6 +282,36 @@ const CATEGORIES = {
           { text: "Strength", value: 15 },
           { text: "Agility", value: 23 },
           { text: "Combo Skill DMG Bonus", value: "29.40%" },
+        ],
+        setId: GearSetIds.AburreysLegacy,
+      },
+      {
+        id: GearIds.AburreyFlashlight,
+        image: BASE_URL + "images/gears/aburrey-flashlight.png",
+        name: "Aburrey Flashlight",
+        typeId: GearTypeIds.Kit,
+        level: 50,
+        rarity: "purple",
+        defense: 15,
+        substats: [
+          { text: "Strength", value: 15 },
+          { text: "Intellect", value: 23 },
+          { text: "Ultimate Gain Efficiency", value: "17.50%" },
+        ],
+        setId: GearSetIds.AburreysLegacy,
+      },
+      {
+        id: GearIds.AburreyGauntlets,
+        image: BASE_URL + "images/gears/aburrey-gauntlets.png",
+        name: "Aburrey Gauntlets",
+        typeId: GearTypeIds.Gloves,
+        level: 50,
+        rarity: "purple",
+        defense: 30,
+        substats: [
+          { text: "Strength", value: 46 },
+          { text: "Will", value: 30 },
+          { text: "DMG Bonus vs. Staggered", value: "24.50%" },
         ],
         setId: GearSetIds.AburreysLegacy,
       },
@@ -345,6 +387,36 @@ const CATEGORIES = {
           { text: "Agility", value: 15 },
           { text: "Will", value: 23 },
           { text: "Battle Skill DMG Bonus", value: "29.40%" },
+        ],
+        setId: GearSetIds.AburreysLegacy,
+      },
+      {
+        id: GearIds.AburreySensorChipT1,
+        image: BASE_URL + "images/gears/aburrey-sensor-chip-t1.png",
+        name: "Aburrey Sensor Chip T1",
+        typeId: GearTypeIds.Kit,
+        level: 50,
+        rarity: "purple",
+        defense: 15,
+        substats: [
+          { text: "Intellect", value: 15 },
+          { text: "Will", value: 23 },
+          { text: "Battle Skill DMG Bonus", value: "29.40%" },
+        ],
+        setId: GearSetIds.AburreysLegacy,
+      },
+      {
+        id: GearIds.AburreyUVLamp,
+        image: BASE_URL + "images/gears/aburrey-uv-lamp.png",
+        name: "Aburrey UV Lamp",
+        typeId: GearTypeIds.Kit,
+        level: 50,
+        rarity: "purple",
+        defense: 15,
+        substats: [
+          { text: "Strength", value: 23 },
+          { text: "Agility", value: 15 },
+          { text: "All Skill DMG Dealt Bonus", value: "19.60%" },
         ],
         setId: GearSetIds.AburreysLegacy,
       },
@@ -464,6 +536,21 @@ const CATEGORIES = {
         setId: GearSetIds.ArmoredMSGR,
       },
       {
+        id: GearIds.ArmoredMSGRFlashlightT1,
+        image: BASE_URL + "images/gears/armored-msgr-flashlight-t1.png",
+        name: "Armored MSGR Flashlight T1",
+        typeId: GearTypeIds.Kit,
+        level: 50,
+        rarity: "purple",
+        defense: 15,
+        substats: [
+          { text: "Strength", value: 23 },
+          { text: "Agility", value: 15 },
+          { text: "Critical Rate", value: "7.40%" },
+        ],
+        setId: GearSetIds.ArmoredMSGR,
+      },
+      {
         id: GearIds.ArmoredMSGRGloves,
         image: BASE_URL + "images/gears/armored-msgr-gloves.png",
         name: "Armored MSGR Gloves",
@@ -479,6 +566,36 @@ const CATEGORIES = {
         setId: GearSetIds.ArmoredMSGR,
       },
       {
+        id: GearIds.ArmoredMSGRGlovesT1,
+        image: BASE_URL + "images/gears/armored-msgr-gloves-t1.png",
+        name: "Armored MSGR Gloves T1",
+        typeId: GearTypeIds.Gloves,
+        level: 50,
+        rarity: "purple",
+        defense: 30,
+        substats: [
+          { text: "Strength", value: 46 },
+          { text: "Agility", value: 30 },
+          { text: "Attack", value: "12.30%" },
+        ],
+        setId: GearSetIds.ArmoredMSGR,
+      },
+      {
+        id: GearIds.ArmoredMSGRGlovesT2,
+        image: BASE_URL + "images/gears/armored-msgr-gloves-t2.png",
+        name: "Armored MSGR Gloves T2",
+        typeId: GearTypeIds.Gloves,
+        level: 50,
+        rarity: "purple",
+        defense: 30,
+        substats: [
+          { text: "Strength", value: 46 },
+          { text: "Agility", value: 30 },
+          { text: "Combo Skill DMG Bonus", value: "24.50%" },
+        ],
+        setId: GearSetIds.ArmoredMSGR,
+      },
+      {
         id: GearIds.ArmoredMSGRGyro,
         image: BASE_URL + "images/gears/armored-msgr-gyro.png",
         name: "Armored MSGR Gyro",
@@ -487,6 +604,17 @@ const CATEGORIES = {
         rarity: "blue",
         defense: 10,
         substats: [{ text: "Strength", value: 21 }, { text: "Attack", value: "10.5%" }],
+        setId: GearSetIds.ArmoredMSGR,
+      },
+      {
+        id: GearIds.ArmoredMSGRGyroT1,
+        image: BASE_URL + "images/gears/armored-msgr-gyro-t1.png",
+        name: "Armored MSGR Gyro T1",
+        typeId: GearTypeIds.Kit,
+        level: 50,
+        rarity: "purple",
+        defense: 15,
+        substats: [{ text: "Strength", value: 23 }, { text: "Will", value: 15 }, { text: "Attack", value: "14.70%" }],
         setId: GearSetIds.ArmoredMSGR,
       },
       {
@@ -668,6 +796,77 @@ const CATEGORIES = {
         setId: GearSetIds.MinerAGearPack,
       },
       {
+        id: GearIds.LYNXAegisInjector,
+        image: BASE_URL + "images/gears/lynx-aegis-injector.png",
+        name: "LYNX Aegis Injector",
+        typeId: GearTypeIds.Kit,
+        level: 70,
+        rarity: "gold",
+        defense: 21,
+        substats: [{ text: "Will", value: 41 }, { text: "Treatment Bonus", value: "20.7%" }],
+        setId: GearSetIds.LYNX,
+      },
+      {
+        id: GearIds.LYNXConnector,
+        image: BASE_URL + "images/gears/lynx-connector.png",
+        name: "LYNX Connector",
+        typeId: GearTypeIds.Kit,
+        level: 70,
+        rarity: "gold",
+        defense: 21,
+        substats: [
+          { text: "Strength", value: 32 },
+          { text: "Will", value: 21 },
+          { text: "Final DMG Reduction", value: "17.2%" },
+        ],
+        setId: GearSetIds.LYNX,
+      },
+      {
+        id: GearIds.LYNXCuirass,
+        image: BASE_URL + "images/gears/lynx-cuirass.png",
+        name: "LYNX Cuirass",
+        typeId: GearTypeIds.Armor,
+        level: 70,
+        rarity: "gold",
+        defense: 56,
+        substats: [
+          { text: "Intellect", value: 58 },
+          { text: "Will", value: 87 },
+          { text: "Treatment Bonus", value: "10.4%" },
+        ],
+        setId: GearSetIds.LYNX,
+      },
+      {
+        id: GearIds.LYNXGauntlets,
+        image: BASE_URL + "images/gears/lynx-gauntlets.png",
+        name: "LYNX Gauntlets",
+        typeId: GearTypeIds.Gloves,
+        level: 70,
+        rarity: "gold",
+        defense: 42,
+        substats: [
+          { text: "Strength", value: 43 },
+          { text: "Will", value: 65 },
+          { text: "Treatment Bonus", value: "17.30%" },
+        ],
+        setId: GearSetIds.LYNX,
+      },
+      {
+        id: GearIds.LYNXSlab,
+        image: BASE_URL + "images/gears/lynx-slab.png",
+        name: "LYNX Slab",
+        typeId: GearTypeIds.Kit,
+        level: 70,
+        rarity: "gold",
+        defense: 21,
+        substats: [
+          { text: "Intellect", value: 21 },
+          { text: "Will", value: 32 },
+          { text: "Main Attribute", value: "20.7%" },
+        ],
+        setId: GearSetIds.LYNX,
+      },
+      {
         id: GearIds.MinerArmor,
         image: BASE_URL + "images/gears/miner-armor.png",
         name: "Miner Armor",
@@ -716,6 +915,17 @@ const CATEGORIES = {
         setId: GearSetIds.MinerBGearPack,
       },
       {
+        id: GearIds.MinerCommT1,
+        image: BASE_URL + "images/gears/miner-comm-t1.png",
+        name: "Miner Comm T1",
+        typeId: GearTypeIds.Kit,
+        level: 50,
+        rarity: "purple",
+        defense: 15,
+        substats: [{ text: "Will", value: 31 }, { text: "Treatment Bonus", value: "15.6%" }],
+        setId: GearSetIds.MinerYGearPack,
+      },
+      {
         id: GearIds.MinerCompressionCore,
         image: BASE_URL + "images/gears/miner-compression-core.png",
         name: "Miner Compression Core",
@@ -725,6 +935,28 @@ const CATEGORIES = {
         defense: 10,
         substats: [{ text: "Intellect", value: 22 }, { text: "Critical Rate", value: "5.7%" }],
         setId: GearSetIds.MinerBGearPack,
+      },
+      {
+        id: GearIds.MinerCompressionCoreT1,
+        image: BASE_URL + "images/gears/miner-compression-core-t1.png",
+        name: "Miner Compression Core T1",
+        typeId: GearTypeIds.Kit,
+        level: 50,
+        rarity: "purple",
+        defense: 15,
+        substats: [{ text: "Intellect", value: 31 }, { text: "Ultimate Gain Efficiency", value: "18.6%" }],
+        setId: GearSetIds.MinerYGearPack,
+      },
+      {
+        id: GearIds.MinerDriveWheelT1,
+        image: BASE_URL + "images/gears/miner-drive-wheel-t1.png",
+        name: "Miner Drive Wheel T1",
+        typeId: GearTypeIds.Kit,
+        level: 50,
+        rarity: "purple",
+        defense: 15,
+        substats: [{ text: "Agility", value: 31 }, { text: "Combo Skill DMG Bonus", value: "31.2%" }],
+        setId: GearSetIds.MinerYGearPack,
       },
       {
         id: GearIds.MinerDriverWheel,
@@ -747,6 +979,21 @@ const CATEGORIES = {
         defense: 16,
         substats: [{ text: "Agility", value: 18 }, { text: "Will", value: 28 }, { text: "HP", value: "15%" }],
         setId: GearSetIds.MinerAGearPack,
+      },
+      {
+        id: GearIds.MinerFistsT1,
+        image: BASE_URL + "images/gears/miner-fists-t1.png",
+        name: "Miner Fists T1",
+        typeId: GearTypeIds.Gloves,
+        level: 50,
+        rarity: "purple",
+        defense: 30,
+        substats: [
+          { text: "Intellect", value: 32 },
+          { text: "Will", value: 49 },
+          { text: "Ultimate Gain Efficiency", value: "15.50%" },
+        ],
+        setId: GearSetIds.MinerYGearPack,
       },
       {
         id: GearIds.MinerGauntlets,
@@ -793,6 +1040,17 @@ const CATEGORIES = {
         setId: GearSetIds.MinerBGearPack,
       },
       {
+        id: GearIds.MinerGlovesT2,
+        image: BASE_URL + "images/gears/miner-gloves-t2.png",
+        name: "Miner Gloves T2",
+        typeId: GearTypeIds.Gloves,
+        level: 50,
+        rarity: "purple",
+        defense: 30,
+        substats: [{ text: "Agility", value: 32 }, { text: "Intellect", value: 49 }, { text: "Attack", value: "13%" }],
+        setId: GearSetIds.MinerYGearPack,
+      },
+      {
         id: GearIds.MinerOveralls,
         image: BASE_URL + "images/gears/miner-overalls.png",
         name: "Miner Overalls",
@@ -804,6 +1062,21 @@ const CATEGORIES = {
         setId: GearSetIds.MinerAGearPack,
       },
       {
+        id: GearIds.MinerOverallsT1,
+        image: BASE_URL + "images/gears/miner-overalls-t1.png",
+        name: "Miner Overalls T1",
+        typeId: GearTypeIds.Armor,
+        level: 50,
+        rarity: "purple",
+        defense: 40,
+        substats: [
+          { text: "Agility", value: 43 },
+          { text: "Intellect", value: 65 },
+          { text: "Attack", value: "7.80%" },
+        ],
+        setId: GearSetIds.MinerYGearPack,
+      },
+      {
         id: GearIds.MinerTurbine,
         image: BASE_URL + "images/gears/miner-turbine.png",
         name: "Miner Turbine",
@@ -813,6 +1086,17 @@ const CATEGORIES = {
         defense: 10,
         substats: [{ text: "Strength", value: 22 }, { text: "Combo Skill DMG", value: "22.8%" }],
         setId: GearSetIds.MinerBGearPack,
+      },
+      {
+        id: GearIds.MinerTurbineT1,
+        image: BASE_URL + "images/gears/miner-turbine-t1.png",
+        name: "Miner Turbine T1",
+        typeId: GearTypeIds.Kit,
+        level: 50,
+        rarity: "purple",
+        defense: 15,
+        substats: [{ text: "Strength", value: 31 }, { text: "Final DMG Reduction", value: "13.5%" }],
+        setId: GearSetIds.MinerYGearPack,
       },
       {
         id: GearIds.MinerVest,
@@ -848,6 +1132,17 @@ const CATEGORIES = {
         setId: GearSetIds.MordvoltInsulation,
       },
       {
+        id: GearIds.MordvoltInsulationBatteryT1,
+        image: BASE_URL + "images/gears/mordvolt-insulation-battery-t1.png",
+        name: "Mordvolt Insulation Battery T1",
+        typeId: GearTypeIds.Kit,
+        level: 50,
+        rarity: "purple",
+        defense: 15,
+        substats: [{ text: "Intellect", value: 29 }, { text: "Ultimate Gain Efficiency", value: "17.5%" }],
+        setId: GearSetIds.MordvoltInsulation,
+      },
+      {
         id: GearIds.MordvoltInsulationGloves,
         image: BASE_URL + "images/gears/mordvolt-insulation-gloves.png",
         name: "Mordvolt Insulation Gloves",
@@ -859,6 +1154,21 @@ const CATEGORIES = {
           { text: "Intellect", value: 33 },
           { text: "Will", value: 22 },
           { text: "Arts DMG Dealt Bonus", value: "9.2%" },
+        ],
+        setId: GearSetIds.MordvoltInsulation,
+      },
+      {
+        id: GearIds.MordvoltInsulationGlovesT1,
+        image: BASE_URL + "images/gears/mordvolt-insulation-gloves-t1.png",
+        name: "Mordvolt Insulation Gloves T1",
+        typeId: GearTypeIds.Gloves,
+        level: 50,
+        rarity: "purple",
+        defense: 30,
+        substats: [
+          { text: "Strength", value: 30 },
+          { text: "Intellect", value: 46 },
+          { text: "Attack", value: "12.30%" },
         ],
         setId: GearSetIds.MordvoltInsulation,
       },
@@ -933,6 +1243,21 @@ const CATEGORIES = {
         setId: GearSetIds.MordvoltResistant,
       },
       {
+        id: GearIds.MordvoltResistantBatteryT1,
+        image: BASE_URL + "images/gears/mordvolt-resistant-battery-t1.png",
+        name: "Mordvolt Resistant Battery T1",
+        typeId: GearTypeIds.Kit,
+        level: 50,
+        rarity: "purple",
+        defense: 15,
+        substats: [
+          { text: "Agility", value: 15 },
+          { text: "Will", value: 23 },
+          { text: "Treatment Bonus:", value: "14.7%" },
+        ],
+        setId: GearSetIds.MordvoltResistant,
+      },
+      {
         id: GearIds.MordvoltResistantGloves,
         image: BASE_URL + "images/gears/mordvolt-resistant-gloves.png",
         name: "Mordvolt Resistant Gloves",
@@ -945,6 +1270,17 @@ const CATEGORIES = {
           { text: "Will", value: 33 },
           { text: "Treatment Bonus", value: "8.8%" },
         ],
+        setId: GearSetIds.MordvoltResistant,
+      },
+      {
+        id: GearIds.MordvoltResistantGlovesT1,
+        image: BASE_URL + "images/gears/mordvolt-resistant-gloves-t1.png",
+        name: "Mordvolt Resistant Gloves T1",
+        typeId: GearTypeIds.Gloves,
+        level: 50,
+        rarity: "purple",
+        defense: 30,
+        substats: [{ text: "Agility", value: 30 }, { text: "Will", value: 46 }, { text: "Attack", value: "12.30%" }],
         setId: GearSetIds.MordvoltResistant,
       },
       {
@@ -1018,6 +1354,21 @@ const CATEGORIES = {
         setId: GearSetIds.RovingMSGR,
       },
       {
+        id: GearIds.RovingMSGRFistsT1,
+        image: BASE_URL + "images/gears/roving-msgr-fists-t1.png",
+        name: "Roving MSGR Fists T1",
+        typeId: GearTypeIds.Gloves,
+        level: 50,
+        rarity: "purple",
+        defense: 30,
+        substats: [
+          { text: "Strength", value: 30 },
+          { text: "Agility", value: 46 },
+          { text: "Attack", value: "12.30%" },
+        ],
+        setId: GearSetIds.RovingMSGR,
+      },
+      {
         id: GearIds.RovingMSGRFlashlight,
         image: BASE_URL + "images/gears/roving-msgr-flashlight.png",
         name: "Roving MSGR Flashlight",
@@ -1029,6 +1380,36 @@ const CATEGORIES = {
         setId: GearSetIds.RovingMSGR,
       },
       {
+        id: GearIds.RovingMSGRFlashlightT1,
+        image: BASE_URL + "images/gears/roving-msgr-flashlight-t1.png",
+        name: "Roving MSGR Flashlight T1",
+        typeId: GearTypeIds.Kit,
+        level: 50,
+        rarity: "purple",
+        defense: 15,
+        substats: [
+          { text: "Strength", value: 15 },
+          { text: "Agility", value: 23 },
+          { text: "Combo Skill DMG Bonus", value: "29.4%" },
+        ],
+        setId: GearSetIds.RovingMSGR,
+      },
+      {
+        id: GearIds.RovingMSGRFlashlightT2,
+        image: BASE_URL + "images/gears/roving-msgr-flashlight-t2.png",
+        name: "Roving MSGR Flashlight T2",
+        typeId: GearTypeIds.Kit,
+        level: 50,
+        rarity: "purple",
+        defense: 15,
+        substats: [
+          { text: "Strength", value: 15 },
+          { text: "Agility", value: 23 },
+          { text: "Ultimate DMG Bonus", value: "36.8%" },
+        ],
+        setId: GearSetIds.RovingMSGR,
+      },
+      {
         id: GearIds.RovingMSGRGyro,
         image: BASE_URL + "images/gears/roving-msgr-gyro.png",
         name: "Roving MSGR Gyro",
@@ -1037,6 +1418,21 @@ const CATEGORIES = {
         rarity: "blue",
         defense: 10,
         substats: [{ text: "Agility", value: 21 }, { text: "Attack", value: "10.5%" }],
+        setId: GearSetIds.RovingMSGR,
+      },
+      {
+        id: GearIds.RovingMSGRGyroT1,
+        image: BASE_URL + "images/gears/roving-msgr-gyro-t1.png",
+        name: "Roving MSGR Gyro T1",
+        typeId: GearTypeIds.Kit,
+        level: 50,
+        rarity: "purple",
+        defense: 15,
+        substats: [
+          { text: "Agility", value: 23 },
+          { text: "Intellect", value: 15 },
+          { text: "Attack", value: "14.7%" },
+        ],
         setId: GearSetIds.RovingMSGR,
       },
       {
@@ -1060,6 +1456,66 @@ const CATEGORIES = {
         defense: 40,
         substats: [{ text: "Agility", value: 61 }, { text: "Intellect", value: 41 }, { text: "HP", value: "14.7%" }],
         setId: GearSetIds.RovingMSGR,
+      },
+      {
+        id: GearIds.SwordmancerFlint,
+        image: BASE_URL + "images/gears/swordmancer-flint.png",
+        name: "Swordmancer Flint",
+        typeId: GearTypeIds.Kit,
+        level: 70,
+        rarity: "gold",
+        defense: 21,
+        substats: [
+          { text: "Strength", value: 21 },
+          { text: "Agility", value: 32 },
+          { text: "Physical DMG Bonus", value: "23.0%" },
+        ],
+        setId: GearSetIds.Swordmancer,
+      },
+      {
+        id: GearIds.SwordmancerHeavyArmor,
+        image: BASE_URL + "images/gears/swordmancer-heavy-armor.png",
+        name: "Swordmancer Heavy Armor",
+        typeId: GearTypeIds.Armor,
+        level: 70,
+        rarity: "gold",
+        defense: 56,
+        substats: [
+          { text: "Strength", value: 58 },
+          { text: "Agility", value: 87 },
+          { text: "Arts Intensity", value: 20 },
+        ],
+        setId: GearSetIds.Swordmancer,
+      },
+      {
+        id: GearIds.SwordmancerTACGauntlets,
+        image: BASE_URL + "images/gears/swordmancer-tac-gauntlets.png",
+        name: "Swordmancer TAC Gauntlets",
+        typeId: GearTypeIds.Gloves,
+        level: 70,
+        rarity: "gold",
+        defense: 42,
+        substats: [
+          { text: "Strength", value: 43 },
+          { text: "Agility", value: 65 },
+          { text: "Ultimate DMG Bonus", value: "43.1%" },
+        ],
+        setId: GearSetIds.Swordmancer,
+      },
+      {
+        id: GearIds.SwordmancerTACGloves,
+        image: BASE_URL + "images/gears/swordmancer-tac-gloves.png",
+        name: "Swordmancer TAC Gloves",
+        typeId: GearTypeIds.Gloves,
+        level: 70,
+        rarity: "gold",
+        defense: 42,
+        substats: [
+          { text: "Strength", value: 65 },
+          { text: "Will", value: 43 },
+          { text: "Physical DMG Bonus", value: "19.2%" },
+        ],
+        setId: GearSetIds.Swordmancer,
       },
     ],
     transformList: item => item,

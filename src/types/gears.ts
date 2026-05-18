@@ -7,8 +7,8 @@ export interface Gear {
   image: string;
   name: string;
   typeId: GearType["id"];
-  level: 10 | 20 | 28 | 36 | 50;
-  rarity: "white" | "green" | "blue" | "purple";
+  level: 10 | 20 | 28 | 36 | 50 | 70;
+  rarity: "white" | "green" | "blue" | "purple" | "gold";
   defense: number;
   substats: Array<{ text: string; value: string | number }>;
   setId: GearSet["id"];

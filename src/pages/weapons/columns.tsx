@@ -3,6 +3,7 @@
 import type { ColumnDef } from "@tanstack/react-table";
 
 import { DataTableColumnHeader } from "./data-table";
+import { RarityImage, WeaponImage, WeaponTypeImage } from "@/components/image";
 import type { WeaponTypeListItem } from "@/types/weapon-types";
 import type { WeaponListItem } from "@/types/weapons";
 
@@ -21,9 +22,9 @@ export const columns: ColumnDef<WeaponData>[] = [
       const name = row.original.name;
 
       return (
-        <div className="flex flex-col gap-y-1 items-center text-center whitespace-normal">
-          <img alt={name} className="size-13.75" src={image} />
-          <p>{name}</p>
+        <div className="space-y-1 text-center whitespace-normal">
+          <WeaponImage alt={name} className="mx-auto size-13.75" src={image} />
+          <p children={name} />
         </div>
       );
     },
@@ -37,9 +38,9 @@ export const columns: ColumnDef<WeaponData>[] = [
       const rarity = row.original.rarity;
 
       return (
-        <div className="flex flex-col gap-y-1 items-center text-center">
-          <img alt="Звезда" className="w-8.75 h-auto" src={import.meta.env.BASE_URL + "images/rarity.png"} />
-          <p>{rarity}</p>
+        <div className="space-y-1 text-center">
+          <RarityImage className="mx-auto w-8.75 h-auto" />
+          <p children={rarity} />
         </div>
       );
     },
@@ -54,9 +55,9 @@ export const columns: ColumnDef<WeaponData>[] = [
       const typeName = row.original.type.name;
 
       return (
-        <div className="flex flex-col gap-y-1 items-center text-center whitespace-normal">
-          <img alt={typeName} className="size-7.5" src={typeImage} />
-          <p>{typeName}</p>
+        <div className="space-y-1 text-center whitespace-normal">
+          <WeaponTypeImage alt={typeName} className="mx-auto size-7.5" src={typeImage} />
+          <p children={typeName} />
         </div>
       );
     },
@@ -69,7 +70,7 @@ export const columns: ColumnDef<WeaponData>[] = [
     cell: ({ row }) => {
       const baseATK90 = row.original.baseATK90;
 
-      return <div className="text-center">{baseATK90}</div>;
+      return <p children={baseATK90} className="text-center" />;
     },
   },
   {
@@ -79,11 +80,11 @@ export const columns: ColumnDef<WeaponData>[] = [
       const skillsMax = row.original.skillsMax;
 
       return (
-        <div className="flex flex-col gap-y-1 whitespace-pre-line">
+        <div className="space-y-1 whitespace-pre-line">
           {skillsMax.map(skill => (
-            <div className="space-y-1">
-              <h6 className="font-bold">{skill.title}</h6>
-              <p>{skill.text}</p>
+            <div className="space-y-1" key={skill.title}>
+              <h6 children={skill.title} className="font-bold" />
+              <p children={skill.text} />
             </div>
           ))}
         </div>

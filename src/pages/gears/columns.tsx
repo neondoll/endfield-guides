@@ -3,10 +3,11 @@
 import type { ColumnDef } from "@tanstack/react-table";
 
 import { DataTableColumnHeader } from "./data-table";
+import { GearImage } from "@/components/image";
+import { cn } from "@/lib/utils";
 import type { GearSetListItem } from "@/types/gear-sets";
 import type { GearTypeListItem } from "@/types/gear-types";
 import type { GearListItem } from "@/types/gears";
-import { cn } from "@/lib/utils.ts";
 
 export interface GearData extends GearListItem {
   set: GearSetListItem;
@@ -24,9 +25,9 @@ export const columns: ColumnDef<GearData>[] = [
       const name = row.original.name;
 
       return (
-        <div className="flex flex-col gap-y-1 items-center text-center">
-          <img alt={name} className="size-12.5" src={image} />
-          <p className="whitespace-normal">{name}</p>
+        <div className="space-y-1 text-center whitespace-normal">
+          <GearImage alt={name} className="mx-auto size-12.5" src={image} />
+          <p children={name} />
         </div>
       );
     },
@@ -39,7 +40,7 @@ export const columns: ColumnDef<GearData>[] = [
     cell: ({ row }) => {
       const typeName = row.original.type.name;
 
-      return <p className="text-center whitespace-normal">{typeName}</p>;
+      return <p children={typeName} className="text-center whitespace-normal" />;
     },
   },
   {
@@ -50,7 +51,7 @@ export const columns: ColumnDef<GearData>[] = [
     cell: ({ row }) => {
       const level = row.original.level;
 
-      return <p className="text-center whitespace-normal">{level}</p>;
+      return <p children={level} className="text-center whitespace-normal" />;
     },
   },
   {
@@ -62,10 +63,10 @@ export const columns: ColumnDef<GearData>[] = [
       const rarity = row.original.rarity;
 
       return (
-        <div className="flex flex-col gap-y-1 items-center text-center">
+        <div className="space-y-1 text-center whitespace-normal">
           <div
             className={cn([
-              "size-7.5 rounded-sm",
+              "mx-auto size-7.5 rounded-sm",
               rarity === "white" && "bg-gray-500",
               rarity === "green" && "bg-green-500",
               rarity === "blue" && "bg-blue-500",
@@ -73,7 +74,7 @@ export const columns: ColumnDef<GearData>[] = [
               rarity === "gold" && "bg-yellow-500",
             ])}
           />
-          <p className="sr-only whitespace-normal">{rarity}</p>
+          <p children={rarity} className="sr-only" />
         </div>
       );
     },
@@ -82,18 +83,19 @@ export const columns: ColumnDef<GearData>[] = [
     header: "Defense and Substats",
     cell: ({ row }) => {
       const defense = row.original.defense;
-      const substats = row.original.substats;
+      const subStats = row.original.subStats;
 
       return (
-        <div className="flex flex-col gap-y-1 whitespace-pre-line">
-          <p className="pb-1 border-b border-dashed">
+        <div className="space-y-1 whitespace-pre-line">
+          <p>
             <span className="font-bold">Defense</span>
             {`: ${defense}`}
           </p>
-          {substats.map(substat => (
-            <p key={substat.text}>
-              <span className="font-bold">{substat.text}</span>
-              {`: ${substat.value}`}
+          <hr className="border-dashed" />
+          {subStats.map(subStat => (
+            <p key={subStat.text}>
+              <span className="font-bold">{subStat.text}</span>
+              {`: ${subStat.value}`}
             </p>
           ))}
         </div>
@@ -108,7 +110,7 @@ export const columns: ColumnDef<GearData>[] = [
     cell: ({ row }) => {
       const setName = row.original.set.name;
 
-      return <p className="text-center whitespace-normal">{setName}</p>;
+      return <p children={setName} className="text-center whitespace-normal" />;
     },
   },
   {
@@ -119,23 +121,23 @@ export const columns: ColumnDef<GearData>[] = [
       const setEffect = row.original.set.effect;
 
       return (
-        <div className="flex flex-col gap-y-1 whitespace-pre-line">
+        <div className="space-y-1 whitespace-pre-line">
           {(bonusStat || setEffect)
             ? (
-              <>
-                <p>
-                  <span className="font-bold">Bonus Stat</span>
-                  {`: ${bonusStat}`}
-                </p>
-                <p>
-                  <span className="font-bold">Set Effect</span>
-                  {`: ${setEffect}`}
-                </p>
-              </>
-            )
+                <>
+                  <p>
+                    <span className="font-bold">Bonus Stat</span>
+                    {`: ${bonusStat}`}
+                  </p>
+                  <p>
+                    <span className="font-bold">Set Effect</span>
+                    {`: ${setEffect}`}
+                  </p>
+                </>
+              )
             : (
-              <p className="text-destructive">No 3-pc Set Effect</p>
-            )}
+                <p className="text-destructive">No 3-pc Set Effect</p>
+              )}
         </div>
       );
     },

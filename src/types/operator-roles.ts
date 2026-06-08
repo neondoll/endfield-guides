@@ -1,10 +1,5 @@
 import { OperatorRoleIds } from "@/enums/operator-roles";
 
-export interface OperatorRole {
-  id: typeof OperatorRoleIds[keyof typeof OperatorRoleIds];
-  image: string;
-  name: string;
-  description: string;
-}
-
-export type OperatorRoleListItem = Pick<OperatorRole, "id" | "image" | "name">;
+export type OperatorRole = { id: OperatorRoleId; name: string; description: string; image: string };
+export type OperatorRoleId = typeof OperatorRoleIds[keyof typeof OperatorRoleIds];
+export type OperatorRoleListItem = Pick<OperatorRole, "id" | "name" | "image">;

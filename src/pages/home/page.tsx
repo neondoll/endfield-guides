@@ -34,8 +34,8 @@ const HomePage: FC = () => {
               <section.icon />
             </ItemMedia>
             <ItemContent>
-              <ItemTitle>{section.title}</ItemTitle>
-              {section.description && <ItemDescription>{section.description}</ItemDescription>}
+              <ItemTitle children={section.title} />
+              {section.description && <ItemDescription children={section.description} />}
             </ItemContent>
           </Link>
         </Item>

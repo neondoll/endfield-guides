@@ -8,6 +8,12 @@ export default {
     bonusStat: "Wearer's Skill DMG +24%",
     effect: "When the wearer casts a battle skill, combo skill, or ultimate, gain ATK +5% for 15s. The buff from each of the three skill types is unique and does not stack with itself.",
   },
+  Aethertech: {
+    id: GearSetIds.Aethertech,
+    name: "Aethertech",
+    bonusStat: "Wearer's ATK +8%",
+    effect: "After the wearer applies Vulnerability, the wearer gains Physical DMG +8% for 15s. This effect can reach 4 stacks. If the target already has 4 stack(s) of Vulnerability, the wearer gains an additional Physical DMG +16% for 10s. This effect cannot stack.",
+  },
   AICHeavy: {
     id: GearSetIds.AICHeavy,
     name: "AIC Heavy",
@@ -27,17 +33,47 @@ export default {
     effect: "When the wearer's HP is below 50%, the wearer gains 30% DMG Reduction against all types of DMG.",
   },
   BasicGearPack: { id: GearSetIds.BasicGearPack, name: "Basic Gear Pack" },
+  Bonekrusha: {
+    id: GearSetIds.Bonekrusha,
+    name: "Bonekrusha",
+    bonusStat: "Wearer's ATK +15%",
+    effect: "When the wearer casts a combo skill, gain 1 stack of Bonekrushing Smash that grants the wearer's next battle skill DMG +30%. Bonekrushing Smash can stack 2 time(s).",
+  },
   Catastrophe: {
     id: GearSetIds.Catastrophe,
     name: "Catastrophe",
     bonusStat: "Wearer's Ultimate Gain Efficiency +20%.",
     effect: "At the start of battle, the wearer immediately recovers 50 SP.",
   },
+  EternalXiranite: {
+    id: GearSetIds.EternalXiranite,
+    name: "Eternal Xiranite",
+    bonusStat: "Wearer's HP +1000",
+    effect: "After the wearer applies Amp, Protected, Susceptibility, or Weakened, other teammates also gain DMG Dealt +16% for 15s. This effect cannot stack.",
+  },
+  Frontiers: {
+    id: GearSetIds.Frontiers,
+    name: "Frontiers",
+    bonusStat: "Wearer's Combo Skill Cooldown Reduction +15%.",
+    effect: "After the wearer recovers SP with a skill, the team gains DMG +16% for 15s. This effect cannot stack.",
+  },
+  HotWork: {
+    id: GearSetIds.HotWork,
+    name: "Hot Work",
+    bonusStat: "Wearer's Arts Intensity +30",
+    effect: "After the wearer applies Combustion, Heat DMG +50% for 10s. After the wearer applies Corrosion, Nature DMG +50% for 10s. The aforementioned effects cannot stack.",
+  },
   LYNX: {
     id: GearSetIds.LYNX,
     name: "LYNX",
     bonusStat: "Wearer's HP Treatment Efficiency +20%",
     effect: "After the wearer gives HP treatment to an allied target, that target also gains 15% DMG Reduction against all types of DMG for 10s. If the said treatment exceeds the target's Max HP, the target gains 30% DMG Reduction against all types of DMG. The aforementioned effects cannot stack.",
+  },
+  MISecurity: {
+    id: GearSetIds.MISecurity,
+    name: "MI Security",
+    bonusStat: "Wearer's Critical Rate +5%",
+    effect: "After the wearer scores a critical hit, gain ATK +5% for 5s. This effect can reach 5 stacks. At max stacks, grant an additional Critical Rate +5%. This effect cannot stack.",
   },
   MinerAGearPack: { id: GearSetIds.MinerAGearPack, name: "Miner α Gear Pack" },
   MinerBGearPack: { id: GearSetIds.MinerBGearPack, name: "Miner β Gear Pack" },
@@ -54,6 +90,13 @@ export default {
     bonusStat: "Wearer's Will +50",
     effect: "When the wearer's HP is below 50%, Treatment Effect +30%.",
   },
+  PulserLabs: {
+    id: GearSetIds.PulserLabs,
+    name: "Pulser Labs",
+    bonusStat: "Wearer's Arts Intensity +30",
+    effect: "After the wearer applies Electrification, Electric DMG +50% for 10s. After the wearer applies Solidification, Cryo DMG +50% for 10s. The aforementioned effects cannot stack.",
+  },
+  RedeemerGearPack: { id: GearSetIds.RedeemerGearPack, name: "Redeemer Gear Pack" },
   RovingMSGR: {
     id: GearSetIds.RovingMSGR,
     name: "Roving MSGR",
@@ -65,5 +108,17 @@ export default {
     name: "Swordmancer",
     bonusStat: "Wearer's Stagger Efficiency Bonus +20%",
     effect: "After the wearer applies a Physical Status, the wearer also performs 1 hit that deals 250% ATK of Physical DMG and [10 Stagger]. Effect trigger cooldown: 15s.",
+  },
+  TideSurge: {
+    id: GearSetIds.TideSurge,
+    name: "Tide Surge",
+    bonusStat: "Wearer's Skill DMG Dealt +20%",
+    effect: "After the wearer applies 2 or more stacks of Arts Infliction on the enemy, the wearer gains Arts DMG Dealt +35% for 15s. This effect cannot stack.",
+  },
+  Type50Yinglung: {
+    id: GearSetIds.Type50Yinglung,
+    name: "Type 50 Yinglung",
+    bonusStat: "Wearer's ATK +15%",
+    effect: "When any operator in the team casts a battle skill, the wearer gains 1 stack of Yinglung's Edge that gives DMG +20% to the wearer's next combo skill. Yinglung's Edge can stack 3 time(s).",
   },
 } as Record<keyof typeof GearSetIds, GearSet>;

@@ -33,6 +33,7 @@ export const OperatorIds = {
   LastRite: "last-rite",
   /* Лифэн */
   Lifeng: "lifeng",
+  MiFu: "mi-fu",
   /* Перлика */
   Perlica: "perlica",
   /* Пограничник */

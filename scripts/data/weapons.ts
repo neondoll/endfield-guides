@@ -104,6 +104,26 @@ export default {
     ],
     image: image("aggeloslayer.png"),
   },
+  AmaranthineTassel: {
+    id: WeaponIds.AmaranthineTassel,
+    name: "Amaranthine Tassel",
+    typeId: WeaponTypeIds.Greatsword,
+    rarity: 6,
+    baseATK90: 510,
+    skillsMax: [
+      WeaponSkillsMax.StrengthBoost.L,
+      WeaponSkillsMax.AttackBoost.L,
+      {
+        title: "Combative: Amaranthine Cleave",
+        text: [
+          "Physical DMG Dealt +44.8%.",
+          "When the wielder applies Physical Susceptibility, the wielder gains Arts Intensity +84 for 20s. When the wielder applies Crush, the wielder gains Physical DMG Dealt +(25.2% + (8.4% x Max number of Vulnerability stacks consumed from one enemy)) for 30s.",
+          "The two effects apply separately and do not stack with themselves.",
+        ].join("\n"),
+      },
+    ],
+    image: image("amaranthine-tassel.png"),
+  },
   AncientCanal: {
     id: WeaponIds.AncientCanal,
     name: "Ancient Canal",
@@ -163,6 +183,33 @@ export default {
       },
     ],
     image: image("aspirant.png"),
+  },
+  BeaconOfDuty: {
+    id: WeaponIds.BeaconOfDuty,
+    name: "Beacon of Duty",
+    typeId: WeaponTypeIds.Polearm,
+    rarity: 6,
+    baseATK90: 485,
+    skillsMax: [
+      WeaponSkillsMax.AgilityBoost.L,
+      WeaponSkillsMax.UltimateGainEfficiencyBoost.L,
+      {
+        title: "Efficacy: Fuel for the Torch",
+        text: [
+          "Heat DMG Dealt +19.6%.",
+          "When the wielder's skill applies Heat Infliction, the wielder gains Physical and Heat DMG Dealt +22.4% for 20s. When the wielder's skill applies Heat Susceptibility, the entire team gains Physical and Heat DMG Dealt +11.2% for 30s.",
+          "The two effects apply separately and do not stack with themselves.",
+        ].join("\n"),
+      },
+    ],
+    image: image("beacon-of-duty.png"),
+  },
+  BlessingOfLustrousCarmine: {
+    id: WeaponIds.BlessingOfLustrousCarmine,
+    name: "Blessing of Lustrous Carmine",
+    typeId: WeaponTypeIds.Polearm,
+    rarity: 6,
+    image: image("blessing-of-lustrous-carmine.png"),
   },
   BrigandsCalling: {
     id: WeaponIds.BrigandsCalling,
@@ -1004,6 +1051,26 @@ export default {
     baseATK90: 283,
     skillsMax: [WeaponSkillsMax.MainAttributeBoost.S, { title: "Assault: Armament Prep", text: "ATK +34" }],
     image: image("peco-5.png"),
+  },
+  PhantomPain: {
+    id: WeaponIds.PhantomPain,
+    name: "Phantom Pain",
+    typeId: WeaponTypeIds.Greatsword,
+    rarity: 6,
+    baseATK90: 490,
+    skillsMax: [
+      WeaponSkillsMax.StrengthBoost.L,
+      WeaponSkillsMax.ArtsIntensityBoost.L,
+      {
+        title: "Suppression: Layered Suffering",
+        text: [
+          "Physical DMG Dealt +19.6%.",
+          "When the wielder casts battle skills or combo skills, the wielder gains Physical DMG Dealt +15.4% for 20s.",
+          "Max stacks for effects of the same name: 3. Duration of each stack is counted separately. Effect only triggers once every 0.1s.",
+        ].join("\n"),
+      },
+    ],
+    image: image("phantom-pain.png"),
   },
   ProminentEdge: {
     id: WeaponIds.ProminentEdge,

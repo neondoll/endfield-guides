@@ -42,7 +42,7 @@ export const fetchWeaponList = createAsyncThunk<WeaponListItem[]>("weapons/fetch
 
   return list.sort((a, b) => {
     if (a.rarity !== b.rarity) {
-      return a.rarity - b.rarity;
+      return b.rarity - a.rarity;
     }
 
     return a.name.localeCompare(b.name);

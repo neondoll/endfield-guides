@@ -212,6 +212,18 @@ export default {
     version: "1.0",
     image: image("lifeng.png"),
   },
+  MiFu: {
+    id: OperatorIds.MiFu,
+    name: "Mi Fu",
+    rarity: 6,
+    elementId: ElementIds.Physical,
+    weaponId: WeaponTypeIds.Greatsword,
+    roleId: OperatorRoleIds.Guard,
+    mainAttributeId: AttributeIds.Strength,
+    secondaryAttributeId: AttributeIds.Will,
+    version: "1.3",
+    image: image("mi-fu.png"),
+  },
   Perlica: {
     id: OperatorIds.Perlica,
     name: "Перлика",

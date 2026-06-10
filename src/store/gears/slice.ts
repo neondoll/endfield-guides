@@ -42,7 +42,15 @@ export const fetchGearList = createAsyncThunk<GearListItem[]>("gears/fetchList",
 
   return list.sort((a, b) => {
     if (a.level !== b.level) {
-      return a.level - b.level;
+      return b.level - a.level;
+    }
+
+    if (a.setId !== b.setId) {
+      return a.setId.localeCompare(b.setId);
+    }
+
+    if (a.typeId !== b.typeId) {
+      return a.typeId.localeCompare(b.typeId);
     }
 
     return a.name.localeCompare(b.name);

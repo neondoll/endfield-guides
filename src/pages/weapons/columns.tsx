@@ -70,7 +70,9 @@ export const columns: ColumnDef<WeaponData>[] = [
     cell: ({ row }) => {
       const baseATK90 = row.original.baseATK90;
 
-      return <p children={baseATK90} className="text-center" />;
+      return baseATK90
+        ? <p children={baseATK90} className="text-center" />
+        : <p className="text-center text-destructive whitespace-normal">Подлежит определению</p>;
     },
   },
   {
@@ -79,16 +81,18 @@ export const columns: ColumnDef<WeaponData>[] = [
     cell: ({ row }) => {
       const skillsMax = row.original.skillsMax;
 
-      return (
-        <div className="space-y-1 whitespace-pre-line">
-          {skillsMax.map(skill => (
-            <div className="space-y-1" key={skill.title}>
-              <h6 children={skill.title} className="font-bold" />
-              <p children={skill.text} />
+      return skillsMax
+        ? (
+            <div className="space-y-1 whitespace-pre-line">
+              {skillsMax.map(skill => (
+                <div className="space-y-1" key={skill.title}>
+                  <h6 children={skill.title} className="font-bold" />
+                  <p children={skill.text} />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      );
+          )
+        : <p className="text-center text-destructive whitespace-normal">Подлежит определению</p>;
     },
   },
 ];

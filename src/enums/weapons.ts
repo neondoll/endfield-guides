@@ -1,8 +1,11 @@
 export const WeaponIds = {
   Aggeloslayer: "aggeloslayer",
+  AmaranthineTassel: "amaranthine-tassel",
   AncientCanal: "ancient-canal",
   ArtzyTyrannical: "artzy-tyrannical",
   Aspirant: "aspirant",
+  BeaconOfDuty: "beacon-of-duty",
+  BlessingOfLustrousCarmine: "blessing-of-lustrous-carmine",
   BrigandsCalling: "brigands-calling",
   ChimericJustice: "chimeric-justice",
   ChivalricVirtues: "chivalric-virtues",
@@ -11,6 +14,7 @@ export const WeaponIds = {
   Darhoff7: "darhoff-7",
   DeliveryGuaranteed: "delivery-guaranteed",
   DetonationUnit: "detonation-unit",
+  /* Мечта о звездном береге (Dreams of the Starry Beach) */
   DreamsOfTheStarryBeach: "dreams-of-the-starry-beach",
   EminentRepute: "eminent-repute",
   Exemplar: "exemplar",
@@ -18,6 +22,7 @@ export const WeaponIds = {
   FinishingCall: "finishing-call",
   FlickersInTheMist: "flickers-in-the-mist",
   FluorescentRoc: "fluorescent-roc",
+  /* Гнев кузни (Forgeborn Scathe) */
   ForgebornScathe: "forgeborn-scathe",
   FormerFinery: "former-finery",
   Fortmaker: "fortmaker",
@@ -49,6 +54,7 @@ export const WeaponIds = {
   OpusTheLiving: "opus-the-living",
   PathfindersBeacon: "pathfinders-beacon",
   Peco5: "peco-5",
+  PhantomPain: "phantom-pain",
   ProminentEdge: "prominent-edge",
   Quencher: "quencher",
   RapidAscent: "rapid-ascent",

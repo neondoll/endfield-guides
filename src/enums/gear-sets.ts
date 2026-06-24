@@ -24,4 +24,5 @@ export const GearSetIds = {
   Swordmancer: "swordmancer",
   TideSurge: "tide-surge",
   Type50Yinglung: "type-50-yinglung",
+  Xiranflow: "xiranflow",
 } as const;

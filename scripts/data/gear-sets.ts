@@ -127,4 +127,10 @@ export default {
     bonusStat: "Wearer's ATK +15%",
     effect: "When any operator in the team casts a battle skill, the wearer gains 1 stack of Yinglung's Edge that gives DMG +20% to the wearer's next combo skill. Yinglung's Edge can stack 3 time(s).",
   },
+  Xiranflow: {
+    id: GearSetIds.Xiranflow,
+    name: "Xiranflow",
+    bonusStat: "Wearer's ATK +10%",
+    effect: "Whenever the wearer consumes Electrification or Corrosion, the wearer gains a number of buff stacks equal to the Status Level of the Arts Reaction consumed, with each buff stack giving Electric DMG Dealt and Nature DMG Dealt +15% for 25s. The number of buff stacks maxes out at 3 stacks. Duration of each stack is counted separately.",
+  },
 } as Record<keyof typeof GearSetIds, GearSet>;

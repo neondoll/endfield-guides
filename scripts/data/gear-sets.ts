@@ -96,6 +96,12 @@ export default {
     bonusStat: "Wearer's Arts Intensity +30",
     effect: "After the wearer applies Electrification, Electric DMG +50% for 10s. After the wearer applies Solidification, Cryo DMG +50% for 10s. The aforementioned effects cannot stack.",
   },
+  Qingbo: {
+    id: GearSetIds.Qingbo,
+    name: "Qingbo",
+    bonusStat: "Wearer's Combo Skill Cooldown Reduction +15%.",
+    effect: "When the wearer casts a combo skill, the wearer gains Skill DMG Dealt +20% (for every skill) for 15s. This effect can reach 2 stacks. Duration of each stack is counted separately.",
+  },
   RedeemerGearPack: { id: GearSetIds.RedeemerGearPack, name: "Redeemer Gear Pack" },
   RovingMSGR: {
     id: GearSetIds.RovingMSGR,

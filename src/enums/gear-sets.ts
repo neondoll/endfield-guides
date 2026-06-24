@@ -18,6 +18,7 @@ export const GearSetIds = {
   MordvoltInsulation: "mordvolt-insulation",
   MordvoltResistant: "mordvolt-resistant",
   PulserLabs: "pulser-labs",
+  Qingbo: "qingbo",
   RedeemerGearPack: "redeemer-gear-pack",
   RovingMSGR: "roving-msgr",
   Swordmancer: "swordmancer",

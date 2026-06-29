@@ -11,6 +11,7 @@ export const OperatorIds = {
   Ardelia: "ardelia",
   /* Авивенна */
   Avywenna: "avywenna",
+  Camille: "camille",
   /* Кэтчер */
   Catcher: "catcher",
   /* Чэнь Цяньюй */

@@ -3,7 +3,7 @@ import { WeaponTypeIds } from "../../src/enums/weapon-types";
 import { WeaponIds } from "../../src/enums/weapons";
 import type { Weapon } from "../../src/types/weapons";
 
-const EssenceCharacteristics = {
+const EssenceAttributes = {
   AttackBoost: "Увелич. атаки",
   Detonate: "Детонация",
   Infliction: "Поражение",
@@ -28,7 +28,7 @@ const WeaponSkillsMax = {
     M: { title: "Arts Intensity Boost (M)", text: "Arts Intensity +62" },
   },
   AttackBoost: {
-    L: { title: `${EssenceCharacteristics.AttackBoost} [бол.]`, text: "Атака +39.0%" },
+    L: { title: `${EssenceAttributes.AttackBoost} [бол.]`, text: "Атака +39.0%" },
     M: { title: "ATK Boost (M)", text: "Attack +31.2%" },
     S: { title: "ATK Boost (S)", text: "Attack +23.4%" },
   },
@@ -48,7 +48,7 @@ const WeaponSkillsMax = {
     S: { title: "HP Boost (S)", text: "Max HP +46.8%" },
   },
   IntellectBoost: {
-    L: { title: `${EssenceCharacteristics.IntellectBoost} [бол.]`, text: `${attributes.Intellect.name} +156` },
+    L: { title: `${EssenceAttributes.IntellectBoost} [бол.]`, text: `${attributes.Intellect.name} +156` },
     M: { title: "Intellect Boost (M)", text: "Intellect +124" },
     S: { title: "Intellect Boost (S)", text: "Intellect +93" },
   },
@@ -63,12 +63,12 @@ const WeaponSkillsMax = {
     S: { title: "Physical DMG Boost (S)", text: "Physical DMG Dealt +26.0%" },
   },
   StrengthBoost: {
-    L: { title: `${EssenceCharacteristics.StrengthBoost} [бол.]`, text: `${attributes.Strength.name} +156` },
+    L: { title: `${EssenceAttributes.StrengthBoost} [бол.]`, text: `${attributes.Strength.name} +156` },
     M: { title: "Strength Boost (M)", text: "Strength +124" },
     S: { title: "Strength Boost (S)", text: "Strength +93" },
   },
   TreatmentEfficiencyBoost: {
-    L: { title: `${EssenceCharacteristics.TreatmentEfficiencyBoost} [бол.]`, text: "Эффективность лечения +46.4%" },
+    L: { title: `${EssenceAttributes.TreatmentEfficiencyBoost} [бол.]`, text: "Эффективность лечения +46.4%" },
     M: { title: "Treatment Efficiency Boost (M)", text: "Treatment Efficiency +37.1%" },
   },
   UltimateGainEfficiencyBoost: {
@@ -209,6 +209,19 @@ export default {
     name: "Blessing of Lustrous Carmine",
     typeId: WeaponTypeIds.Polearm,
     rarity: 6,
+    baseATK90: 500,
+    skillsMax: [
+      WeaponSkillsMax.AgilityBoost.L,
+      WeaponSkillsMax.HeatDMGBoost.L,
+      {
+        title: "Flow: Absolver of Guilt",
+        text: [
+          "Ultimate Gain Efficiency +50.4%.",
+          "When the wielder's skill recovers SP, the entire team gains ATK +16.8% for 20s. When the wielder's skill applies Heat Infliction, the entire team gains Heat DMG Dealt +16.8% for 20s.",
+          "The two effects apply separately and do not stack with themselves.",
+        ].join("\n"),
+      },
+    ],
     image: image("blessing-of-lustrous-carmine.png"),
   },
   BrigandsCalling: {
@@ -370,7 +383,7 @@ export default {
       WeaponSkillsMax.IntellectBoost.L,
       WeaponSkillsMax.TreatmentEfficiencyBoost.L,
       {
-        title: `${EssenceCharacteristics.Infliction}: шепот прилива`,
+        title: `${EssenceAttributes.Infliction}: шепот прилива`,
         text: [
           "+44.8% к побочному показателю.",
           "Когда владелец поглощает коррозию, цель получает на 28.0% больше УРН от искусств в течение 25 сек.",
@@ -505,7 +518,7 @@ export default {
       WeaponSkillsMax.IntellectBoost.L,
       WeaponSkillsMax.AttackBoost.L,
       {
-        title: `${EssenceCharacteristics.Twilight}: пламенеющий вопль`,
+        title: `${EssenceAttributes.Twilight}: пламенеющий вопль`,
         text: [
           "+44.8% к наносимому тепловому УРН.",
           "Когда владелец применяет супернавык, то получает +210.0% к наносимому УРН от базовой атаки на 20 сек.",
@@ -717,7 +730,7 @@ export default {
       WeaponSkillsMax.StrengthBoost.L,
       WeaponSkillsMax.AttackBoost.L,
       {
-        title: `${EssenceCharacteristics.Detonate}: пробирающий холод`,
+        title: `${EssenceAttributes.Detonate}: пробирающий холод`,
         text: [
           "+56.0% к наносимому УРН от навыков (за каждый навык).",
           "Когда боевой навык накладывает криогенное поражение, владелец получает +28.0% к наносимому криогенному УРН на 15 сек. "

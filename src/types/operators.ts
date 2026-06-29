@@ -1,12 +1,16 @@
 import { OperatorIds } from "@/enums/operators";
 import type { Attribute } from "@/types/attributes";
 import type { Element } from "@/types/elements";
+import type { Faction } from "@/types/factions";
 import type { OperatorRole } from "@/types/operator-roles";
+import type { Race } from "@/types/races";
 import type { WeaponType } from "@/types/weapon-types";
 
 export type Operator = {
   id: OperatorId;
   name: string;
+  factionId: Faction["id"];
+  raceId: Race["id"];
   rarity: 6 | 5 | 4;
   elementId: Element["id"];
   weaponId: WeaponType["id"];

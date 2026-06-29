@@ -40,6 +40,8 @@ export const GearIds = {
   BasicPPE: "basic-ppe",
   BonekrushaFigurine: "bonekrusha-figurine",
   BonekrushaFigurineT1: "bonekrusha-figurine-t1",
+  BonekrushaFigurineT2: "bonekrusha-figurine-t2",
+  BonekrushaGloves: "bonekrusha-gloves",
   BonekrushaHeavyArmor: "bonekrusha-heavy-armor",
   BonekrushaHeavyArmorT1: "bonekrusha-heavy-armor-t1",
   BonekrushaHeavyArmorT2: "bonekrusha-heavy-armor-t2",
@@ -78,6 +80,18 @@ export const GearIds = {
   FrontiersFiberGlovesT1: "frontiers-fiber-gloves-t1",
   FrontiersO2Tube: "frontiers-o2-tube",
   FrontiersProtectionSuit: "frontiers-protection-suit",
+  /* Броня «Потертое лезвие» */
+  GrizzledEdgeArmor: "grizzled-edge-armor",
+  /* Броня «Потертое лезвие» К1 */
+  GrizzledEdgeArmorT1: "grizzled-edge-armor-t1",
+  /* Рукавицы «Потертое лезвие» */
+  GrizzledEdgeGauntlets: "grizzled-edge-gauntlets",
+  /* Рукавицы «Потертое лезвие» К1 */
+  GrizzledEdgeGauntletsT1: "grizzled-edge-gauntlets-t1",
+  /* Тычковый нож «Потертое лезвие» */
+  GrizzledEdgePushKnife: "grizzled-edge-push-knife",
+  /* Тычковый нож «Потертое лезвие» К1 */
+  GrizzledEdgePushKnifeT1: "grizzled-edge-push-knife-t1",
   HangingRiverO2Tube: "hanging-river-o2-tube",
   HotWorkExoRig: "hot-work-exo-rig",
   HotWorkExoskeleton: "hot-work-exoskeleton",
@@ -163,6 +177,7 @@ export const GearIds = {
   QingboHeavyArmor: "qingbo-heavy-armor",
   QingboLightArmor: "qingbo-light-armor",
   QingboPositioningKit: "qingbo-positioning-kit",
+  QingboPositioningKitT1: "qingbo-positioning-kit-t1",
   RedeemerArmor: "redeemer-armor",
   RedeemerGloves: "redeemer-gloves",
   RedeemerHands: "redeemer-hands",
@@ -181,12 +196,15 @@ export const GearIds = {
   RovingMSGRJacket: "roving-msgr-jacket",
   RovingMSGRJacketT1: "roving-msgr-jacket-t1",
   SwordmancerDagger: "swordmancer-dagger",
+  SwordmancerFiberArmor: "swordmancer-fiber-armor",
   SwordmancerFlint: "swordmancer-flint",
   SwordmancerHeavyArmor: "swordmancer-heavy-armor",
+  SwordmancerHeavyArmorT1: "swordmancer-heavy-armor-t1",
   SwordmancerLightArmor: "swordmancer-light-armor",
   SwordmancerMicroFilter: "swordmancer-micro-filter",
   SwordmancerNAVBeacon: "swordmancer-nav-beacon",
   SwordmancerTACGauntlets: "swordmancer-tac-gauntlets",
+  SwordmancerTACGauntletsT1: "swordmancer-tac-gauntlets-t1",
   SwordmancerTACGloves: "swordmancer-tac-gloves",
   TideFallLightArmor: "tide-fall-light-armor",
   TideSurgeGauntlets: "tide-surge-gauntlets",
@@ -202,7 +220,10 @@ export const GearIds = {
   Type50YinglungRadar: "type-50-yinglung-radar",
   Type50YinglungRadarT1: "type-50-yinglung-radar-t1",
   Type50YinglungRadarT2: "type-50-yinglung-radar-t2",
+  /* Дубинка «Ксиранад» */
   XiranflowBaton: "xiranflow-baton",
+  /* Перчатки «Ксиранад» */
   XiranflowGloves: "xiranflow-gloves",
+  /* Легкая броня «Ксиранад» */
   XiranflowLightArmor: "xiranflow-light-armor",
 } as const;

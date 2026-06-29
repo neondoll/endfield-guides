@@ -57,6 +57,12 @@ export default {
     bonusStat: "Wearer's Combo Skill Cooldown Reduction +15%.",
     effect: "After the wearer recovers SP with a skill, the team gains DMG +16% for 15s. This effect cannot stack.",
   },
+  GrizzledEdge: {
+    id: GearSetIds.GrizzledEdge,
+    name: "Потертое лезвие",
+    bonusStat: "АТК владельца +8%",
+    effect: "Когда влалец накладывает разгром или прорыв, он получает +(6% × максимальное количество зарядов уязвимости, поглощенных одним врагом) к наносимому физическому УРН на 20 сек. Если у цели уже есть физическая восприимчивость, ошеломление или на ней есть кристаллы орджиния, данное усиление увеличивается в 1.5 р. Эффект не суммируется.",
+  },
   HotWork: {
     id: GearSetIds.HotWork,
     name: "Hot Work",
@@ -129,8 +135,8 @@ export default {
   },
   Xiranflow: {
     id: GearSetIds.Xiranflow,
-    name: "Xiranflow",
-    bonusStat: "Wearer's ATK +10%",
-    effect: "Whenever the wearer consumes Electrification or Corrosion, the wearer gains a number of buff stacks equal to the Status Level of the Arts Reaction consumed, with each buff stack giving Electric DMG Dealt and Nature DMG Dealt +15% for 25s. The number of buff stacks maxes out at 3 stacks. Duration of each stack is counted separately.",
+    name: "Ксиранад",
+    bonusStat: "АТК владельца +10%",
+    effect: "Когда владелец поглощает электризацию или коррозию, он получает несколько зарядов усиления в размере уровня статуса поглощенной реакции искусств. Каждый такой заряд дает +15% к наносимому электрическому УРН и наносимому природному УРН на 25 сек. Эффект суммируется до 3 р. Длительность каждого заряда подсчитывается отдельно.",
   },
 } as Record<keyof typeof GearSetIds, GearSet>;

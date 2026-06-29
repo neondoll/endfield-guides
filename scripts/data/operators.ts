@@ -1,7 +1,9 @@
 import { AttributeIds } from "../../src/enums/attributes";
 import { ElementIds } from "../../src/enums/elements";
+import { FactionIds } from "../../src/enums/factions";
 import { OperatorRoleIds } from "../../src/enums/operator-roles";
 import { OperatorIds } from "../../src/enums/operators";
+import { RaceIds } from "../../src/enums/races";
 import { WeaponTypeIds } from "../../src/enums/weapon-types";
 import type { Operator } from "../../src/types/operators";
 
@@ -11,6 +13,8 @@ export default {
   Akekuri: {
     id: OperatorIds.Akekuri,
     name: "Акэкури",
+    factionId: FactionIds.EndfieldIndustries,
+    raceId: RaceIds.Perro,
     rarity: 4,
     elementId: ElementIds.Heat,
     weaponId: WeaponTypeIds.Sword,
@@ -23,6 +27,8 @@ export default {
   Alesh: {
     id: OperatorIds.Alesh,
     name: "Алеш",
+    factionId: FactionIds.UnitedWorkersSyndicatesOfTalos2,
+    raceId: RaceIds.Anaty,
     rarity: 5,
     elementId: ElementIds.Cryo,
     weaponId: WeaponTypeIds.Sword,
@@ -35,6 +41,8 @@ export default {
   Antal: {
     id: OperatorIds.Antal,
     name: "Антал",
+    factionId: FactionIds.EndfieldIndustries,
+    raceId: RaceIds.Savra,
     rarity: 4,
     elementId: ElementIds.Electric,
     weaponId: WeaponTypeIds.ArtsUnit,
@@ -47,6 +55,8 @@ export default {
   Arclight: {
     id: OperatorIds.Arclight,
     name: "Арклайт",
+    factionId: FactionIds.HannabitCircuit,
+    raceId: RaceIds.Kuranta,
     rarity: 5,
     elementId: ElementIds.Electric,
     weaponId: WeaponTypeIds.Sword,
@@ -59,6 +69,8 @@ export default {
   Ardelia: {
     id: OperatorIds.Ardelia,
     name: "Арделия",
+    factionId: FactionIds.RhodesIsland,
+    raceId: RaceIds.Caprinae,
     rarity: 6,
     elementId: ElementIds.Nature,
     weaponId: WeaponTypeIds.ArtsUnit,
@@ -71,6 +83,8 @@ export default {
   Avywenna: {
     id: OperatorIds.Avywenna,
     name: "Авивенна",
+    factionId: FactionIds.Talos2GeneralChamberOfCommerce,
+    raceId: RaceIds.Cautus,
     rarity: 5,
     elementId: ElementIds.Electric,
     weaponId: WeaponTypeIds.Polearm,
@@ -80,9 +94,25 @@ export default {
     version: "1.0",
     image: image("avywenna.png"),
   },
+  Camille: {
+    id: OperatorIds.Camille,
+    name: "Камиль",
+    factionId: FactionIds.Sesqa,
+    raceId: RaceIds.Sarkaz,
+    rarity: 6,
+    elementId: ElementIds.Heat,
+    weaponId: WeaponTypeIds.Polearm,
+    roleId: OperatorRoleIds.Vanguard,
+    mainAttributeId: AttributeIds.Agility,
+    secondaryAttributeId: AttributeIds.Intellect,
+    version: "1.3",
+    image: image("camille.png"),
+  },
   Catcher: {
     id: OperatorIds.Catcher,
     name: "Кэтчер",
+    factionId: FactionIds.EndfieldIndustries,
+    raceId: RaceIds.Perro,
     rarity: 4,
     elementId: ElementIds.Physical,
     weaponId: WeaponTypeIds.Greatsword,
@@ -95,6 +125,8 @@ export default {
   ChenQianyu: {
     id: OperatorIds.ChenQianyu,
     name: "Чэнь Цяньюй",
+    factionId: FactionIds.EndfieldIndustries,
+    raceId: RaceIds.Lung,
     rarity: 5,
     elementId: ElementIds.Physical,
     weaponId: WeaponTypeIds.Sword,
@@ -107,6 +139,8 @@ export default {
   DaPan: {
     id: OperatorIds.DaPan,
     name: "Да Пан",
+    factionId: FactionIds.HongshanAcademyOfSciences,
+    raceId: RaceIds.Ursus,
     rarity: 5,
     elementId: ElementIds.Physical,
     weaponId: WeaponTypeIds.Greatsword,
@@ -119,6 +153,8 @@ export default {
   Ember: {
     id: OperatorIds.Ember,
     name: "Эмбер",
+    factionId: FactionIds.OrderOfSteelOath,
+    raceId: RaceIds.Sankta,
     rarity: 6,
     elementId: ElementIds.Heat,
     weaponId: WeaponTypeIds.Greatsword,
@@ -131,6 +167,8 @@ export default {
   Endministrator: {
     id: OperatorIds.Endministrator,
     name: "Эндминистратор",
+    factionId: FactionIds.EndfieldIndustries,
+    raceId: RaceIds.Undisclosed,
     rarity: 6,
     elementId: ElementIds.Physical,
     weaponId: WeaponTypeIds.Sword,
@@ -143,6 +181,8 @@ export default {
   Estella: {
     id: OperatorIds.Estella,
     name: "Эстелла",
+    factionId: FactionIds.EndfieldIndustries,
+    raceId: RaceIds.Feline,
     rarity: 4,
     elementId: ElementIds.Cryo,
     weaponId: WeaponTypeIds.Polearm,
@@ -155,6 +195,8 @@ export default {
   Fluorite: {
     id: OperatorIds.Fluorite,
     name: "Флюорит",
+    factionId: FactionIds.EndfieldIndustries,
+    raceId: RaceIds.Phidia,
     rarity: 4,
     elementId: ElementIds.Nature,
     weaponId: WeaponTypeIds.Handcannon,
@@ -167,6 +209,8 @@ export default {
   Gilberta: {
     id: OperatorIds.Gilberta,
     name: "Гилберта",
+    factionId: FactionIds.RhodesIsland,
+    raceId: RaceIds.Vulpo,
     rarity: 6,
     elementId: ElementIds.Nature,
     weaponId: WeaponTypeIds.ArtsUnit,
@@ -179,6 +223,8 @@ export default {
   Laevatain: {
     id: OperatorIds.Laevatain,
     name: "Лэватейн",
+    factionId: FactionIds.RhodesIsland,
+    raceId: RaceIds.Sarkaz,
     rarity: 6,
     elementId: ElementIds.Heat,
     weaponId: WeaponTypeIds.Sword,
@@ -191,6 +237,8 @@ export default {
   LastRite: {
     id: OperatorIds.LastRite,
     name: "Панихида",
+    factionId: FactionIds.Sesqa,
+    raceId: RaceIds.Sarkaz,
     rarity: 6,
     elementId: ElementIds.Cryo,
     weaponId: WeaponTypeIds.Greatsword,
@@ -203,6 +251,8 @@ export default {
   Lifeng: {
     id: OperatorIds.Lifeng,
     name: "Лифэн",
+    factionId: FactionIds.HongshanAcademyOfSciences,
+    raceId: RaceIds.Anasa,
     rarity: 6,
     elementId: ElementIds.Physical,
     weaponId: WeaponTypeIds.Polearm,
@@ -214,7 +264,9 @@ export default {
   },
   MiFu: {
     id: OperatorIds.MiFu,
-    name: "Mi Fu",
+    name: "Ми Фу",
+    factionId: FactionIds.HongshanAcademyOfSciences,
+    raceId: RaceIds.Sarkaz,
     rarity: 6,
     elementId: ElementIds.Physical,
     weaponId: WeaponTypeIds.Greatsword,
@@ -227,6 +279,8 @@ export default {
   Perlica: {
     id: OperatorIds.Perlica,
     name: "Перлика",
+    factionId: FactionIds.EndfieldIndustries,
+    raceId: RaceIds.Liberi,
     rarity: 5,
     elementId: ElementIds.Electric,
     weaponId: WeaponTypeIds.ArtsUnit,
@@ -239,6 +293,8 @@ export default {
   Pogranichnik: {
     id: OperatorIds.Pogranichnik,
     name: "Пограничник",
+    factionId: FactionIds.RhodesIsland,
+    raceId: RaceIds.Liberi,
     rarity: 6,
     elementId: ElementIds.Physical,
     weaponId: WeaponTypeIds.Sword,
@@ -251,6 +307,8 @@ export default {
   Rossi: {
     id: OperatorIds.Rossi,
     name: "Росси",
+    factionId: FactionIds.EndfieldIndustries,
+    raceId: RaceIds.Lupo,
     rarity: 6,
     elementId: ElementIds.Physical,
     weaponId: WeaponTypeIds.Sword,
@@ -263,6 +321,8 @@ export default {
   Snowshine: {
     id: OperatorIds.Snowshine,
     name: "Светоснежка",
+    factionId: FactionIds.RhodesIsland,
+    raceId: RaceIds.Ursus,
     rarity: 5,
     elementId: ElementIds.Cryo,
     weaponId: WeaponTypeIds.Greatsword,
@@ -275,6 +335,8 @@ export default {
   Tangtang: {
     id: OperatorIds.Tangtang,
     name: "Тантан",
+    factionId: FactionIds.EndfieldIndustries,
+    raceId: RaceIds.Feline,
     rarity: 6,
     elementId: ElementIds.Cryo,
     weaponId: WeaponTypeIds.Handcannon,
@@ -287,6 +349,8 @@ export default {
   Wulfgard: {
     id: OperatorIds.Wulfgard,
     name: "Вулфгард",
+    factionId: FactionIds.EndfieldIndustries,
+    raceId: RaceIds.Lupo,
     rarity: 5,
     elementId: ElementIds.Heat,
     weaponId: WeaponTypeIds.Handcannon,
@@ -299,6 +363,8 @@ export default {
   Xaihi: {
     id: OperatorIds.Xaihi,
     name: "Сайхи",
+    factionId: FactionIds.CabalOfTranquility,
+    raceId: RaceIds.Sarkaz,
     rarity: 5,
     elementId: ElementIds.Cryo,
     weaponId: WeaponTypeIds.ArtsUnit,
@@ -311,6 +377,8 @@ export default {
   Yvonne: {
     id: OperatorIds.Yvonne,
     name: "Ивонна",
+    factionId: FactionIds.EndfieldIndustries,
+    raceId: RaceIds.Vouivre,
     rarity: 6,
     elementId: ElementIds.Cryo,
     weaponId: WeaponTypeIds.Handcannon,
@@ -323,6 +391,8 @@ export default {
   ZhuangFangyi: {
     id: OperatorIds.ZhuangFangyi,
     name: "Чжуан Фанъи",
+    factionId: FactionIds.HongshanAcademyOfSciences,
+    raceId: RaceIds.Kylin,
     rarity: 6,
     elementId: ElementIds.Electric,
     weaponId: WeaponTypeIds.ArtsUnit,

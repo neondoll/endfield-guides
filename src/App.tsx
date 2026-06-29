@@ -23,6 +23,7 @@ function App() {
               <Route index path={PATHS.Home} Component={lazy(() => import("@/pages/home/page"))} />
               <Route path={PATHS.Gears} Component={lazy(() => import("@/pages/gears/page"))} />
               <Route path={PATHS.Operators} Component={lazy(() => import("@/pages/operators/page"))} />
+              <Route path={PATHS.Operator(":operatorId")} Component={lazy(() => import("@/pages/operator/page"))} />
               <Route path={PATHS.Weapons} Component={lazy(() => import("@/pages/weapons/page"))} />
             </Routes>
           </Suspense>

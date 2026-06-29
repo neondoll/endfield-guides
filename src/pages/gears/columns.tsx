@@ -18,7 +18,7 @@ export const columns: ColumnDef<GearData>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => (
-      <DataTableColumnHeader align="center" column={column} title="Gear" />
+      <DataTableColumnHeader align="center" column={column} title="Снаряжение" />
     ),
     cell: ({ row }) => {
       const image = row.original.image;
@@ -35,7 +35,7 @@ export const columns: ColumnDef<GearData>[] = [
   {
     accessorKey: "type.name",
     header: ({ column }) => (
-      <DataTableColumnHeader align="center" column={column} title="Type" />
+      <DataTableColumnHeader align="center" column={column} title="Тип" />
     ),
     cell: ({ row }) => {
       const typeName = row.original.type.name;
@@ -46,7 +46,7 @@ export const columns: ColumnDef<GearData>[] = [
   {
     accessorKey: "level",
     header: ({ column }) => (
-      <DataTableColumnHeader align="center" column={column} title="Level" />
+      <DataTableColumnHeader align="center" column={column} title="LV" />
     ),
     cell: ({ row }) => {
       const level = row.original.level;
@@ -57,7 +57,7 @@ export const columns: ColumnDef<GearData>[] = [
   {
     accessorKey: "rarity",
     header: ({ column }) => (
-      <DataTableColumnHeader align="center" column={column} title="Rarity" />
+      <DataTableColumnHeader align="center" column={column} title="Качество" />
     ),
     cell: ({ row }) => {
       const rarity = row.original.rarity;
@@ -80,7 +80,7 @@ export const columns: ColumnDef<GearData>[] = [
     },
   },
   {
-    header: "Defense and Substats",
+    header: "Характеристики",
     cell: ({ row }) => {
       const defense = row.original.defense;
       const subStats = row.original.subStats;
@@ -88,14 +88,14 @@ export const columns: ColumnDef<GearData>[] = [
       return (
         <div className="space-y-1 whitespace-pre-line">
           <p>
-            <span className="font-bold">Defense</span>
-            {`: ${defense}`}
+            <span className="font-bold">Защита</span>
+            <span children={`: +${defense}`} />
           </p>
           <hr className="border-dashed" />
           {subStats.map(subStat => (
             <p key={subStat.text}>
-              <span className="font-bold">{subStat.text}</span>
-              {`: ${subStat.value}`}
+              <span children={subStat.text} className="font-bold" />
+              <span children={`: +${subStat.value}`} />
             </p>
           ))}
         </div>
@@ -105,7 +105,7 @@ export const columns: ColumnDef<GearData>[] = [
   {
     accessorKey: "set.name",
     header: ({ column }) => (
-      <DataTableColumnHeader align="center" column={column} title="Gear Set" />
+      <DataTableColumnHeader align="center" column={column} title="Комплект" />
     ),
     cell: ({ row }) => {
       const setName = row.original.set.name;
@@ -115,7 +115,7 @@ export const columns: ColumnDef<GearData>[] = [
   },
   {
     accessorKey: "set.effect",
-    header: "Set Effect",
+    header: "Эффект комплекта",
     cell: ({ row }) => {
       const bonusStat = row.original.set.bonusStat;
       const setEffect = row.original.set.effect;
@@ -126,11 +126,11 @@ export const columns: ColumnDef<GearData>[] = [
             ? (
                 <>
                   <p>
-                    <span className="font-bold">Bonus Stat</span>
+                    <span className="font-bold">Бонусная характеристика</span>
                     {`: ${bonusStat}`}
                   </p>
                   <p>
-                    <span className="font-bold">Set Effect</span>
+                    <span className="font-bold">Эффект комплекта</span>
                     {`: ${setEffect}`}
                   </p>
                 </>

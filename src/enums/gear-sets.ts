@@ -9,6 +9,8 @@ export const GearSetIds = {
   Catastrophe: "catastrophe",
   EternalXiranite: "eternal-xiranite",
   Frontiers: "frontiers",
+  /* Потертое лезвие */
+  GrizzledEdge: "grizzled-edge",
   HotWork: "hot-work",
   LYNX: "lynx",
   MISecurity: "mi-security",
@@ -24,5 +26,6 @@ export const GearSetIds = {
   Swordmancer: "swordmancer",
   TideSurge: "tide-surge",
   Type50Yinglung: "type-50-yinglung",
+  /* Ксиранад */
   Xiranflow: "xiranflow",
 } as const;

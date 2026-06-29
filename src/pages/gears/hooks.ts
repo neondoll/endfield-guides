@@ -17,12 +17,32 @@ export const useGears = () => {
   const gearsLoading = useAppSelector(state => state.gears.listLoading);
 
   const data = useMemo<GearData[]>(() => {
-    return gears.map((gear) => {
-      const set = gearSets.find(gearSet => gearSet.id === gear.setId)!;
-      const type = gearTypes.find(gearType => gearType.id === gear.typeId)!;
+    if (!gearSets.length || !gearTypes.length) {
+      return [];
+    }
 
-      return { ...gear, set, type };
-    });
+    return gears
+      .map((gear) => {
+        const set = gearSets.find(gearSet => gearSet.id === gear.setId)!;
+        const type = gearTypes.find(gearType => gearType.id === gear.typeId)!;
+
+        return { ...gear, set, type };
+      })
+      .sort((a, b) => {
+        if (a.level !== b.level) {
+          return b.level - a.level;
+        }
+
+        if (a.setId !== b.setId) {
+          return a.set.name.localeCompare(b.set.name);
+        }
+
+        if (a.typeId !== b.typeId) {
+          return a.type.order - b.type.order;
+        }
+
+        return a.name.localeCompare(b.name);
+      });
   }, [gearSets, gearTypes, gears]);
 
   useEffect(() => {

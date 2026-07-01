@@ -35,9 +35,9 @@ export default {
   BasicGearPack: { id: GearSetIds.BasicGearPack, name: "Basic Gear Pack" },
   Bonekrusha: {
     id: GearSetIds.Bonekrusha,
-    name: "Bonekrusha",
-    bonusStat: "Wearer's ATK +15%",
-    effect: "When the wearer casts a combo skill, gain 1 stack of Bonekrushing Smash that grants the wearer's next battle skill DMG +30%. Bonekrushing Smash can stack 2 time(s).",
+    name: "Игра в Костолома",
+    bonusStat: "АТК владельца +15%",
+    effect: "При использовании комбонавыка владелец получает 1 заряд Костоломного удара, который дает +30% к наносимому УРН от следующего боевого навыка. Костоломный удар суммируется до 2 р.",
   },
   Catastrophe: {
     id: GearSetIds.Catastrophe,
@@ -53,9 +53,9 @@ export default {
   },
   Frontiers: {
     id: GearSetIds.Frontiers,
-    name: "Frontiers",
-    bonusStat: "Wearer's Combo Skill Cooldown Reduction +15%.",
-    effect: "After the wearer recovers SP with a skill, the team gains DMG +16% for 15s. This effect cannot stack.",
+    name: "Колонист",
+    bonusStat: "сокращение перезарядки комбонавыков владельца +15%",
+    effect: "При восстановлении ОН владельца с помощью навыкв каманда получает +16% к УРН на 15 сек. Эффект не суммируется.",
   },
   GrizzledEdge: {
     id: GearSetIds.GrizzledEdge,
@@ -104,9 +104,9 @@ export default {
   },
   Qingbo: {
     id: GearSetIds.Qingbo,
-    name: "Qingbo",
-    bonusStat: "Wearer's Combo Skill Cooldown Reduction +15%.",
-    effect: "When the wearer casts a combo skill, the wearer gains Skill DMG Dealt +20% (for every skill) for 15s. This effect can reach 2 stacks. Duration of each stack is counted separately.",
+    name: "Циньбо",
+    bonusStat: "сокращение перезарядки комбонавыков владельца +15%",
+    effect: "При применении комбонавыка владелец получает +20% к наносимому УРН от навыков на 15 сек. (для каждого навыка). Эффект суммируется до 2 р. Длительность каждого заряда подсчитывается отдельно.",
   },
   RedeemerGearPack: { id: GearSetIds.RedeemerGearPack, name: "Redeemer Gear Pack" },
   RovingMSGR: {
@@ -117,9 +117,9 @@ export default {
   },
   Swordmancer: {
     id: GearSetIds.Swordmancer,
-    name: "Swordmancer",
-    bonusStat: "Wearer's Stagger Efficiency Bonus +20%",
-    effect: "After the wearer applies a Physical Status, the wearer also performs 1 hit that deals 250% ATK of Physical DMG and [10 Stagger]. Effect trigger cooldown: 15s.",
+    name: "Мастер меча",
+    bonusStat: "бонус эффективности ошеломления владельца +20%",
+    effect: "Когда владелец накладывает физическое состояние, он дополнительно совершает 1 удар, наносящий физический УРН в размере 250% АТК, и накладывает 10 ошеломления. Перезарядка эффекта: 15 сек.",
   },
   TideSurge: {
     id: GearSetIds.TideSurge,
@@ -129,9 +129,9 @@ export default {
   },
   Type50Yinglung: {
     id: GearSetIds.Type50Yinglung,
-    name: "Type 50 Yinglung",
-    bonusStat: "Wearer's ATK +15%",
-    effect: "When any operator in the team casts a battle skill, the wearer gains 1 stack of Yinglung's Edge that gives DMG +20% to the wearer's next combo skill. Yinglung's Edge can stack 3 time(s).",
+    name: "Инлун-50",
+    bonusStat: "АТК владельца +15%",
+    effect: "Когда любой оперативник команды использует боевой навык, владелец получает 1 заряд Острия «Инлун», дающего +20% к УРН следующего комбонавыка владельца. Острие «Инлун» суммируется до 3 р.",
   },
   Xiranflow: {
     id: GearSetIds.Xiranflow,

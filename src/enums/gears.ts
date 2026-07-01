@@ -38,19 +38,33 @@ export const GearIds = {
   BasicGauntlets: "basic-gauntlets",
   BasicGloves: "basic-gloves",
   BasicPPE: "basic-ppe",
+  /* Костоломская фигурка */
   BonekrushaFigurine: "bonekrusha-figurine",
+  /* Костоломская фигурка К1 */
   BonekrushaFigurineT1: "bonekrusha-figurine-t1",
+  /* Костоломская фигурка К2 */
   BonekrushaFigurineT2: "bonekrusha-figurine-t2",
+  /* Костоломские перчатки */
   BonekrushaGloves: "bonekrusha-gloves",
+  /* Костоломская тяжелая броня */
   BonekrushaHeavyArmor: "bonekrusha-heavy-armor",
+  /* Костоломская тяжелая броня К1 */
   BonekrushaHeavyArmorT1: "bonekrusha-heavy-armor-t1",
+  /* Костоломская тяжелая броня К2 */
   BonekrushaHeavyArmorT2: "bonekrusha-heavy-armor-t2",
+  /* Костоломская маска */
   BonekrushaMask: "bonekrusha-mask",
+  /* Костоломская маска К1 */
   BonekrushaMaskT1: "bonekrusha-mask-t1",
+  /* Костоломская маска К2 */
   BonekrushaMaskT2: "bonekrusha-mask-t2",
+  /* Костоломское пончо */
   BonekrushaPoncho: "bonekrusha-poncho",
+  /* Костоломское пончо К1 */
   BonekrushaPonchoT1: "bonekrusha-poncho-t1",
+  /* Костоломские краги */
   BonekrushaWristband: "bonekrusha-wristband",
+  /* Костоломские краги К1 */
   BonekrushaWristbandT1: "bonekrusha-wristband-t1",
   CatastropheFilter: "catastrophe-filter",
   CatastropheGauzeCartridge: "catastrophe-gauze-cartridge",
@@ -66,19 +80,33 @@ export const GearIds = {
   EternalXiraniteGlovesT1: "eternal-xiranite-gloves-t1",
   EternalXiranitePowerCore: "eternal-xiranite-power-core",
   EternalXiranitePowerCoreT1: "eternal-xiranite-power-core-t1",
+  /* Анализатор «Колонист» */
   FrontiersAnalyzer: "frontiers-analyzer",
+  /* Броня «Колонист» */
   FrontiersArmor: "frontiers-armor",
+  /* Броня «Колонист» К1 */
   FrontiersArmorT1: "frontiers-armor-t1",
+  /* Броня «Колонист» К2 */
   FrontiersArmorT2: "frontiers-armor-t2",
+  /* Броня «Колонист» К3 */
   FrontiersArmorT3: "frontiers-armor-t3",
+  /* Антиморовые перчатки «Колонист» */
   FrontiersBlightRESGloves: "frontiers-blight-res-gloves",
+  /* Рация «Колонист» */
   FrontiersComm: "frontiers-comm",
+  /* Рация «Колонист» К1 */
   FrontiersCommT1: "frontiers-comm-t1",
+  /* Улучшенная кислородная трубка «Колонист» */
   FrontiersExtraO2Tube: "frontiers-extra-o2-tube",
+  /* Улучшенная кислородная трубка «Колонист» К1 */
   FrontiersExtraO2TubeT1: "frontiers-extra-o2-tube-t1",
+  /* Волоконные перчатки «Колонист» */
   FrontiersFiberGloves: "frontiers-fiber-gloves",
+  /* Волоконные перчатки «Колонист» К1 */
   FrontiersFiberGlovesT1: "frontiers-fiber-gloves-t1",
+  /* Кислородный баллон пограничья */
   FrontiersO2Tube: "frontiers-o2-tube",
+  /* Защитный костюм «Колонист» */
   FrontiersProtectionSuit: "frontiers-protection-suit",
   /* Броня «Потертое лезвие» */
   GrizzledEdgeArmor: "grizzled-edge-armor",
@@ -170,13 +198,21 @@ export const GearIds = {
   PulserLabsGloves: "pulser-labs-gloves",
   PulserLabsInvasionCore: "pulser-labs-invasion-core",
   PulserLabsProbe: "pulser-labs-probe",
+  /* Бамбуковый клинок «Циньбо» */
   QingboBambooCutter: "qingbo-bamboo-cutter",
+  /* Емкость «Циньбо» */
   QingboCask: "qingbo-cask",
+  /* Рукавицы «Циньбо» */
   QingboGauntlets: "qingbo-gauntlets",
+  /* Перчатки «Циньбо» */
   QingboGloves: "qingbo-gloves",
+  /* Тяжелая броня «Циньбо» */
   QingboHeavyArmor: "qingbo-heavy-armor",
+  /* Легкая броня «Циньбо» */
   QingboLightArmor: "qingbo-light-armor",
+  /* Локатор «Циньбо» */
   QingboPositioningKit: "qingbo-positioning-kit",
+  /* Локатор «Циньбо» К1 */
   QingboPositioningKitT1: "qingbo-positioning-kit-t1",
   RedeemerArmor: "redeemer-armor",
   RedeemerGloves: "redeemer-gloves",
@@ -195,30 +231,52 @@ export const GearIds = {
   RovingMSGRGyroT1: "roving-msgr-gyro-t1",
   RovingMSGRJacket: "roving-msgr-jacket",
   RovingMSGRJacketT1: "roving-msgr-jacket-t1",
+  /* Кинжал «Мастер меча» */
   SwordmancerDagger: "swordmancer-dagger",
+  /* Волоконная броня «Мастер меча» */
   SwordmancerFiberArmor: "swordmancer-fiber-armor",
+  /* Кремень «Мастер меча» */
   SwordmancerFlint: "swordmancer-flint",
+  /* Тяжелая броня «Мастер меча» */
   SwordmancerHeavyArmor: "swordmancer-heavy-armor",
+  /* Тяжелая броня «Мастер меча» К1 */
   SwordmancerHeavyArmorT1: "swordmancer-heavy-armor-t1",
+  /* Легкая броня «Мастер меча» */
   SwordmancerLightArmor: "swordmancer-light-armor",
+  /* Микрофильтр «Мастер меча» */
   SwordmancerMicroFilter: "swordmancer-micro-filter",
+  /* Маячок «Мастер меча» */
   SwordmancerNAVBeacon: "swordmancer-nav-beacon",
+  /* Тактические рукавицы «Мастер меча» */
   SwordmancerTACGauntlets: "swordmancer-tac-gauntlets",
+  /* Тактические рукавицы «Мастер меча» К1 */
   SwordmancerTACGauntletsT1: "swordmancer-tac-gauntlets-t1",
+  /* Тактические перчатки «Мастер меча» */
   SwordmancerTACGloves: "swordmancer-tac-gloves",
   TideFallLightArmor: "tide-fall-light-armor",
   TideSurgeGauntlets: "tide-surge-gauntlets",
   TurbidCuttingTorch: "turbid-cutting-torch",
+  /* Перчатки «Инлун-50» */
   Type50YinglungGloves: "type-50-yinglung-gloves",
+  /* Перчатки «Инлун-50» К1 */
   Type50YinglungGlovesT1: "type-50-yinglung-gloves-t1",
+  /* Тяжелая броня «Инлун-50» */
   Type50YinglungHeavyArmor: "type-50-yinglung-heavy-armor",
+  /* Тяжелая броня «Инлун-50» К1 */
   Type50YinglungHeavyArmorT1: "type-50-yinglung-heavy-armor-t1",
+  /* Тяжелая броня «Инлун-50» К2 */
   Type50YinglungHeavyArmorT2: "type-50-yinglung-heavy-armor-t2",
+  /* Нож «Инлун-50» */
   Type50YinglungKnife: "type-50-yinglung-knife",
+  /* Нож «Инлун-50» К1 */
   Type50YinglungKnifeT1: "type-50-yinglung-knife-t1",
+  /* Легкая броня «Инлун-50» */
   Type50YinglungLightArmor: "type-50-yinglung-light-armor",
+  /* Радар «Инлун-50» */
   Type50YinglungRadar: "type-50-yinglung-radar",
+  /* Радар «Инлун-50» К1 */
   Type50YinglungRadarT1: "type-50-yinglung-radar-t1",
+  /* Радар «Инлун-50» К2 */
   Type50YinglungRadarT2: "type-50-yinglung-radar-t2",
   /* Дубинка «Ксиранад» */
   XiranflowBaton: "xiranflow-baton",

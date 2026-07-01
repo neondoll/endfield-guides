@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from "react";
 
-import type { GearData } from "./columns";
+// import type { GearData } from "./columns";
 import { useAppDispatch, useAppSelector } from "@/store";
 import { fetchGearSetList } from "@/store/gear-sets";
 import { fetchGearTypeList } from "@/store/gear-types";
@@ -16,7 +16,7 @@ export const useGears = () => {
   const gears = useAppSelector(state => state.gears.list);
   const gearsLoading = useAppSelector(state => state.gears.listLoading);
 
-  const data = useMemo<GearData[]>(() => {
+  /* const data = useMemo<GearData[]>(() => {
     if (!gearSets.length || !gearTypes.length) {
       return [];
     }
@@ -43,6 +43,33 @@ export const useGears = () => {
 
         return a.name.localeCompare(b.name);
       });
+  }, [gearSets, gearTypes, gears]); */
+  const data = useMemo(() => {
+    if (!gears.length || !gearSets.length || !gearTypes.length) {
+      return [];
+    }
+
+    const uGear = gears
+      .map((gear) => {
+        const type = gearTypes.find(gearType => gearType.id === gear.typeId)!;
+
+        return { ...gear, type };
+      })
+      .sort((a, b) => {
+        if (a.level !== b.level) {
+          return b.level - a.level;
+        }
+
+        if (a.typeId !== b.typeId) {
+          return a.type.order - b.type.order;
+        }
+
+        return a.name.localeCompare(b.name);
+      });
+
+    return gearSets.map((gearSet) => {
+      return { ...gearSet, gears: uGear.filter(gear => gear.setId === gearSet.id) };
+    });
   }, [gearSets, gearTypes, gears]);
 
   useEffect(() => {

@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { HashRouter } from "react-router";
 
 import App from "./App.tsx";
+import { ThemeProvider } from "./components/theme-provider";
 import { store } from "./store";
 import "./index.css";
 
@@ -16,9 +17,11 @@ if (!container) {
 createRoot(container).render(
   <StrictMode>
     <HashRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <ThemeProvider defaultTheme="system" storageKey="endfield-guides-ui-theme">
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </ThemeProvider>
     </HashRouter>
   </StrictMode>,
 );

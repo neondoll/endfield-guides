@@ -1,4 +1,16 @@
 export {
-  ArrowDownIcon, ArrowUpIcon, ArrowUpDownIcon, CheckIcon, ChevronLeftIcon, ChevronRightIcon, ChevronsUpDownIcon,
-  EyeOffIcon, MoreHorizontalIcon, PuzzleIcon, SwordsIcon, UsersRoundIcon,
+  ArrowDownIcon as ArrowDownIcon,
+  ArrowUpIcon as ArrowUpIcon,
+  ArrowUpDownIcon as ArrowUpDownIcon,
+  CheckIcon as CheckIcon,
+  ChevronLeftIcon as ChevronLeftIcon,
+  ChevronRightIcon as ChevronRightIcon,
+  ChevronsUpDownIcon as ChevronsUpDownIcon,
+  EyeOffIcon as EyeOffIcon,
+  MoonIcon as MoonIcon,
+  MoreHorizontalIcon as MoreHorizontalIcon,
+  PuzzleIcon as PuzzleIcon,
+  SunIcon as SunIcon,
+  SwordsIcon as SwordsIcon,
+  UsersRoundIcon as UsersRoundIcon,
 } from "lucide-react";

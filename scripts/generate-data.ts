@@ -25,6 +25,10 @@ import type { Race } from "../src/types/races";
 import type { WeaponType, WeaponTypeListItem } from "../src/types/weapon-types";
 import type { Weapon, WeaponListItem } from "../src/types/weapons";
 
+type CategoryConfig<T extends CategoryType> = {
+  data: DataItem<T>[];
+  transformList: (item: DataItem<T>) => DataListItem<T>;
+};
 type CategoryType = "attributes" | "elements" | "factions" | "gear-sets" | "gear-types" | "gears" | "operator-roles"
   | "operators" | "races" | "weapon-types" | "weapons";
 type DataItem<T extends CategoryType>
@@ -53,11 +57,6 @@ type DataListItem<T extends CategoryType>
                     : T extends "weapon-types" ? WeaponTypeListItem
                       : T extends "weapons" ? WeaponListItem
                         : never;
-
-interface CategoryConfig<T extends CategoryType> {
-  data: DataItem<T>[];
-  transformList: (item: DataItem<T>) => DataListItem<T>;
-}
 
 // const env = loadEnv("development", process.cwd(), "");
 

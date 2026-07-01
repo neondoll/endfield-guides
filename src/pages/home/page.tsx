@@ -6,12 +6,7 @@ import type { IconProps } from "@/components/ui/icon.types";
 import { Item, ItemContent, ItemDescription, ItemGroup, ItemMedia, ItemTitle } from "@/components/ui/item";
 import PATHS from "@/paths";
 
-interface Section {
-  icon: IconProps;
-  title: string;
-  description?: string;
-  to: ComponentProps<typeof Link>["to"];
-}
+type Section = { icon: IconProps; title: string; description?: string; to: ComponentProps<typeof Link>["to"] };
 
 const SECTIONS: Array<Section> = [
   { icon: UsersRoundIcon, title: "Операторы", description: "Список всех персонажей", to: PATHS.Operators },

@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Link, Route, Routes } from "react-router";
 
+import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import PATHS from "@/paths";
 
@@ -10,9 +11,12 @@ function App() {
       <header className="sticky top-0 z-50 w-full bg-background">
         <div className="px-4 mx-auto container md:px-6">
           <div className="flex items-center h-14">
-            <Button asChild variant="ghost">
+            <Button asChild size="lg" variant="ghost">
               <Link to={PATHS.Home}>Arknights: Endfield Guides</Link>
             </Button>
+            <div className="flex gap-2 items-center ml-auto md:flex-1 md:justify-end">
+              <ModeToggle />
+            </div>
           </div>
         </div>
       </header>
@@ -29,6 +33,24 @@ function App() {
           </Suspense>
         </div>
       </main>
+      <footer className="flex flex-col gap-4 justify-center items-center py-4 text-sm text-muted-foreground bg-muted border-t">
+        <p className="uppercase">Неофициальный фанатский проект</p>
+        <div className="flex gap-2 justify-center items-center">
+          <p>Смотрите также:</p>
+          <ul className="flex gap-1 justify-center items-center">
+            <li>
+              <Button asChild size="xs" variant="link">
+                <a href="https://neondoll.github.io/genshin-guides/" target="_blank">Genshin Impact Guides</a>
+              </Button>
+            </li>
+            <li>
+              <Button asChild size="xs" variant="link">
+                <a href="https://neondoll.github.io/nte-guides/" target="_blank">Neverness to Everness Guides</a>
+              </Button>
+            </li>
+          </ul>
+        </div>
+      </footer>
     </div>
   );
 }

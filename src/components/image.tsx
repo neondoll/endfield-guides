@@ -8,7 +8,7 @@ const Image: FC<ImageProps> = ({ alt, className, ...props }) => {
   return (
     <img
       alt={alt}
-      className={cn("aspect-square max-w-(--max-size) max-h-(--max-size)", className)}
+      className={cn("aspect-square shrink-0 max-w-(--max-size) max-h-(--max-size)", className)}
       {...props}
     />
   );

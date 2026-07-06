@@ -5,8 +5,9 @@ import type { FC } from "react";
 import { useGears } from "./hooks";
 import GearsLayout from "./layout";
 import { GearImage } from "@/components/image";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { ChevronDownIcon, ChevronUpIcon } from "@/components/ui/icon";
 import { cn } from "@/lib/utils";
 
 const GearsPage: FC = () => {
@@ -22,85 +23,160 @@ const GearsPage: FC = () => {
 
   return (
     <GearsLayout>
-      <Accordion type="multiple">
+      <div className="grid grid-cols-[repeat(5,auto)]">
         {data.map(set => (
-          <AccordionItem key={set.id} value={set.id}>
-            <AccordionTrigger children={`Набор снаряжения «${set.name}»`} />
-            <AccordionContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Снаряжение</TableHead>
-                    <TableHead>Тип</TableHead>
-                    <TableHead>LV</TableHead>
-                    <TableHead>Качество</TableHead>
-                    <TableHead>Характеристики</TableHead>
-                    <TableHead>Эффект комплекта</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {set.gears.map((gear, index) => (
-                    <TableRow key={gear.id}>
-                      <TableCell className="space-y-1 text-center whitespace-normal">
-                        <GearImage alt={gear.name} className="mx-auto size-12.5" src={gear.image} />
-                        <p children={gear.name} />
-                      </TableCell>
-                      <TableCell children={gear.type.name} className="text-center whitespace-normal" />
-                      <TableCell children={gear.level} className="text-center whitespace-normal" />
-                      <TableCell className="space-y-1 text-center whitespace-normal">
+          <Collapsible className="grid grid-cols-subgrid col-span-full" defaultOpen={true} key={set.id}>
+            <CollapsibleTrigger asChild className="col-span-full">
+              <Button
+                className={cn([
+                  "flex justify-between w-full text-left normal-case group/collapsible-trigger",
+                  "**:data-[slot=collapsible-trigger-icon]:ml-auto",
+                ])}
+              >
+                <span children={`Набор снаряжения «${set.name}»`} />
+                <ChevronDownIcon
+                  className="inline shrink-0 pointer-events-none group-aria-expanded/collapsible-trigger:hidden"
+                  data-slot="collapsible-trigger-icon"
+                />
+                <ChevronUpIcon
+                  className="hidden shrink-0 pointer-events-none group-aria-expanded/collapsible-trigger:inline"
+                  data-slot="collapsible-trigger-icon"
+                />
+              </Button>
+            </CollapsibleTrigger>
+            <CollapsibleContent className="grid grid-cols-subgrid col-span-full p-px">
+              <div
+                className={cn([
+                  "grid grid-cols-subgrid col-span-full text-card-foreground bg-card shadow-sm ring-1 ring-foreground/5",
+                ])}
+              >
+                {(set.bonusStat || set.effect) && (
+                  <div className="col-span-full p-3 text-sm border-b">
+                    <p>
+                      <span className="font-bold">Эффект комплекта (3 шт.)</span>
+                      {`: ${set.bonusStat}.`}
+                    </p>
+                    <p children={set.effect} />
+                  </div>
+                )}
+                <div className="grid grid-cols-subgrid col-span-full text-sm" data-slot="table">
+                  <div className="grid grid-cols-subgrid col-span-full [&_tr]:border-b" data-slot="table-header">
+                    <div className="grid grid-cols-subgrid col-span-full border-b" data-slot="table-row">
+                      <div
+                        className={cn([
+                          "inline-flex justify-center items-center px-3 h-12 text-xs font-medium tracking-wider",
+                          "text-center text-muted-foreground uppercase whitespace-nowrap",
+                        ])}
+                        data-slot="table-head"
+                      >
+                        Снаряжение
+                      </div>
+                      <div
+                        className={cn([
+                          "inline-flex justify-center items-center px-3 h-12 text-xs font-medium tracking-wider",
+                          "text-center text-muted-foreground uppercase whitespace-nowrap",
+                        ])}
+                        data-slot="table-head"
+                      >
+                        Тип
+                      </div>
+                      <div
+                        className={cn([
+                          "inline-flex justify-center items-center px-3 h-12 text-xs font-medium tracking-wider",
+                          "text-center text-muted-foreground uppercase whitespace-nowrap",
+                        ])}
+                        data-slot="table-head"
+                      >
+                        LV
+                      </div>
+                      <div
+                        className={cn([
+                          "inline-flex justify-center items-center px-3 h-12 text-xs font-medium tracking-wider",
+                          "text-center text-muted-foreground uppercase whitespace-nowrap",
+                        ])}
+                        data-slot="table-head"
+                      >
+                        Качество
+                      </div>
+                      <div
+                        className={cn([
+                          "inline-flex justify-center items-center px-3 h-12 text-xs font-medium tracking-wider",
+                          "text-center text-muted-foreground uppercase whitespace-nowrap",
+                        ])}
+                        data-slot="table-head"
+                      >
+                        Характеристики
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="grid grid-cols-subgrid col-span-full [&_tr:last-child]:border-0"
+                    data-slot="table-body"
+                  >
+                    {set.gears.map(gear => (
+                      <div
+                        className="grid grid-cols-subgrid col-span-full border-b"
+                        data-slot="table-row"
+                        key={gear.id}
+                      >
                         <div
-                          className={cn([
-                            "mx-auto size-7.5 rounded-sm",
-                            gear.rarity === "white" && "bg-gray-500",
-                            gear.rarity === "green" && "bg-green-500",
-                            gear.rarity === "blue" && "bg-blue-500",
-                            gear.rarity === "purple" && "bg-purple-500",
-                            gear.rarity === "gold" && "bg-yellow-500",
-                          ])}
-                        />
-                        <p children={gear.rarity} className="sr-only" />
-                      </TableCell>
-                      <TableCell className="space-y-1 whitespace-pre-line">
-                        <div>
-                          <span className="font-bold">Защита</span>
-                          <span children={`: +${gear.defense}`} />
+                          className="inline-flex flex-col gap-y-1 justify-center items-center p-3 text-center whitespace-normal"
+                          data-slot="table-cell"
+                        >
+                          <GearImage alt={gear.name} className="size-12.5" src={gear.image} />
+                          <p children={gear.name} />
                         </div>
-                        <hr className="border-dashed" />
-                        {gear.subStats.map(subStat => (
-                          <div key={subStat.text}>
-                            <span children={subStat.text} className="font-bold" />
-                            <span children={`: +${subStat.value}`} />
+                        <div
+                          children={gear.type.name}
+                          className="inline-flex flex-col justify-center items-center p-3 text-center whitespace-normal"
+                          data-slot="table-cell"
+                        />
+                        <div
+                          children={gear.level}
+                          className="inline-flex flex-col justify-center items-center p-3 text-center whitespace-normal"
+                          data-slot="table-cell"
+                        />
+                        <div
+                          className="inline-flex flex-col gap-y-1 justify-center items-center p-3 text-center whitespace-normal"
+                          data-slot="table-cell"
+                        >
+                          <div
+                            className={cn([
+                              "shrink-0 size-7.5 rounded-sm",
+                              gear.rarity === "white" && "bg-gray-500",
+                              gear.rarity === "green" && "bg-green-500",
+                              gear.rarity === "blue" && "bg-blue-500",
+                              gear.rarity === "purple" && "bg-purple-500",
+                              gear.rarity === "gold" && "bg-yellow-500",
+                            ])}
+                          />
+                          <p children={gear.rarity} className="sr-only" />
+                        </div>
+                        <div
+                          className="inline-flex flex-col gap-y-1 justify-center p-3 whitespace-pre-line"
+                          data-slot="table-cell"
+                        >
+                          <div>
+                            <span className="font-bold">Защита</span>
+                            <span children={`: +${gear.defense}`} />
                           </div>
-                        ))}
-                      </TableCell>
-                      {index === 0 && (
-                        <TableCell className="space-y-1 whitespace-pre-line" rowSpan={set.gears.length}>
-                          {(set.bonusStat || set.effect)
-                            ? (
-                                <>
-                                  <p>
-                                    <span className="font-bold">Бонусная характеристика</span>
-                                    {`: ${set.bonusStat}`}
-                                  </p>
-                                  <p>
-                                    <span className="font-bold">Эффект комплекта</span>
-                                    {`: ${set.effect}`}
-                                  </p>
-                                </>
-                              )
-                            : (
-                                <p className="text-destructive">No 3-pc Set Effect</p>
-                              )}
-                        </TableCell>
-                      )}
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </AccordionContent>
-          </AccordionItem>
+                          <hr className="border-dashed" />
+                          {gear.subStats.map(subStat => (
+                            <div key={subStat.text}>
+                              <span children={subStat.text} className="font-bold" />
+                              <span children={`: +${subStat.value}`} />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
         ))}
-      </Accordion>
+      </div>
       {/* <DataTable columns={columns} data={data} /> */}
     </GearsLayout>
   );

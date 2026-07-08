@@ -3,7 +3,7 @@ import { combineReducers } from "@reduxjs/toolkit";
 import { attributesReducer } from "./attributes";
 import { elementsReducer } from "./elements";
 import { factionsReducer } from "./factions";
-import { gearSetsReducer } from "./gear-sets";
+import { gearPacksReducer } from "./gear-packs";
 import { gearTypesReducer } from "./gear-types";
 import { gearsReducer } from "./gears";
 import { operatorRolesReducer } from "./operator-roles";
@@ -16,7 +16,7 @@ export const rootReducer = combineReducers({
   attributes: attributesReducer,
   elements: elementsReducer,
   factions: factionsReducer,
-  gearSets: gearSetsReducer,
+  gearPacks: gearPacksReducer,
   gearTypes: gearTypesReducer,
   gears: gearsReducer,
   operatorRoles: operatorRolesReducer,

@@ -5,12 +5,12 @@ import type { ColumnDef } from "@tanstack/react-table";
 import { DataTableColumnHeader } from "./data-table";
 import { GearImage } from "@/components/image";
 import { cn } from "@/lib/utils";
-import type { GearSetListItem } from "@/types/gear-sets";
+import type { GearPackListItem } from "@/types/gear-packs";
 import type { GearTypeListItem } from "@/types/gear-types";
 import type { GearListItem } from "@/types/gears";
 
 export interface GearData extends GearListItem {
-  set: GearSetListItem;
+  set: GearPackListItem;
   type: GearTypeListItem;
 }
 

@@ -69,9 +69,13 @@ export const GearIds = {
   ArmoredMSGRJacket: "armored-msgr-jacket",
   /* Куртка гонца-воина К1 */
   ArmoredMSGRJacketT1: "armored-msgr-jacket-t1",
+  /* Базовая броня */
   BasicArmor: "basic-armor",
+  /* Базовые рукавицы */
   BasicGauntlets: "basic-gauntlets",
+  /* Базовые перчатки */
   BasicGloves: "basic-gloves",
+  /* Базовое СИЗ */
   BasicPPE: "basic-ppe",
   /* Костоломская фигурка */
   BonekrushaFigurine: "bonekrusha-figurine",
@@ -113,7 +117,9 @@ export const GearIds = {
   CatastropheHeavyArmor: "catastrophe-heavy-armor",
   /* Тяжелая броня «Катастрофа» К1 */
   CatastropheHeavyArmorT1: "catastrophe-heavy-armor-t1",
+  /* Аварийная рация */
   EmergencyComm: "emergency-comm",
+  /* Аварийное ядро компрессии */
   EmergencyCompressionCore: "emergency-compression-core",
   /* Броня «Вечный ксиранит» */
   EternalXiraniteArmor: "eternal-xiranite-armor",
@@ -233,27 +239,49 @@ export const GearIds = {
   MISecurityScopeT1: "mi-security-scope-t1",
   /* Мультитул охраны «Мьешко» */
   MISecurityToolkit: "mi-security-toolkit",
+  /* Броня шахтера */
   MinerArmor: "miner-armor",
+  /* Броня шахтера К1 */
   MinerArmorT1: "miner-armor-t1",
+  /* Защитный костюм шахтера */
   MinerCleansuit: "miner-cleansuit",
+  /* Рация шахтера */
   MinerComm: "miner-comm",
+  /* Рация шахтера К1 */
   MinerCommT1: "miner-comm-t1",
+  /* Ядро компрессии шахтера */
   MinerCompressionCore: "miner-compression-core",
+  /* Ядро компрессии шахтера К1 */
   MinerCompressionCoreT1: "miner-compression-core-t1",
+  /* Двигатель шахтера */
+  MinerDriveWheel: "miner-drive-wheel",
+  /* Двигатель шахтера К1 */
   MinerDriveWheelT1: "miner-drive-wheel-t1",
-  MinerDriverWheel: "miner-driver-wheel",
+  /* Защита рук шахтера */
   MinerFists: "miner-fists",
+  /* Защита рук шахтера К1 */
   MinerFistsT1: "miner-fists-t1",
+  /* Рукавицы шахтера */
   MinerGauntlets: "miner-gauntlets",
+  /* Рукавицы шахтера К1 */
   MinerGauntletsT1: "miner-gauntlets-t1",
+  /* Перчатки шахтера */
   MinerGloves: "miner-gloves",
+  /* Перчатки шахтера К1 */
   MinerGlovesT1: "miner-gloves-t1",
+  /* Перчатки шахтера К2 */
   MinerGlovesT2: "miner-gloves-t2",
+  /* Комбинезон шахтера */
   MinerOveralls: "miner-overalls",
+  /* Комбинезон шахтера К1 */
   MinerOverallsT1: "miner-overalls-t1",
+  /* Турбина шахтера */
   MinerTurbine: "miner-turbine",
+  /* Турбина шахтера К1 */
   MinerTurbineT1: "miner-turbine-t1",
+  /* Жилет шахтера */
   MinerVest: "miner-vest",
+  /* Краги шахтера */
   MinerWrists: "miner-wrists",
   /* Изолированная батарея «Мортвольт» */
   MordvoltInsulationBattery: "mordvolt-insulation-battery",
@@ -291,7 +319,9 @@ export const GearIds = {
   MordvoltResistantWrench: "mordvolt-resistant-wrench",
   /* Резистентный ключ «Мортвольт» К1 */
   MordvoltResistantWrenchT1: "mordvolt-resistant-wrench-t1",
+  /* Прототип тяжелой брони */
   PrototypeHeavyArmor: "prototype-heavy-armor",
+  /* Прототип тяжелой брони К1 */
   PrototypeHeavyArmorT1: "prototype-heavy-armor-t1",
   /* Калибратор «Импульс» */
   PulserLabsCalibrator: "pulser-labs-calibrator",
@@ -319,13 +349,21 @@ export const GearIds = {
   QingboPositioningKit: "qingbo-positioning-kit",
   /* Локатор «Циньбо» К1 */
   QingboPositioningKitT1: "qingbo-positioning-kit-t1",
+  /* Броня «Освободитель» */
   RedeemerArmor: "redeemer-armor",
+  /* Перчатки «Освободитель» */
   RedeemerGloves: "redeemer-gloves",
+  /* Краги «Освободитель» */
   RedeemerHands: "redeemer-hands",
+  /* Латы «Освободитель» */
   RedeemerPlates: "redeemer-plates",
+  /* Печать «Освободитель» */
   RedeemerSeal: "redeemer-seal",
+  /* Печать «Освободитель» К1 */
   RedeemerSealT1: "redeemer-seal-t1",
+  /* Жетон «Освободитель» */
   RedeemerTag: "redeemer-tag",
+  /* Жетон «Освободитель» К1 */
   RedeemerTagT1: "redeemer-tag-t1",
   /* Защита рук гонца-странника */
   RovingMSGRFists: "roving-msgr-fists",

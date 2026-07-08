@@ -5,7 +5,7 @@ import path from "path";
 import attributes from "./data/attributes";
 import elements from "./data/elements";
 import factions from "./data/factions";
-import gearSets from "./data/gear-sets";
+import gearPacks from "./data/gear-packs";
 import gearTypes from "./data/gear-types";
 import gears from "./data/gears";
 import operatorRoles from "./data/operator-roles";
@@ -16,7 +16,7 @@ import weapons from "./data/weapons";
 import type { Attribute, AttributeListItem } from "../src/types/attributes";
 import type { Element, ElementListItem } from "../src/types/elements";
 import type { Faction } from "../src/types/factions";
-import type { GearSet, GearSetListItem } from "../src/types/gear-sets";
+import type { GearPack, GearPackListItem } from "../src/types/gear-packs";
 import type { GearType, GearTypeListItem } from "../src/types/gear-types";
 import type { Gear, GearListItem } from "../src/types/gears";
 import type { OperatorRole, OperatorRoleListItem } from "../src/types/operator-roles";
@@ -29,13 +29,13 @@ type CategoryConfig<T extends CategoryType> = {
   data: DataItem<T>[];
   transformList: (item: DataItem<T>) => DataListItem<T>;
 };
-type CategoryType = "attributes" | "elements" | "factions" | "gear-sets" | "gear-types" | "gears" | "operator-roles"
+type CategoryType = "attributes" | "elements" | "factions" | "gear-packs" | "gear-types" | "gears" | "operator-roles"
   | "operators" | "races" | "weapon-types" | "weapons";
 type DataItem<T extends CategoryType>
   = T extends "attributes" ? Attribute
     : T extends "elements" ? Element
       : T extends "factions" ? Faction
-        : T extends "gear-sets" ? GearSet
+        : T extends "gear-packs" ? GearPack
           : T extends "gear-types" ? GearType
             : T extends "gears" ? Gear
               : T extends "operator-roles" ? OperatorRole
@@ -48,7 +48,7 @@ type DataListItem<T extends CategoryType>
   = T extends "attributes" ? AttributeListItem
     : T extends "elements" ? ElementListItem
       : T extends "factions" ? Faction
-        : T extends "gear-sets" ? GearSetListItem
+        : T extends "gear-packs" ? GearPackListItem
           : T extends "gear-types" ? GearTypeListItem
             : T extends "gears" ? GearListItem
               : T extends "operator-roles" ? OperatorRoleListItem
@@ -70,7 +70,7 @@ const CATEGORIES = {
   },
   "elements": { data: Object.values(elements), transformList: item => item },
   "factions": { data: Object.values(factions), transformList: item => item },
-  "gear-sets": { data: Object.values(gearSets), transformList: item => item },
+  "gear-packs": { data: Object.values(gearPacks), transformList: item => item },
   "gear-types": { data: Object.values(gearTypes), transformList: item => item },
   "gears": { data: Object.values(gears), transformList: item => item },
   "operator-roles": {
@@ -88,7 +88,7 @@ const CATEGORIES = {
   "attributes": CategoryConfig<"attributes">;
   "elements": CategoryConfig<"elements">;
   "factions": CategoryConfig<"factions">;
-  "gear-sets": CategoryConfig<"gear-sets">;
+  "gear-packs": CategoryConfig<"gear-packs">;
   "gear-types": CategoryConfig<"gear-types">;
   "gears": CategoryConfig<"gears">;
   "operator-roles": CategoryConfig<"operator-roles">;
@@ -138,7 +138,7 @@ async function main() {
     await generateCategory("attributes", CATEGORIES["attributes"]);
     await generateCategory("elements", CATEGORIES["elements"]);
     await generateCategory("factions", CATEGORIES["factions"]);
-    await generateCategory("gear-sets", CATEGORIES["gear-sets"]);
+    await generateCategory("gear-packs", CATEGORIES["gear-packs"]);
     await generateCategory("gear-types", CATEGORIES["gear-types"]);
     await generateCategory("gears", CATEGORIES["gears"]);
     await generateCategory("operator-roles", CATEGORIES["operator-roles"]);

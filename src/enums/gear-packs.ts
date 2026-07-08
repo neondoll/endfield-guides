@@ -1,4 +1,4 @@
-export const GearSetIds = {
+export const GearPackIds = {
   /* Наследие Эберрей */
   AburreysLegacy: "aburreys-legacy",
   /* Эфиртех */
@@ -9,7 +9,8 @@ export const GearSetIds = {
   AICLight: "aic-light",
   /* Гонец-воин */
   ArmoredMSGR: "armored-msgr",
-  BasicGearPack: "basic-gear-pack",
+  /* Базовый */
+  Basic: "basic",
   /* Игра в Костолома */
   Bonekrusha: "bonekrusha",
   /* Катастрофа */
@@ -26,9 +27,12 @@ export const GearSetIds = {
   LYNX: "lynx",
   /* Охрана «Мьешко» */
   MISecurity: "mi-security",
-  MinerAGearPack: "miner-α-gear-pack",
-  MinerBGearPack: "miner-β-gear-pack",
-  MinerYGearPack: "miner-γ-gear-pack",
+  /* Шахтер α */
+  MinerA: "miner-α",
+  /* Шахтер β */
+  MinerB: "miner-β",
+  /* Шахтер γ */
+  MinerY: "miner-γ",
   /* Изолированный «Мортвольт» */
   MordvoltInsulation: "mordvolt-insulation",
   /* Резистентный «Мортвольт» */
@@ -37,7 +41,8 @@ export const GearSetIds = {
   PulserLabs: "pulser-labs",
   /* Циньбо */
   Qingbo: "qingbo",
-  RedeemerGearPack: "redeemer-gear-pack",
+  /* Освободитель */
+  Redeemer: "redeemer",
   /* Гонец-странник */
   RovingMSGR: "roving-msgr",
   /* Мастер меча */

@@ -11,9 +11,9 @@ import { ChevronDownIcon, ChevronUpIcon } from "@/components/ui/icon";
 import { cn } from "@/lib/utils";
 
 const GearsPage: FC = () => {
-  const { data, gearSetsLoading, gearTypesLoading, gearsLoading } = useGears();
+  const { data, gearPacksLoading, gearTypesLoading, gearsLoading } = useGears();
 
-  if (gearSetsLoading || gearTypesLoading || gearsLoading) {
+  if (gearPacksLoading || gearTypesLoading || gearsLoading) {
     return (
       <GearsLayout>
         <div>Loading...</div>

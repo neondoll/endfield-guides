@@ -1,11 +1,11 @@
 import { GearIds } from "@/enums/gears";
-import type { GearSet } from "@/types/gear-sets";
+import type { GearPack } from "@/types/gear-packs";
 import type { GearType } from "@/types/gear-types";
 
 export type Gear = {
   id: GearId;
   name: string;
-  setId: GearSet["id"];
+  packId: GearPack["id"];
   typeId: GearType["id"];
   level: 10 | 20 | 28 | 36 | 50 | 70;
   rarity: "white" | "green" | "blue" | "purple" | "gold";

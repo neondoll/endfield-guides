@@ -19,8 +19,8 @@ const EssenceAttributes = {
 };
 const WeaponSkillsMax = {
   AgilityBoost: {
-    L: { title: "Agility Boost [бол.]", text: "Agility +156" },
-    M: { title: "Agility Boost (M)", text: "Agility +124" },
+    L: { title: `${EssenceAttributes.AgilityBoost} [бол.]`, text: `${attributes.Agility.name} +156` },
+    M: { title: `${EssenceAttributes.AgilityBoost} (M)`, text: `${attributes.Agility.name} +124` },
     S: { title: `${EssenceAttributes.AgilityBoost} [мал.]`, text: `${attributes.Agility.name} +93` },
   },
   ArtsBoost: {
@@ -34,8 +34,8 @@ const WeaponSkillsMax = {
   },
   AttackBoost: {
     L: { title: `${EssenceAttributes.AttackBoost} [бол.]`, text: "Атака +39.0%" },
-    M: { title: "ATK Boost (M)", text: "Attack +31.2%" },
-    S: { title: "ATK Boost [мал.]", text: "Attack +23.4%" },
+    M: { title: `${EssenceAttributes.AttackBoost} (M)`, text: "Атака +31.2%" },
+    S: { title: `${EssenceAttributes.AttackBoost} [мал.]`, text: "Атака +23.4%" },
   },
   CriticalRateBoost: { L: { title: "Critical Rate Boost [бол.]", text: "Critical Rate +19.5%" } },
   CryoDMGBoost: {
@@ -54,27 +54,27 @@ const WeaponSkillsMax = {
   },
   IntellectBoost: {
     L: { title: `${EssenceAttributes.IntellectBoost} [бол.]`, text: `${attributes.Intellect.name} +156` },
-    M: { title: "Intellect Boost (M)", text: "Intellect +124" },
-    S: { title: "Intellect Boost [мал.]", text: "Intellect +93" },
+    M: { title: `${EssenceAttributes.IntellectBoost} (M)`, text: `${attributes.Intellect.name} +124` },
+    S: { title: `${EssenceAttributes.IntellectBoost} [мал.]`, text: `${attributes.Intellect.name} +93` },
   },
   MainAttributeBoost: {
-    L: { title: "Main Attribute Boost [бол.]", text: "Main Attribute +132" },
+    L: { title: `${EssenceAttributes.MainAttributeBoost} [бол.]`, text: "Основной показатель +132" },
     S: { title: `${EssenceAttributes.MainAttributeBoost} [мал.]`, text: "Основной показатель +79" },
   },
-  NatureDMGBoost: { L: { title: "Nature DMG Boost [бол.]", text: "Nature DMG Dealt+43.3%" } },
+  NatureDMGBoost: { L: { title: "Nature DMG Boost [бол.]", text: "Nature DMG Dealt +43.3%" } },
   PhysicalDMGBoost: {
-    L: { title: "Physical DMG Boost [бол.]", text: "Physical DMG Dealt +43.3%" },
-    M: { title: "Physical DMG Boost (M)", text: "Physical DMG Dealt +34.7%" },
+    L: { title: `${EssenceAttributes.PhysicalDMGBoost} [бол.]`, text: "Наносимый физичекий УРН +43.3%" },
+    M: { title: `${EssenceAttributes.PhysicalDMGBoost} (M)`, text: "Наносимый физичекий УРН +34.7%" },
     S: { title: `${EssenceAttributes.PhysicalDMGBoost} [мал.]`, text: "Наносимый физичекий УРН +26.0%" },
   },
   StrengthBoost: {
     L: { title: `${EssenceAttributes.StrengthBoost} [бол.]`, text: `${attributes.Strength.name} +156` },
-    M: { title: "Strength Boost (M)", text: "Strength +124" },
-    S: { title: "Strength Boost [мал.]", text: "Strength +93" },
+    M: { title: `${EssenceAttributes.StrengthBoost} (M)`, text: `${attributes.Strength.name} +124` },
+    S: { title: `${EssenceAttributes.StrengthBoost} [мал.]`, text: `${attributes.Strength.name} +93` },
   },
   TreatmentEfficiencyBoost: {
     L: { title: `${EssenceAttributes.TreatmentEfficiencyBoost} [бол.]`, text: "Эффективность лечения +46.4%" },
-    M: { title: "Treatment Efficiency Boost (M)", text: "Treatment Efficiency +37.1%" },
+    M: { title: `${EssenceAttributes.TreatmentEfficiencyBoost} (M)`, text: "Эффективность лечения +37.1%" },
   },
   UltimateGainEfficiencyBoost: {
     L: { title: "Ultimate Gain Efficiency Boost [бол.]", text: "Ultimate Gain Efficiency +46.4%" },

@@ -3,6 +3,4 @@ import type { ComponentProps } from "react";
 
 import { buttonVariants } from "./button.variants";
 
-export interface ButtonProps extends ComponentProps<"button">, VariantProps<typeof buttonVariants> {
-  asChild?: boolean;
-}
+export type ButtonProps = ComponentProps<"button"> & VariantProps<typeof buttonVariants> & { asChild?: boolean };

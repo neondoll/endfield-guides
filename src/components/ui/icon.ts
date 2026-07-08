@@ -15,4 +15,5 @@ export {
   SunIcon as SunIcon,
   SwordsIcon as SwordsIcon,
   UsersRoundIcon as UsersRoundIcon,
+  XIcon as XIcon,
 } from "lucide-react";

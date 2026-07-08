@@ -4,11 +4,16 @@ import { WeaponIds } from "../../src/enums/weapons";
 import type { Weapon } from "../../src/types/weapons";
 
 const EssenceAttributes = {
+  AgilityBoost: "Увелич. ловкости",
+  Assault: "Натиск",
   AttackBoost: "Увелич. атаки",
   Detonate: "Детонация",
   Infliction: "Поражение",
   IntellectBoost: "Увелич. интеллекта",
+  MainAttributeBoost: "Увелич. основ. показателя",
+  PhysicalDMGBoost: "Увелич. физического УРН",
   StrengthBoost: "Увелич. силы",
+  Suppression: "Подавление",
   TreatmentEfficiencyBoost: "Увелич. эффективности лечения",
   Twilight: "Сумерки",
 };
@@ -16,12 +21,12 @@ const WeaponSkillsMax = {
   AgilityBoost: {
     L: { title: "Agility Boost [бол.]", text: "Agility +156" },
     M: { title: "Agility Boost (M)", text: "Agility +124" },
-    S: { title: "Agility Boost (S)", text: "Agility +93" },
+    S: { title: `${EssenceAttributes.AgilityBoost} [мал.]`, text: `${attributes.Agility.name} +93` },
   },
   ArtsBoost: {
     L: { title: "Arts Boost [бол.]", text: "Arts DMG Dealt +43.3%" },
     M: { title: "Arts Boost (M)", text: "Arts DMG Dealt +34.7%" },
-    S: { title: "Arts Boost (S)", text: "Arts DMG Dealt +26.0%" },
+    S: { title: "Arts Boost [мал.]", text: "Arts DMG Dealt +26.0%" },
   },
   ArtsIntensityBoost: {
     L: { title: "Arts Intensity Boost [бол.]", text: "Arts Intensity +78" },
@@ -30,7 +35,7 @@ const WeaponSkillsMax = {
   AttackBoost: {
     L: { title: `${EssenceAttributes.AttackBoost} [бол.]`, text: "Атака +39.0%" },
     M: { title: "ATK Boost (M)", text: "Attack +31.2%" },
-    S: { title: "ATK Boost (S)", text: "Attack +23.4%" },
+    S: { title: "ATK Boost [мал.]", text: "Attack +23.4%" },
   },
   CriticalRateBoost: { L: { title: "Critical Rate Boost [бол.]", text: "Critical Rate +19.5%" } },
   CryoDMGBoost: {
@@ -45,27 +50,27 @@ const WeaponSkillsMax = {
   HPBoost: {
     L: { title: "HP Boost [бол.]", text: "Max HP +78.0%" },
     M: { title: "HP Boost (M)", text: "Max HP +62.4%" },
-    S: { title: "HP Boost (S)", text: "Max HP +46.8%" },
+    S: { title: "HP Boost [мал.]", text: "Max HP +46.8%" },
   },
   IntellectBoost: {
     L: { title: `${EssenceAttributes.IntellectBoost} [бол.]`, text: `${attributes.Intellect.name} +156` },
     M: { title: "Intellect Boost (M)", text: "Intellect +124" },
-    S: { title: "Intellect Boost (S)", text: "Intellect +93" },
+    S: { title: "Intellect Boost [мал.]", text: "Intellect +93" },
   },
   MainAttributeBoost: {
     L: { title: "Main Attribute Boost [бол.]", text: "Main Attribute +132" },
-    S: { title: "Main Attribute Boost (S)", text: "Main Attribute +79" },
+    S: { title: `${EssenceAttributes.MainAttributeBoost} [мал.]`, text: "Основной показатель +79" },
   },
   NatureDMGBoost: { L: { title: "Nature DMG Boost [бол.]", text: "Nature DMG Dealt+43.3%" } },
   PhysicalDMGBoost: {
     L: { title: "Physical DMG Boost [бол.]", text: "Physical DMG Dealt +43.3%" },
     M: { title: "Physical DMG Boost (M)", text: "Physical DMG Dealt +34.7%" },
-    S: { title: "Physical DMG Boost (S)", text: "Physical DMG Dealt +26.0%" },
+    S: { title: `${EssenceAttributes.PhysicalDMGBoost} [мал.]`, text: "Наносимый физичекий УРН +26.0%" },
   },
   StrengthBoost: {
     L: { title: `${EssenceAttributes.StrengthBoost} [бол.]`, text: `${attributes.Strength.name} +156` },
     M: { title: "Strength Boost (M)", text: "Strength +124" },
-    S: { title: "Strength Boost (S)", text: "Strength +93" },
+    S: { title: "Strength Boost [мал.]", text: "Strength +93" },
   },
   TreatmentEfficiencyBoost: {
     L: { title: `${EssenceAttributes.TreatmentEfficiencyBoost} [бол.]`, text: "Эффективность лечения +46.4%" },
@@ -78,7 +83,7 @@ const WeaponSkillsMax = {
   WillBoost: {
     L: { title: "Will Boost [бол.]", text: "Will +156" },
     M: { title: "Will Boost (M)", text: "Will +124" },
-    S: { title: "Will Boost (S)", text: "Will +93" },
+    S: { title: "Will Boost [мал.]", text: "Will +93" },
   },
 };
 
@@ -1087,7 +1092,7 @@ export default {
   },
   ProminentEdge: {
     id: WeaponIds.ProminentEdge,
-    name: "Prominent Edge",
+    name: "Выдающийся клинок",
     typeId: WeaponTypeIds.Sword,
     rarity: 4,
     baseATK90: 341,
@@ -1095,10 +1100,10 @@ export default {
       WeaponSkillsMax.AgilityBoost.S,
       WeaponSkillsMax.PhysicalDMGBoost.S,
       {
-        title: "Suppression: Emergency Boost",
+        title: `${EssenceAttributes.Suppression}: срочная поддержка`,
         text: [
-          "When the wielder's battle skill hits the enemy, ATK +33.6% for 20s.",
-          "Effects of the same name cannot stack.",
+          "Когда владелец попадает боевым навком по врагу, то получает +33.6% к АТК на 20 сек.",
+          "Одноименные эффекты не суммируются.",
         ].join("\n"),
       },
     ],
@@ -1244,11 +1249,14 @@ export default {
   },
   Tarr11: {
     id: WeaponIds.Tarr11,
-    name: "Tarr 11",
+    name: "Тарр 11",
     typeId: WeaponTypeIds.Sword,
     rarity: 3,
     baseATK90: 283,
-    skillsMax: [WeaponSkillsMax.MainAttributeBoost.S, { title: "Assault: Armament Prep", text: "ATK +34" }],
+    skillsMax: [
+      WeaponSkillsMax.MainAttributeBoost.S,
+      { title: `${EssenceAttributes.Assault}: боеготовность`, text: "АТК +34" },
+    ],
     image: image("tarr-11.png"),
   },
   ThermiteCutter: {

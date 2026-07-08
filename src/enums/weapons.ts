@@ -55,6 +55,7 @@ export const WeaponIds = {
   PathfindersBeacon: "pathfinders-beacon",
   Peco5: "peco-5",
   PhantomPain: "phantom-pain",
+  /* Выдающийся клинок */
   ProminentEdge: "prominent-edge",
   Quencher: "quencher",
   RapidAscent: "rapid-ascent",
@@ -63,6 +64,7 @@ export const WeaponIds = {
   StanzaOfMemorials: "stanza-of-memorials",
   SunderedPrince: "sundered-prince",
   SunderingSteel: "sundering-steel",
+  /* Тарр 11 */
   Tarr11: "tarr-11",
   ThermiteCutter: "thermite-cutter",
   Thunderberge: "thunderberge",

@@ -209,6 +209,13 @@ export default {
     ],
     image: image("beacon-of-duty.png"),
   },
+  BedazzlingNightDebut: {
+    id: WeaponIds.BedazzlingNightDebut,
+    name: "Bedazzling Night Debut",
+    typeId: WeaponTypeIds.Polearm,
+    rarity: 6,
+    image: image("bedazzling-night-debut.png"),
+  },
   BlessingOfLustrousCarmine: {
     id: WeaponIds.BlessingOfLustrousCarmine,
     name: "Blessing of Lustrous Carmine",
@@ -438,6 +445,25 @@ export default {
     ],
     image: image("exemplar.png"),
   },
+  Farsight: {
+    id: WeaponIds.Farsight,
+    name: "Farsight",
+    typeId: WeaponTypeIds.Sword,
+    rarity: 6,
+    baseATK90: 500,
+    skillsMax: [
+      WeaponSkillsMax.MainAttributeBoost.L,
+      WeaponSkillsMax.ArtsIntensityBoost.L,
+      {
+        title: "Assault: Vision for Tomorrow",
+        text: [
+          "When entering the battle, the entire team gains the Dream Striving buff that grants DMG Dealt +14.0%, Arts Intensity +28, and DEF +8.4% for 20s. When Dream Striving ends, the wielder restores the entire team for 122 HP.",
+          "Effects of the same name cannot stack.",
+        ].join("\n"),
+      },
+    ],
+    image: image("farsight.png"),
+  },
   Finchaser30: {
     id: WeaponIds.Finchaser30,
     name: "Finchaser 3.0",
@@ -605,6 +631,26 @@ export default {
     ],
     image: image("glorious-memory.png"),
   },
+  GoldenAge: {
+    id: WeaponIds.GoldenAge,
+    name: "Golden Age",
+    typeId: WeaponTypeIds.Polearm,
+    rarity: 6,
+    baseATK90: 485,
+    skillsMax: [
+      WeaponSkillsMax.WillBoost.L,
+      WeaponSkillsMax.TreatmentEfficiencyBoost.L,
+      {
+        title: "Pursuit: Great Hero",
+        text: [
+          "Electric DMG Dealt +16.8%.",
+          "When the wielder's combo skill deals DMG, the wielder gains Treatment Efficiency +11.2% for 15s. When the wielder's combo skill grants HP Treatment to other operators in the team, the entire team gains Arts DMG Dealt +14.0% for 20s.",
+          "Effects of the same name cannot stack.",
+        ].join("\n"),
+      },
+    ],
+    image: image("golden-age.png"),
+  },
   GrandVision: {
     id: WeaponIds.GrandVision,
     name: "Grand Vision",
@@ -724,6 +770,26 @@ export default {
     baseATK90: 283,
     skillsMax: [WeaponSkillsMax.MainAttributeBoost.S, { title: "Assault: Armament Prep", text: "ATK +34" }],
     image: image("jiminy-12.png"),
+  },
+  JunctionPoint: {
+    id: WeaponIds.JunctionPoint,
+    name: "Junction Point",
+    typeId: WeaponTypeIds.ArtsUnit,
+    rarity: 6,
+    baseATK90: 490,
+    skillsMax: [
+      WeaponSkillsMax.IntellectBoost.L,
+      WeaponSkillsMax.UltimateGainEfficiencyBoost.L,
+      {
+        title: "Efficacy: Feedback Loop",
+        text: [
+          "Nature DMG Dealt +19.6%.",
+          "When the wielder applies Arts Susceptibility or Arts Infliction with a Combo Skill, the wielder gains ATK +16.8% while other operators in the team gain ATK +4.2. Duration: 20s.",
+          "Max stacks for the same effect of the same name: 2. Duration of each stack is counted separately.",
+        ].join("\n"),
+      },
+    ],
+    image: image("junction-point.png"),
   },
   Khravengger: {
     id: WeaponIds.Khravengger,
@@ -1318,6 +1384,27 @@ export default {
       },
     ],
     image: image("twelve-questions.png"),
+  },
+  Type42SolemnPhalanx: {
+    id: WeaponIds.Type42SolemnPhalanx,
+    name: "Type 42: Solemn Phalanx",
+    typeId: WeaponTypeIds.ArtsUnit,
+    rarity: 6,
+    baseATK90: 505,
+    skillsMax: [
+      WeaponSkillsMax.IntellectBoost.L,
+      WeaponSkillsMax.UltimateGainEfficiencyBoost.L,
+      {
+        title: `${EssenceAttributes.Detonate}: Debilitating Assault`,
+        text: [
+          "ATK +44.8%.",
+          "Wielder's Intellect ≥ Will: When the wielder applies Arts Infliction with their own skill, the wielder gains Arts DMG Dealt +56.0% for 20s; when the wielder applies Arts Susceptibility with their own skill, the wielder gains ATK +56.0% for 20s.",
+          "Wielder's Will ≥ Intellect: When the wielder applies Arts Burst with their own skill, the target enemy suffers Arts DMG Taken +16.8% for 25s; when the wielder applies Arts Susceptibility with their own skill, the target enemy suffers Arts DMG Taken +16.8% for 25s.",
+          "Effects of the same name cannot stack. The aforementioned attributes only include effects from the wielder's level, talents, potentials, and attribute bonuses provided by equipped gear and weapons.",
+        ].join("\n"),
+      },
+    ],
+    image: image("type-42-solemn-phalanx.png"),
   },
   UmbralTorch: {
     id: WeaponIds.UmbralTorch,

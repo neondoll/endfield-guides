@@ -109,6 +109,7 @@ export default {
     effect: "При применении комбонавыка владелец получает +20% к наносимому УРН от навыков на 15 сек. (для каждого навыка). Эффект суммируется до 2 р. Длительность каждого заряда подсчитывается отдельно.",
   },
   Redeemer: { id: GearPackIds.Redeemer, name: "Освободитель" },
+  RiftTrekker: { id: GearPackIds.RiftTrekker, name: "Путник разлома" },
   RovingMSGR: {
     id: GearPackIds.RovingMSGR,
     name: "Гонец-странник",

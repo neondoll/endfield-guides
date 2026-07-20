@@ -86,31 +86,25 @@ export function DataTableColumnHeader<TData, TValue>({
   }
 
   return (
-    <div
-      className={cn([
-        "flex items-center gap-2",
-        align === "center" && "justify-center",
-        align === "end" && "justify-end",
-        align === "start" && "justify-start",
-      ], className)}
-    >
+    <div className={cn(["-mx-3"], className)}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
             className={cn([
-              "h-8 data-[state=open]:bg-accent",
-              align === "center" && "-mr-4.5",
-              align === "start" && "-ml-3",
+              "gap-1 w-full h-11.75 data-[state=open]:bg-accent [&_svg:not([class*='size-'])]:size-3.5",
+              align === "end" && "px-3 justify-end has-data-[icon=inline-end]:pr-3 has-data-[icon=inline-start]:pl-3",
+              align === "center" && "px-4.5 justify-center has-data-[icon=inline-end]:pr-0 has-data-[icon=inline-start]:pl-0",
+              align === "start" && "px-3 justify-start has-data-[icon=inline-end]:pr-3 has-data-[icon=inline-start]:pl-3",
             ])}
             size="sm"
             variant="ghost"
           >
             <span>{title}</span>
             {column.getIsSorted() === "desc"
-              ? <ArrowDownIcon />
+              ? <ArrowDownIcon data-icon="inline-end" />
               : column.getIsSorted() === "asc"
-                ? <ArrowUpIcon />
-                : <ChevronsUpDownIcon />}
+                ? <ArrowUpIcon data-icon="inline-end" />
+                : <ChevronsUpDownIcon data-icon="inline-end" />}
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align={align}>

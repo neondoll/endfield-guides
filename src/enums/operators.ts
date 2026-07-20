@@ -5,12 +5,14 @@ export const OperatorIds = {
   Alesh: "alesh",
   /* Антал */
   Antal: "antal",
+  Arcane: "arcane",
   /* Арклайт */
   Arclight: "arclight",
   /* Арделия */
   Ardelia: "ardelia",
   /* Авивенна */
   Avywenna: "avywenna",
+  /* Камиль */
   Camille: "camille",
   /* Кэтчер */
   Catcher: "catcher",
@@ -34,6 +36,8 @@ export const OperatorIds = {
   LastRite: "last-rite",
   /* Лифэн */
   Lifeng: "lifeng",
+  Liino: "liino",
+  /* Ми Фу */
   MiFu: "mi-fu",
   /* Перлика */
   Perlica: "perlica",

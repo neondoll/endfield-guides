@@ -9,6 +9,7 @@ export {
   ChevronUpIcon as ChevronUpIcon,
   ChevronsUpDownIcon as ChevronsUpDownIcon,
   EyeOffIcon as EyeOffIcon,
+  InfoIcon as InfoIcon,
   MoonIcon as MoonIcon,
   MoreHorizontalIcon as MoreHorizontalIcon,
   PuzzleIcon as PuzzleIcon,

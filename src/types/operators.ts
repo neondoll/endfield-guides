@@ -15,8 +15,8 @@ export type Operator = {
   elementId: Element["id"];
   weaponId: WeaponType["id"];
   roleId: OperatorRole["id"];
-  mainAttributeId: Attribute["id"];
-  secondaryAttributeId: Attribute["id"];
+  mainAttributeId?: Attribute["id"];
+  secondaryAttributeId?: Attribute["id"];
   version: string;
   image: string;
 };

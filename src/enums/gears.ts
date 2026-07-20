@@ -125,14 +125,24 @@ export const GearIds = {
   EternalXiraniteArmor: "eternal-xiranite-armor",
   /* Манипулятор «Вечный ксиранит» */
   EternalXiraniteAuxiliaryArm: "eternal-xiranite-auxiliary-arm",
+  /* Крепежная пластина «Вечный ксиранит» */
+  EternalXiraniteBracingSlab: "eternal-xiranite-bracing-slab",
   /* Перчатки «Вечный ксиранит» */
   EternalXiraniteGloves: "eternal-xiranite-gloves",
   /* Перчатки «Вечный ксиранит» К1 */
   EternalXiraniteGlovesT1: "eternal-xiranite-gloves-t1",
+  /* Краги «Вечный ксиранит» */
+  EternalXiraniteHands: "eternal-xiranite-hands",
+  /* Легкая броня «Вечный ксиранит» */
+  EternalXiraniteLightArmor: "eternal-xiranite-light-armor",
+  /* Легкая броня «Вечный ксиранит» К1 */
+  EternalXiraniteLightArmorT1: "eternal-xiranite-light-armor-t1",
   /* Энергетическое ядро «Вечный ксиранит» */
   EternalXiranitePowerCore: "eternal-xiranite-power-core",
   /* Энергетическое ядро «Вечный ксиранит» К1 */
   EternalXiranitePowerCoreT1: "eternal-xiranite-power-core-t1",
+  /* Обмотки «Вечный ксиранит» */
+  EternalXiraniteWraps: "eternal-xiranite-wraps",
   /* Анализатор «Колонист» */
   FrontiersAnalyzer: "frontiers-analyzer",
   /* Броня «Колонист» */
@@ -185,6 +195,10 @@ export const GearIds = {
   HotWorkGauntletsT1: "hot-work-gauntlets-t1",
   /* Жаропрочные перчатки */
   HotWorkGloves: "hot-work-gloves",
+  /* СИЗ для рук «Термоудар» */
+  HotWorkHandsPPE: "hot-work-hands-ppe",
+  /* Изолированная пластина «Термоудар» */
+  HotWorkInsulationSlab: "hot-work-insulation-slab",
   /* Аккумулятор «Термоудар» */
   HotWorkPowerBank: "hot-work-power-bank",
   /* Картридж энергии «Термоудар» */
@@ -201,8 +215,12 @@ export const GearIds = {
   LYNXConnectorT2: "lynx-connector-t2",
   /* Бронежилет «Рысь» */
   LYNXCuirass: "lynx-cuirass",
+  /* Бронежилет «Рысь» К1 */
+  LYNXCuirassT1: "lynx-cuirass-t1",
   /* Рукавицы «Рысь» */
   LYNXGauntlets: "lynx-gauntlets",
+  /* Рукавицы «Рысь» К1 */
+  LYNXGauntletsT1: "lynx-gauntlets-t1",
   /* Перчатки «Рысь» */
   LYNXGloves: "lynx-gloves",
   /* Тяжелая броня «Рысь» */
@@ -365,6 +383,16 @@ export const GearIds = {
   RedeemerTag: "redeemer-tag",
   /* Жетон «Освободитель» К1 */
   RedeemerTagT1: "redeemer-tag-t1",
+  /* Бронепластина «Путник разлома» */
+  RiftTrekkerArmorSlab: "rift-trekker-armor-slab",
+  /* Перчатки «Путник разлома» */
+  RiftTrekkerGloves: "rift-trekker-gloves",
+  /* Краги «Путник разлома» */
+  RiftTrekkerHands: "rift-trekker-hands",
+  /* Тяжелая броня «Путник разлома» */
+  RiftTrekkerHeavyArmor: "rift-trekker-heavy-armor",
+  /* Легкая броня «Путник разлома» */
+  RiftTrekkerLightArmor: "rift-trekker-light-armor",
   /* Защита рук гонца-странника */
   RovingMSGRFists: "roving-msgr-fists",
   /* Защита рук гонца-странника К1 */

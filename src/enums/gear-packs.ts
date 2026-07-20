@@ -43,6 +43,8 @@ export const GearPackIds = {
   Qingbo: "qingbo",
   /* Освободитель */
   Redeemer: "redeemer",
+  /* Путник разлома */
+  RiftTrekker: "rift-trekker",
   /* Гонец-странник */
   RovingMSGR: "roving-msgr",
   /* Мастер меча */

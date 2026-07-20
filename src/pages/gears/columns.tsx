@@ -10,7 +10,7 @@ import type { GearTypeListItem } from "@/types/gear-types";
 import type { GearListItem } from "@/types/gears";
 
 export interface GearData extends GearListItem {
-  set: GearPackListItem;
+  pack: GearPackListItem;
   type: GearTypeListItem;
 }
 
@@ -80,7 +80,10 @@ export const columns: ColumnDef<GearData>[] = [
     },
   },
   {
-    header: "Характеристики",
+    id: "stats",
+    header: () => (
+      <div className="text-center">Характеристики</div>
+    ),
     cell: ({ row }) => {
       const defense = row.original.defense;
       const subStats = row.original.subStats;
@@ -103,26 +106,28 @@ export const columns: ColumnDef<GearData>[] = [
     },
   },
   {
-    accessorKey: "set.name",
+    accessorKey: "pack.name",
     header: ({ column }) => (
       <DataTableColumnHeader align="center" column={column} title="Комплект" />
     ),
     cell: ({ row }) => {
-      const setName = row.original.set.name;
+      const packName = row.original.pack.name;
 
-      return <p children={setName} className="text-center whitespace-normal" />;
+      return <p children={packName} className="text-center whitespace-normal" />;
     },
   },
   {
-    accessorKey: "set.effect",
-    header: "Эффект комплекта",
+    accessorKey: "pack.effect",
+    header: () => (
+      <div className="text-center">Эффект комплекта</div>
+    ),
     cell: ({ row }) => {
-      const bonusStat = row.original.set.bonusStat;
-      const setEffect = row.original.set.effect;
+      const bonusStat = row.original.pack.bonusStat;
+      const packEffect = row.original.pack.effect;
 
       return (
         <div className="space-y-1 whitespace-pre-line">
-          {(bonusStat || setEffect)
+          {(bonusStat || packEffect)
             ? (
                 <>
                   <p>
@@ -131,7 +136,7 @@ export const columns: ColumnDef<GearData>[] = [
                   </p>
                   <p>
                     <span className="font-bold">Эффект комплекта</span>
-                    {`: ${setEffect}`}
+                    {`: ${packEffect}`}
                   </p>
                 </>
               )

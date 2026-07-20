@@ -1,19 +1,19 @@
 import type { FC } from "react";
 
-// import { columns } from "./columns";
-// import { DataTable } from "./data-table";
+import { columns } from "./columns";
+import { DataTable } from "./data-table";
 import { useGears } from "./hooks";
 import GearsLayout from "./layout";
-import { GearImage } from "@/components/image";
-import { Button } from "@/components/ui/button";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { ChevronDownIcon, ChevronUpIcon } from "@/components/ui/icon";
-import { cn } from "@/lib/utils";
+// import { GearImage } from "@/components/image";
+// import { Button } from "@/components/ui/button";
+// import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+// import { ChevronDownIcon, ChevronUpIcon } from "@/components/ui/icon";
+// import { cn } from "@/lib/utils";
 
 const GearsPage: FC = () => {
-  const { data, gearPacksLoading, gearTypesLoading, gearsLoading } = useGears();
+  const { data, loading } = useGears();
 
-  if (gearPacksLoading || gearTypesLoading || gearsLoading) {
+  if (loading) {
     return (
       <GearsLayout>
         <div>Loading...</div>
@@ -23,7 +23,7 @@ const GearsPage: FC = () => {
 
   return (
     <GearsLayout>
-      <div className="grid grid-cols-[repeat(5,auto)]">
+      {/* <div className="grid grid-cols-[repeat(5,auto)]">
         {data.map(set => (
           <Collapsible className="grid grid-cols-subgrid col-span-full" defaultOpen={true} key={set.id}>
             <CollapsibleTrigger asChild className="col-span-full">
@@ -176,8 +176,8 @@ const GearsPage: FC = () => {
             </CollapsibleContent>
           </Collapsible>
         ))}
-      </div>
-      {/* <DataTable columns={columns} data={data} /> */}
+      </div> */}
+      <DataTable columns={columns} data={data} />
     </GearsLayout>
   );
 };

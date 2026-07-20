@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { Link, Route, Routes } from "react-router";
 
+import InfoAlert from "@/components/info-alert";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import PATHS from "@/paths";
@@ -21,7 +22,8 @@ function App() {
         </div>
       </header>
       <main className="flex-1 bg-muted">
-        <div className="p-4 mx-auto container md:px-6 md:py-10">
+        <div className="p-4 mx-auto space-y-4 container md:px-6 md:py-10 md:space-y-6">
+          <InfoAlert />
           <Suspense>
             <Routes>
               <Route index path={PATHS.Home} Component={lazy(() => import("@/pages/home/page"))} />
